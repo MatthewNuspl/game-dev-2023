@@ -9,7 +9,7 @@
         <h1 align=center>t1a01-list-table-matthew</h1>
         <h3>Tables</h3>
 
-        <table border="1">
+        <table border=1>
             <tr><td>A</td><td>B</td></tr>
             <tr><td><1</td><td>2</td></tr>
         </table><br>
@@ -17,18 +17,21 @@
         <h3>Lists</h3>
         <ol> an order lists of plannets
             <li>Mercury 
-            <li>Earth
             <li>Venus
-            <li>Mars 
+            <li>Earth
+            <li>Mars
             <li>Jupiter
-            <li>Saturn
+            <li>saturn
         </ol>
 
         <ul> An ordered unordered lists of dogs 
             <li>Pug
             <li>Poodle
             <li>German Shepherd
-            <li>Golden Retriever>
+            <li>Golden Retriever
+            <li>Bulldog
+            <li>Pomeranian
+            
         </ul>
     </body>
 </html> 
