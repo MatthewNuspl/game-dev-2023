@@ -18,6 +18,10 @@
         <ol> an order lists of plannets
             <li>Mercury 
             <li>Earth
+            <li>Venus
+            <li>Mars 
+            <li>Jupiter
+            <li>Saturn
         </ol>
 
         <ul> An ordered unordered lists of dogs 
