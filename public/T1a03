@@ -1,1 +1,38 @@
+<h6>Version 0.0.1</h6>
+        <h1 align=center>t1a03-forms-Matthew.html</h1>
+           <h3><font color=green> Proving that you can use: forms 2023</font>font></h3>h3><br>
+                The following are all form elements (add to them):<br> <form>
+                        First name:<input type=text id="Mytext01" value="Matthew"><br>
+                      
+                
+                    
+       checkbox: <br> 
+           Beef:<input type=checkbox><br>                   
+                  Veggy:<input type=checkbox><br
+                 Radio Buttons:<br>   
+                    95.4 <input type=radio name="myRad01"  value="75"><br> 
+                        101 <input type=Radio name="myRad01" value="75"><br>
+                  
+                Hidden:<input type=hidden ><br>
+                    file:<input type=file><br>
+                      reset:<input type=reset><br>
+                        submit (advanced)<input type=submit><br>
 
+                Button: <input type=button value="Click"  onclick="{document.GetElementById('myArea01').Value='cool'}"><br>
+                    Textarea:<br>
+                        <Textarea Id="myArea01" cols="60" rows=5 >cool this works </Textarea><br>
+
+                      Select Box:<BR>
+                         <select id="mySelect01" size="2" onchange="{Document.GetElementById('myArea01').Value=Document.GetElementById('mySection01').Value }">
+                            <option value='myDog'>Dog
+                                <option value='myCat'>Cat
+                                  <option value='myMouse'>Mouse
+                                  </select>
+                                     </form>
+                        
+
+        
+
+
+
+   
