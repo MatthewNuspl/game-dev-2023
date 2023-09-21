@@ -1,0 +1,12 @@
+<script> 
+  let myOutArray =New Array()
+    Function myprint(x){
+      let myAnimal 
+      for (i=1; i <=x;  i++) }
+        myAnimal ='Cat'
+         if (i <= 3) {MyAnimal = 'Kitten'}
+           myOutArray[1] = 'The' + ' is '+i+' years old <br>'
+             document.write(myOutArray[1] + myOutArray[2])
+            }
+              myprint(7)
+                </script>
