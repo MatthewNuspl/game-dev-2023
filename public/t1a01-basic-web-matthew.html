@@ -9,12 +9,32 @@ head>
              <h1 align=center>T1A01-Web-Basics-by-Matthew.html </h1>
                 <h1 href="https://www.google.ca">
                    Link To Google</a<>br>
-               
-          <tr><td>Pug</td><td>
-            <img width="420" height="345" src="Pug.jfif"></td></tr>
 <!DOCTYPE html>
 <html>
 <body>
+
+<h1>The template Element</h1>
+
+<p>Click the button below to display the hidden content from the template element.</p>
+
+<button onclick="showContent()">Show hidden content</button>
+
+<template>
+  <h2>Pug</h2>
+  <img src="Pug.jfif" width="214" height="204">
+</template>
+
+<script>
+function showContent() {
+  let temp = document.getElementsByTagName("template")[0];
+  let clon = temp.content.cloneNode(true);
+  document.body.appendChild(clon);
+}
+</script>
+
+</body>
+</html>
+
 
 
 </iframe>
