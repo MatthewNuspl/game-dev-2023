@@ -15,8 +15,20 @@ Version 0.0.1
                 <input type=button value="Simple If Statment For Decision Making" onclick="{ 
                  let myIn01= parseFloat(document.getElementById('myNum01').value)
                     if (myIn01 >3){
-                      document.getElementById('myDiv01').innerHTML = myIn01 + 'is greater than 3' }
+                      document.getElementById('myDiv01').innerHTML = myIn01 + 'Is Greater Than 3' }
                 }">
                   <input type=button value="if...else" onclick="{
-                    let myIn01
-              
+                    let myIn01= parseFloat(document.getElementById('myNum01').value)
+                     if (myIn01 >= 3){
+                        document.getElementById('myDiv01').innerHTML = myIn01 + 'Is Greater than 3'}
+                  } else { 
+                      document.getElementById('myDiv01').innerHTML = myIn01 + 'Is Less Than 3'}
+                  }">
+                <input type=button value="Complex if" onclick="{
+                  let myIn01= parseFloat(document.getElementById('myNum01').value)
+                  if ((myIn01 !=3 || myIn01 > -3) && myIn01 <=100 ){ 
+                   document.getElementById('myDiv01').innerHTML = myIn01 + 'Is Complex'
+                  } else }
+                   document.getElementById('myDiv01').innerHTML = myIn01 + 'Is Not Complex'}
+                  }">
+                    <Div id=myDiv01">...</Div>
