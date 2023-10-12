@@ -4,23 +4,8 @@
 
     <body>
         
-<button onclick="typeWriter()">Click me</button>
 
-<p id="demo"></p>
-
-<script>
-var i = 0;
-var txt = '  Lincoln is a Zombie!!!.';
-var speed = 50;
-
-function typeWriter() {
-  if (i < txt.length) {
-    document.getElementById("demo").innerHTML += txt.charAt(i);
-    i++;
-    setTimeout(typeWriter, speed);
-  }<p id="demo"></p>
-
-        <Style>
+<Style>
 
         </Style>
     
@@ -49,7 +34,23 @@ h1 {
 
     <!DOCTYPE html>
 <html>
-<body>
+<body> <button onclick="typeWriter()">Click me</button>
+
+<p id="demo"></p>
+
+<script>
+var i = 0;
+var txt = '  Lincoln is a Zombie!!!.';
+var speed = 50;
+
+function typeWriter() {
+  if (i < txt.length) {
+    document.getElementById("demo").innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }<p id="demo"></p>
+
+    
 
 <button type="button"
 onclick="document.getElementById('demo').innerHTML = Date()">
