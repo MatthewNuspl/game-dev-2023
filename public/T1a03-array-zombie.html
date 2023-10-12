@@ -29,7 +29,32 @@ Click me to display Date and Time.</button>
 
 <p id="demo"></p>
 
+</body> 
+    <!DOCTYPE html>
+<html>
+<body>
+
+<button onclick="typeWriter()">Click me</button>
+
+<p id="demo"></p>
+
+<script>
+var i = 0;
+var txt = '  Lincoln is a Zombie!!!.';
+var speed = 50;
+
+function typeWriter() {
+  if (i < txt.length) {
+    document.getElementById("demo").innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+}
+</script>
+
 </body>
+</html>
+
 </html> 
 
 
