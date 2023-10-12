@@ -1,13 +1,10 @@
 <html>
     <head>
-        <Style>
-
-        </Style>
-    
+        
     </head>
     <body>
          <h6>Version 0.0.1</h6>
-         <h2 align=center>t1a08-loops-by-matthew</h2>
+         <h2 align="center">t1a08-loops-by-matthew</h2>
 
     <a href="https://www.w3schools.com/js/js_loop_for.asp">Good reference to Javascript Loops</a><br>
 
@@ -17,15 +14,15 @@
 
         <input type="button" value="basic for loop with decisions" onclick="{
             document.getElementById('myDiv01').innerHTML= ''
-            Let myTemp = ''
+            let myTemp = ''
           
             let myMax= parseInt(document.getElementById('myNum01').value)
           
             for (let myloop = 0; myloop < myMax; myLoop++ ){
-              if (myLoop * 2 > myMax){
+              if (myloop * 2 > myMax){
                 myTemp += ' Cool '
                   }
-                    myTemp += ' Loop number: ' +MyLoop +'<br>'
+                    myTemp += ' Loop number: ' +myloop +'<br>'
                 }
               document.getElementById('myDiv01').innerHTML=myTemp
             }">
