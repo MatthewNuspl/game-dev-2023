@@ -1,36 +1,43 @@
 <html>
     <head>
-        
+        <style>
+
+        </style>
     </head>
     <body>
-         <h6>Version 0.0.1</h6>
-         <h2 align="center">t1a08-loops-by-matthew</h2>
 
-    <a href="https://www.w3schools.com/js/js_loop_for.asp">Good reference to Javascript Loops</a><br>
+        <h6>Version 0.0.1.</h6>
+        <h3 align="center">T1a08 Loops By Mathew</h3>
 
-    <h4> Example working code</h4>
+        <a href="https://www.w3schools.com/js/js_loop_for.asp">A good reference to Javascript Loops</a><br>
 
-      Max loops: <input id="myNum01" type="number" value="4" ><br>
+        <h4> Example of Working Code</h4>
 
-        <input type="button" value="basic for loop with decisions" onclick="{
-            document.getElementById('myDiv01').innerHTML= ''
+        Max loops: <input id="myNum01" type="number" value="4"><br>
+
+        <input type="button" value="Basic For Loops With Decisions" onclick="{
+            document.getElementById('myDiv01').innerHTML = ''
             let myTemp = ''
-          
-            let myMax= parseInt(document.getElementById('myNum01').value)
-          
-            for (let myloop = 0; myloop < myMax; myLoop++ ){
-              if (myloop * 2 > myMax){
-                myTemp += ' Cool '
-                  }
-                    myTemp += ' Loop number: ' +myloop +'<br>'
-                }
-              document.getElementById('myDiv01').innerHTML=myTemp
-            }">
 
-                <div id="myDiv01">...</div>
-         
-        <script>
-            
-        </script>
+            let myMax = parseInt(document.getElementById('myNum01').value)
+
+            for(let myLoop = 0; myLoop < myMax; myLoop++ ){
+                if (myLoop * 2 > myMax){
+                    myTemp += ' cool '
+                }
+
+                myTemp += 'Loop number: ' + myLoop + '<br>'
+
+            }
+
+            document.getElementById('myDiv01').innerHTML = myTemp
+
+        }">
+
+        <div id="myDiv01">...</div>
+
+         <script>
+
+         </script>   
     </body>
 </html>
