@@ -1,50 +1,61 @@
-Version 0.0.1
-  <!DOCTYPE html>
 <html>
-<head>
-<style>
-h1 {
-  text-shadow: 2px 2px 5px red;
-}
-</style>
-</head>
-<body>
+    <head>
+        <link rel="stylesheet" href="GlobalCSS.css">
+        <style>
 
-<h1>t1a07-decision-by-matthew.html!</h1>
+        </style>
+    </head>
+    <body>
 
-</body>
+        <h6>Version 0.0.1.</h6>
+        <h3 align="center">T1a07-Decisions-Lincoln</h3>
+
+        <a href="https://www.w3schools.com/js/js_if_else.asp">A good reference to Decisions, if... else statements
+            Javascript innerHTML value by Matthew<br>
+        </a>
+
+        <h4> Example Input Output Code</h4>
+
+        <pre>
+            let myHour = 20
+            if (myHour < 18) {
+                let myGreeting = 'Good Day';
+            }
+        </pre>
+
+        <h4> Example of Working Code</h4>
+        
+        <input id="myNum01" type="number" value="4"><br>
+
+        <input type="button" value="Simple if Statement for Decision Making" onclick="{
+            let myIn01 = parseFloat(document.getElementById('myNum01').value)
+            if(myIn01 >= 3){
+                document.getElementById('myDiv01').innerHTML = myIn01 + ' is greater than 3'
+            }
+        }">
+
+        <input type="button" value="if...else" onclick="{
+            let myIn01 = parseFloat(document.getElementById('myNum01').value)
+            if(myIn01 >= 3){
+                document.getElementById('myDiv01').innerHTML = myIn01 + ' is greater than 3'
+            } else {
+                document.getElementById('myDiv01').innerHTML = myIn01 + ' is less than 3'
+            }
+        }">
+
+        <input type="button" value="Complex if" onclick="{
+            let myIn01 = parseFloat(document.getElementById('myNum01').value)
+            if ((myIn01 != 3 || myIn01 > -3) && myIn01 <= 100){
+                document.getElementById('myDiv01').innerHTML = myIn01 + ' is Complex'
+            } else {
+                document.getElementById('myDiv01').innerHTML = myIn01 + ' is not Complex'
+            }
+        }">
+
+        <div id="myDiv01">...</div>
+
+         <script>
+
+         </script>   
+    </body>
 </html>
-
-<h2 align=center>t1a07-decision-by-matthew.html</h2>
-    <a href="https://www.w3schools.com/js/js_if_else.asp">Good reference to Decisions if... else statments 
-      Javascript innerHTML value by Matthew</a><br>
-        Note: !=Not, &&= AND, || = OR 
-          <h4> Example input output code</h4>
-          <pre>
-            let myhour = 20
-            if (myhour <18) {
-              let myGreeting= 'Good Day'
-                }
-          </pre>
-            <h4> Example working code</h4>
-              <input id="myNum01" type=number value="4" ><br>
-                <input type=button value="Simple If Statment For Decision Making" onclick="{ 
-                 let myIn01= parseFloat(document.getElementById('myNum01').value)
-                    if (myIn01 >3){
-                      document.getElementById('myDiv01').innerHTML = myIn01 + 'Is Greater Than 3' }
-                }">
-                  <input type=button value="if...else" onclick="{
-                    let myIn01= parseFloat(document.getElementById('myNum01').value)
-                     if (myIn01 >= 3){
-                        document.getElementById('myDiv01').innerHTML = myIn01 + 'Is Greater than 3'}
-                  } else { 
-                      document.getElementById('myDiv01').innerHTML = myIn01 + 'Is Less Than 3'}
-                  }">
-                <input type=button value="Complex if" onclick="{
-                  let myIn01= parseFloat(document.getElementById('myNum01').value)
-                  if ((myIn01 !=3 || myIn01 > -3) && myIn01 <=100 ){ 
-                   document.getElementById('myDiv01').innerHTML = myIn01 + 'Is Complex'
-                  } else }
-                   document.getElementById('myDiv01').innerHTML = myIn01 + 'Is Not Complex'}
-                  }">
-                    <Div id=myDiv01">...</Div>
