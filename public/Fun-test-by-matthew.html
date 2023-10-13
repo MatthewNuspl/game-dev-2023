@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="GlobalCSS.css">
+        <style>
+
+        </style>
+    </head>
+    <body>
+
+        <h6>Version 0.0.1.</h6>
+        <h3 align="center">Fun Coding! By Matthew</h3>
+
+        <input type="textbox" value="Lincoln" onclick="{
+            let myIn01 = document.getElementById('myText01').value
+            document.getElementById('myDiv01').innerHTML = myIn01
+        }"><br>
+
+        <input id="myText02" type="number" value="18"><br>
+
+        <input type="button" value="18?" onclick="{
+            let myIn02 = parseFloat(document.getElementById('myText02').value)
+            if(myIn02 <= 17){
+                document.getElementById('myDiv01').innerHTML = myIn02 + ' is Not an adult!'
+            } else {
+                document.getElementById('myDiv01').innerHTML = myIn02 + ' is an adult!'
+            }
+        }"><br>
+
+        <div id="myDiv01">...</div>
+
+    </body>
+</html>
