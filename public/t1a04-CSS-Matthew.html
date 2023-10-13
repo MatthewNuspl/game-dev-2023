@@ -1,0 +1,122 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="GlobalCSS.css">
+        <style>
+
+            p {outline-color:red;}
+
+            p.dotted {outline-style: dotted;}
+            p.dashed {outline-style: dashed;}
+            p.solid {outline-style: solid;}
+            p.double {outline-style: double;}
+            p.groove {outline-style: groove;}
+            p.ridge {outline-style: ridge;}
+            p.inset {outline-style: inset;}
+            p.outset {outline-style: outset;}
+
+            div {
+                background-color: lightgrey;
+                width: 300px;
+                border: 15px solid green;
+                padding: 50px;
+                margin: 20px;
+              }
+
+              div {
+                background-color: coral;
+                width: 200px;
+                height: 65px;
+                border: 1px solid;
+                overflow: visible;
+              }
+
+            .center {
+              margin: auto;
+              width: 60%;
+              border: 3px solid #73AD21;
+              padding: 10px;
+            }
+        
+        </style>
+    </head>
+    <body>
+
+        <h6>Version 0.0.1.</h6>
+        <h1 align="center">t1a04-CSS-Lincoln</h1>
+        Reference Link
+        <a href="https://www.w3schools.com/js/">W3Schools</a><br>
+
+        Cascading Style Sheets (CSS) is properly done with a .css file listing all css commands for your website<br>
+        Another way to do CSS is using the style tag at the top head part of a webpage<br>
+
+        Here is a typical in document style
+        <pre>
+            b {
+                color: #0000ff;
+            }
+        </pre><br>
+
+        I do CSS inline inside the tag. It overpowers all other methods<br><br>
+
+        <i> This is Italic</i><br>
+        <i id="myB1" style="color:#0000ff; background-color:#f000f0;"> This is Italic with CSS background color and main color</i>
+        
+        <input type="button" value="Change" onclick="{
+            document.getElementById('myB1').style.color = 'green'
+            document.getElementById('myB1').style.backgroundcolor = 'yellow'
+        }"><br><br>
+
+        <textarea style=" background-image: url('myImgNew.jpg') ; position:relative; left:0; top:0; width:200; height:50;">
+            Advanced see if you move this textarea
+        </textarea><br>
+
+        <br><br>
+        
+            <p id="demo">This is an example paragraph.</p>
+
+            <button type="button" onclick="myFunction()">Align text</button>
+        
+        <br><br>
+        
+            <h2>The outline-style Property</h2>
+
+                <p class="dotted">A dotted outline</p>
+                <p class="dashed">A dashed outline</p>
+                <p class="solid">A solid outline</p>
+                <p class="double">A double outline</p>
+                <p class="groove">A groove outline. The effect depends on the outline-color value.</p>
+                <p class="ridge">A ridge outline. The effect depends on the outline-color value.</p>
+                <p class="inset">An inset outline. The effect depends on the outline-color value.</p>
+                <p class="outset">An outset outline. The effect depends on the outline-color value.</p>
+        
+        <br><br>
+        
+            <h2>Demonstrating the Box Model</h2>
+
+                <p>The CSS box model is essentially a box that wraps around every HTML element. It consists of: borders, padding, margins, and the actual content.</p>
+
+                <div>This text is the content of the box. We have added a 50px padding, 20px margin and a 15px green border.</div>
+
+        <br><br>
+        
+            <h2>Overflow: visible</h2>
+
+                <p>By default, the overflow is visible, meaning that it is not clipped and it renders outside the element's box:</p>
+
+                <div>You can use the overflow property when you want to have better control of the layout. The overflow property specifies what happens if content overflows an element's box.</div>
+        
+        <br><br>
+        
+            <div class="center">
+              <p>CSS is great!</p>
+            </div>
+        
+        <br><br>
+
+        <img src="shrek.jfif" width="500" style="border-radius:200px">
+
+         <script>
+            
+         </script>   
+    </body>
+</html>
