@@ -1,5 +1,6 @@
 <html>
     <head>
+        <link rel="stylesheet" href="GlobalCSS.css">
         <style>
 
         </style>
@@ -7,13 +8,14 @@
     <body>
 
         <h6>Version 0.0.1.</h6>
-        <h3 align="center">T1a08 Loops By Matthew</h3>
+        <h3 align="center">T1a08-Loops-By-Matthew</h3>
 
         <a href="https://www.w3schools.com/js/js_loop_for.asp">A good reference to Javascript Loops</a><br>
 
         <h4> Example of Working Code</h4>
 
         Max loops: <input id="myNum01" type="number" value="4"><br>
+        Weird Number: <input id="myWeird" type="number" value="2"><br>
 
         <input type="button" value="Basic For Loops With Decisions" onclick="{
             document.getElementById('myDiv01').innerHTML = ''
@@ -34,16 +36,63 @@
 
         }">
 
-        <div id="myDiv01">...</div>
+        <input type="button" value="Basic for Loop Only" onclick="{
+            let myTemp = ''
+            let myMax = parseInt(document.getElementById('myNum01').value)
+            for (let myLoop = 0; myLoop < myMax; myLoop++){
+                myTemp += 'Loop Number: ' + myLoop + '<br>'
+            }
+            documnet.getElementById('myDiv01').innerHTML = myTemp
+        }">
+
+        <input type="button" value="Even Number Identifier" onclick="{
+            document.getElementById('myDiv01').innerHTML = ''
+            let myTemp = ''
+            let myMax = parseInt(document.getElementById('myNum01').value)
+
+            for (let myLoop = 0; myLoop < myMax; myLoop++){
+                
+                if (myLoop % 2 == 0){
+                    myTemp += 'Even Number, '
+                }
+                myTemp += 'Loop Number: ' + myLoop + '<br>'
+            }
+            document.getElementById('myDiv01').innerHTML = myTemp
+        }">
+
+        <input type="button" value="Odd Number Identifier" onclick="{
+            document.getElementById('myDiv01').innerHTML = ''
+            let myTemp = ''
+            let myMax = parseInt(document.getElementById('myNum01').value)
+
+            for (let myLoop = 0; myLoop < myMax; myLoop++){
+        
+                if (myLoop % 2 == 1){
+                    myTemp += '<font style=\'color:red;\'> Odd </font>'
+                }
+                myTemp += 'Loop Number: ' + myLoop + '<br>'
+            }
+            document.getElementById('myDiv01').innerHTML = myTemp
+        }">
+
+        <input type="button" value="Weird If" onclick="{
+            let myTemp = ''
+            let myMax = parseInt(document.getElementById('myNum01').value)
+            let myIn = parseInt(document.getElementById('myWeird').value)
+            console.log(myIn)
+            for (let myLoop = 0; myLoop < myMax; myLoop++){
+                if (myIn == myLoop){
+                    myTemp += ' Weird'
+                }
+                myTemp += 'Loop Number: ' + myLoop + '<br>'
+            }
+            document.getElementById('myDiv01').innerHTML = myTemp
+        }">
+
+        <div id="myDiv01"><font color=red>...</font></div>
 
          <script>
 
          </script>   
-        <!DOCTYPE html>
-<html>
-<body style="background-color:powderblue;">
-</body>
-</html>
-
     </body>
 </html>
