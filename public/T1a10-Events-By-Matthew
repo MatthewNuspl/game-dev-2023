@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="GlobalCSS.css">
+        <style>
+
+        </style>
+    </head>
+    <body>
+
+        <h6>Version 0.0.1.</h6>
+        <h3 align="center">T1a10-Events-By-Lincoln</h3>
+
+        <a href="https://way2tutorial.com/html/html5_events_handler_list.php">A Good Reference to HTML Events</a><br>
+
+        Events are HTML code that activates Javascript code.
+
+        <h4> Example of Events Code</h4>
+
+        <pre>
+            <b id="myB01" onmouseout="{
+                document.getElementById('myB01').innerHTML = 'This is bold.'
+            }"> Bold Stuff Here </b>
+        </pre>
+
+        <h4> Example of Working Code</h4>
+
+        <input type="text" id="myText01" value="3"><br>
+
+        <input type="button" value="Example of onClick" onclick="{
+            document.getElementById('myDiv01').innerHTML =
+            document.getElementById('myText01').value
+        }">
+
+        <div id="myDiv01">...</div>
+
+        <b id="myB02" onmouseout="{
+            document.getElementById('myB02').innerHTML = 'This is Nice.'
+        }" onmouseover="{
+            document.getElementById('myB02').innerHTML = 'This is Cool.'
+        }"> This is Bold </b> <br><br>
+
+         <script>
+
+         </script>   
+    </body>
+</html>
