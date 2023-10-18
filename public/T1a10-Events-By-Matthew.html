@@ -44,3 +44,29 @@
          </script>   
     </body>
 </html>
+
+  <!DOCTYPE html>
+  <html>
+  <p>When you enter the input field, a function sets the background color to yellow.</p>
+  <p>When you leave the input field, a function removes the background color.</p>
+
+< form id="myForm">
+  <input type="text" id="myInput">
+</form>
+
+         <script>
+       let x = document.getElementById("myForm");
+       x.addEventListener("focusin", myFocusFunction);
+       x.addEventListener("focusout", myBlurFunction);
+
+   function myFocusFunction() {
+  document.getElementById("myInput").style.backgroundColor = "yellow";
+}
+
+    function myBlurFunction() {
+    document.getElementById("myInput").style.backgroundColor = "Green";  
+}
+  </script>
+
+</body>
+</html>
