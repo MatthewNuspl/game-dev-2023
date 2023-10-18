@@ -31,7 +31,7 @@
             document.getElementById('myText01').value
         }">
 
-        <div id="myDiv01">...</div>
+        <div id="myDiv01">...</div><br><br>
 
         <b id="myB02" onmouseout="{
             document.getElementById('myB02').innerHTML = 'This is Nice.'
@@ -39,35 +39,28 @@
             document.getElementById('myB02').innerHTML = 'This is Cool.'
         }"> This is Bold </b> <br><br>
 
-      
-        <!DOCTYPE html>
-  <html>
-  <p>When you enter the input field, a function sets the background color to yellow.</p>
-  <p>When you leave the input field, a function removes the background color.</p>
+        Enter your name: <input type="text" id="myInput" onfocus="focusFunction()" onblur="blurFunction()"><br><br>
 
-< form id="myForm">
-  <input type="text" id="myInput">
-</form>
+        <p>Select a colour from the list.</p>
 
-        
-       let x = document.getElementById("myForm");
-       x.addEventListener("focusin", myFocusFunction);
-       x.addEventListener("focusout", myBlurFunction);
+    
+        <p id="myID01"></p>
 
-   function myFocusFunction() {
-  document.getElementById("myInput").style.backgroundColor = "yellow";
-}
-
-    function myBlurFunction() {
-    document.getElementById("myInput").style.backgroundColor = "Green";  
-}
          <script>
 
+            function focusFunction() {
+                document.getElementById("myInput").style.background = "Yellow";
+            }
+
+            function blurFunction() {
+                document.getElementById("myInput").style.background = "Red";
+            }
+
+            function myFunction() {
+                var x = document.getElementById("mySelect").value;
+                document.getElementById("myID01").innerHTML = "You selected: " + x;
+            }
+
+         </script>   
     </body>
-</html>
-
-  
-  </script>
-
-</body>
 </html>
