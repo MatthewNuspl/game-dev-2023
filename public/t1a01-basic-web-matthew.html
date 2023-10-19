@@ -1,104 +1,81 @@
 <html>
-head>
-<title> </title>
-</head> 
-<body>
-<h5>
-   version 0.0.3   
-        </h5>
-             <h1 align=center>T1A01-Web-Basics-by-Matthew.html </h1>
-                <h1 href="https://www.google.ca">
-                   Link To Google</a<>br>
-<!DOCTYPE html>
-<html>
-<body>
+  <head>
+    <link rel="stylesheet" href="GlobalCSS.css">
+    <title> Basic web stuff </title>
+  </head>
+  <body>
+    <h5>Version 0.0.3</h5>
+    
+    <h1 align=center>T1A01-Web-Basics-by-Matthew.html</h1>
+    
+    <a href="http://www.google.ca">Link to Google</a><br>
+    Plain Text <b> Bold </b> and <i> Italic </i> can you put them together<br>
+    <b><i> Bold and Italic </i> </b> <br>
 
-<h1>The template Element</h1>
+    <h3> Mr.Ellis' Top 10 Codes of All Time!</h3>
+    <button onclick="myFunction(0)">0. Pseudo Code</button>
+    <button onclick="myFunction(1)">1. Input/Output</button>
+    <button onclick="myFunction(2)">2. Variables</button>
+    <button onclick="myFunction(3)">3. Loops</button>
+    <button onclick="myFunction(4)">4. Decisions</button>
+    <button onclick="myFunction(5)">5. Functions</button>
+    <button onclick="myFunction(6)">6. Events</button>
+    <button onclick="myFunction(7)">7. Arrays</button>
+    <button onclick="myFunction(8)">8. Objects</button>
+    <button onclick="myFunction(9)">9. Classes</button>
+    <div id="bruh">...</div>
 
-<p>Click the button below to display the hidden content from the template element.</p>
+    <hr>
+    This is a Pug! <br>
+    <img src="Pug.jfif"><br><br>
 
-<button onclick="showContent()">Show hidden content</button>
+    Youtube Embedded video <br>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/ukC9GtskqMs" title="YouTube video player" frameborder="5" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <hr>
+    <div>This is a </div>
+    <div>div</div>
 
-<template>
-  <h2>Pug</h2>
-  <img src="Pug.jfif" width="214" height="204">
-</template>
+    <span>This is </span>
+    <span> a span</span>
 
-<script>
-function showContent() {
-  let temp = document.getElementsByTagName("template")[0];
-  let clon = temp.content.cloneNode(true);
-  document.body.appendChild(clon);
-}
-</script>
-
-</body>
-</html>
-
-
-
-</iframe>
-<iframe width="420" height="345" src="https://www.youtube.com/embed/ukC9GtskqMs">
-
-</body>
-</html>
-
-
-
-          
-             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen></iframe>
-                         <hr>
-</html>
-                                <div> This is a </div>
-                                    <div>div</div>
-                                        <span>This is </span>
-                                            <span> a span</span>
-                                <h3> write about Mr.Ellis ' 10 main areas of coding</h3>
-                                  <input type=button Value="0. Pseudo code" onclick="{ 
-                            Document.getElementById('myDiv01'). innerHTML = 'Hello don/'t World'
-                                  }">
-                                      <input type=button value="1. input/output" onclick="{ 
-                                        Document.getElementById('myDiv01'). InnerHTML = 'iNPUT ADFFGDSFSGSDFDFG <b<
-                                          + ' SDFG <br> SDFG<br>output is...'
-                                      }">
-                                          <input type=button Value="4. Decisions" onclick="{
-                                           
-                                      Document.getElementById('myDiv01'). innerHTML =
-                                        Decisions use the if statement to make true 
-                                            false variables decisions<br>
-                                              <pre>
-                                              if (hour <18) {
-                                              Greetings=\'good day\';
-                                            }
-                                              </pre>
-                                            '}">br<
-                                                   You do 2:Variables, 3:Loops, 5:Functions, 6: Events, 7:Arrays, 8:Object, 9:Classes<br>
-                                                      <div id="myDiv01">...</div>
-                                            </You>body>
-                                              
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-body {
-  background-color: lightblue;
-}
-</style>
-</head>
-<body>
-
-   
-<!DOCTYPE html>
-<html>
-<body>
-
-<h1>The button Element</h1>
-
-<button type="button" onclick="alert('Hello!')">Click Me!</button>
-   <img src="Lincoln photo.jpg" width="214" height="204">
-</body>
-</html>
-
+    <script> 
+      var number
+      function myFunction(number) { 
+        switch(number){
+          case 0: 
+            document.getElementById('bruh').innerHTML = "Hello don\'t world"
+            break;
+          case 1:
+            document.getElementById('bruh').innerHTML = `Input sndsjdfaiksdfm <br> Output is...`
+            break;
+          case 2:
+            document.getElementById('bruh').innerHTML = `Variables are Containers for Storing Data <br><pre> x = 3   </pre>`
+            break;
+          case 3:
+            document.getElementById('bruh').innerHTML = `It Loops! <br><pre> for (let i = 0; i < 7; i++){ output }  </pre>`
+            break;
+          case 4:
+            document.getElementById('bruh').innerHTML = `Decisions use the if statement to make true/false variable decisions <br><pre> if (hour<18){greeting=\'good day\';}</pre>`
+            break;
+          case 5:
+            document.getElementById('bruh').innerHTML = `A function preforms a task when it is called <br><pre> function myFunction(){ Task }  </pre>`
+            break;
+          case 6:
+            document.getElementById('bruh').innerHTML = `Trigger code <br><pre> onClick(), onkeydown(), onload()  </pre>`
+            break;
+          case 7:
+            document.getElementById('bruh').innerHTML = `A list of variables <br><pre> const Shoes = ["Nike", "Jordan", "Converse"]  </pre>`
+            break;
+          case 8:
+            document.getElementById('bruh').innerHTML = `A variable with properties and methods <br><pre> const car = {type:"Batmobile", model:"cuh", color:"BLACK"};  </pre>`
+            break;
+          case 9:
+            document.getElementById('bruh').innerHTML = `Templates to create objects <br><pre> class Sports { <br> constructor(BallType, Rules) { <br> this.BallType=BallType <br> this.Rules=Rules } <br> }  </pre>`
+            break;
+        }
+      }
+    </script>
+      </body>
+    </html>
    
 
