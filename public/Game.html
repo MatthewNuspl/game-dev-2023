@@ -1,11 +1,4 @@
-<html>
-    <head>
-        <style>
-
-        </style>
-    </head>
-    <body>
-        from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name)
 
@@ -19,98 +12,26 @@ def page2():
 
 if __name__ == '__main__':
     app.run()
-
-        <script>
-            import time
-
-# Page 1: The Haunted Mansion
-print("Welcome to the Haunted Mansion!")
-time.sleep(1)
-print("You find yourself standing in front of a dark and imposing mansion.")
-time.sleep(1)
-print("The wind howls, and the trees cast eerie shadows on the house.")
-time.sleep(1)
-
-choice = input("Do you want to enter the mansion? (yes/no): ").lower()
-
-if choice == "yes":
-    print("You gather your courage and push open the creaking door...")
-    time.sleep(2)
-    print("Inside, you're greeted by a musty smell and a long, dimly lit corridor.")
-    time.sleep(2)
-    print("You hear faint whispers in the distance.")
-    time.sleep(2)
-    print("As you venture deeper, you find yourself in a grand hall with two doors.")
-    time.sleep(2)
-    print("One is labeled 'Library,' and the other 'Dining Room.'")
-    time.sleep(1)
-
-    choice = input("Which door will you choose? (Library/Dining Room): ").lower()
-
-    if choice == "library":
-        print("You cautiously enter the library.")
-        time.sleep(2)
-        print("Books line the shelves, and an old, dusty chandelier hangs from the ceiling.")
-        time.sleep(2)
-        print("Suddenly, a book falls off a shelf on its own, and you hear a faint giggle.")
-        time.sleep(2)
-
-        choice = input("Do you investigate the book or leave the library? (investigate/leave): ").lower()
-
-        if choice == "investigate":
-            print("You pick up the fallen book and notice it's a diary.")
-            time.sleep(2)
-            print("As you read, you learn about the mansion's tragic history and its restless spirits.")
-            time.sleep(3)
-            print("The room grows cold, and you feel a ghostly presence.")
-            time.sleep(2)
-            print("Suddenly, the ghost of a young girl appears and smiles at you.")
-            time.sleep(2)
-            print("She gestures for you to follow her...")
-            time.sleep(2)
-
-            print("\n** You have reached the end of Page 1 **")
-            print("Continue to Page 2 to see what happens next.")
-            time.sleep(1)
-
-            # Redirect to Page 2
-            exec(open("page2.py").read())
-
-        else:
-            print("You decide not to investigate and leave the library.")
-            time.sleep(2)
-            print("The whispers grow faint as you return to the grand hall.")
-            time.sleep(2)
-
-    else:
-        print("You enter the dining room, and a long table covered in dust dominates the room.")
-        time.sleep(2)
-        print("The room is icy cold, and you see your breath as you breathe.")
-        time.sleep(2)
-        print("You notice a shimmering figure at the head of the table.")
-        time.sleep(2)
-        print("It's the ghost of a butler, dressed in tattered clothing.")
-        time.sleep(2)
-        print("He points to an empty chair and gestures for you to sit...")
-        time.sleep(2)
-
-        print("\n** You have reached the end of Page 1 **")
-        print("Continue to Page 2 to see what happens next.")
-        time.sleep(1)
-
-        # Redirect to Page 2
-        exec(open("page2.py").read())
-
-else:
-    print("You decide not to enter the mansion and quickly leave the premises.")
-    time.sleep(2)
-    print("As you walk away, you can't shake the feeling that you made the right choice.")
-    time.sleep(2)
-    print("Thanks for playing the Haunted Mansion game!")
-
-        <script>
-
-        </script>
-    </body>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ghost Game - Page 1</title>
+</head>
+<body>
+    <h1>Welcome to the Ghost Game - Page 1</h1>
+    <p>You are standing in front of a dark and mysterious mansion.</p>
+    <a href="/page2">Enter the mansion</a>
+</body>
 </html>
 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ghost Game - Page 2</title>
+</head>
+<body>
+    <h1>Welcome to the Ghost Game - Page 2</h1>
+    <p>You've entered the mansion and encountered a ghostly figure...</p>
+    <p><a href="/">Go back to Page 1</a></p>
+</body>
+</html>
