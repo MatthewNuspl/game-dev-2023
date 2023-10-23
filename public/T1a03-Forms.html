@@ -1,45 +1,58 @@
-<h6>Version 0.0.1</h6>
-        <h1 align=center>T1a03-Forms.html</h1>
-           <font>color=green> Proving that you can use: forms 2023</font>font></h3>h3><br>
-                The following are all form elements (add to them):<br> <form>
-                        First name:<input type=text id="Mytext01" value="Matthew"><br>
-                      
-                
-                    
-       checkbox: <br> 
-           Beef:<input type=checkbox><br>                   
-                  Veggy:<input type=checkbox><br
-                 Radio Buttons:<br>   
-                    95.4 <input type=radio name="myRad01"  value="75"><br> 
-                        101 <input type=Radio name="myRad01" value="75"><br>
-                  
-                Hidden:<input type=hidden ><br>
-                    file:<input type=file><br>
-                      reset:<input type=reset><br>
-                        submit (advanced)<input type=submit><br>
-
-                Button: <input type=button value="Click"  onclick="{document.GetElementById('myArea01').Value='cool'}"><br>
-                    Textarea:<br>
-                        <Textarea Id="myArea01" cols="60" rows=5 >cool this works </Textarea><br>
-
-                      Select Box:<BR>
-                         <select id="mySelect01" size="2" onchange="{Document.GetElementById('myArea01').Value=Document.GetElementById('mySection01').Value }">
-                            <option value='myDog'>Dog
-                                <option value='myCat'>Cat
-                                  <option value='myMouse'>Mouse
-                                  </select>
-                                     </form>
-                                <!DOCTYPE html>
 <html>
-<body style="background-color:Red;">
+    <head>
+        <link rel="stylesheet" href="GlobalCSS.css">
+        <style>
 
-</body>
-</html>
+        </style>
+    </head>
+    <body>
+        <h6>Version 0.0.1.</h6>
+        <h1 align="center">t1a03-Forms-Matthew</h1>
+        <h3 align="center">Proof That I Can Use Forms 2023</h3>
 
+        <form align="center">
+        <table border="1" align="center">
+            <tr><td>Your Name:<input type="text" id="myText01" value="Matthew"><br>
+                <br>
+            Checkboxes: <br>
+          do you like beef?:<input type="checkbox"><br>
+           do you like chicken?:<input type="checkbox"><br>
+                <br>
+            Do You Like turkey?:<br>
+                Yes <input type="radio" name="myRad01" value=""> <br>
+                YES <input type="radio" name="myRad01" value=""> <br>
+                <br>
 
-                        
+            hidden:<input type="hidden"><br>
+            File:<input type="file"><br>
+            Reset:<input type="reset"><br>
+            Submit:<input type="submit"><br>
 
+            Button: <input type="button" value="click" onclick="{
+                document.getElementById('myArea01').value = 'YOU DID IT!!'
+            }"><br>
+                <br>
+            Textarea:<br>
+            <textarea id="myArea01" cols="75" rows="7"> *Growls* </textarea><br>
+                <br>
+
+            Select Box:<br>
+            <select id="mySelect01" size="2" onChange="{
+                document.getElementById('myArea01').value =  document.getElementById('mySelect01').value
+            }">
+
+            <option value='Beef is good'>Click me!</option>
+            <option value='Chicken is good'>Dont Click Me</option>
+            <option value='Turkey is good '>Click Me</option>
+            </tr></td>
+        </select>
+        </form>
         
+         <script>
+
+         </script>   
+    </body>
+</html>
 
 
 
