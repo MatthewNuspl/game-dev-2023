@@ -1,37 +1,49 @@
-from flask import Flask, render_template, request, redirect, url_for
-
-app = Flask(__name)
-
-@app.route('/')
-def index():
-    return render_template('page1.html')
-
-@app.route('/page2')
-def page2():
-    return render_template('page2.html')
-
-if __name__ == '__main__':
-    app.run()
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Ghost Game - Page 1</title>
+    <title>Ghost Hunter Game</title>
+    <style>
+        #game {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to the Ghost Game - Page 1</h1>
-    <p>You are standing in front of a dark and mysterious mansion.</p>
-    <a href="/page2">Enter the mansion</a>
-</body>
-</html>
+    <h1>Ghost Hunter Game</h1>
+    <p>Find evidence to prove the existence of ghosts!</p>
+    <button onclick="startGame()">Start</button>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Ghost Game - Page 2</title>
-</head>
-<body>
-    <h1>Welcome to the Ghost Game - Page 2</h1>
-    <p>You've entered the mansion and encountered a ghostly figure...</p>
-    <p><a href="/">Go back to Page 1</a></p>
+    <div id="game">
+        <p>Evidence: <span id="evidence">0</span></p>
+        <button onclick="findEvidence('EMF Meter')">Find EMF Meter</button>
+        <button onclick="findEvidence('Thermal Camera')">Find Thermal Camera</button>
+        <button onclick="findEvidence('EVP Recorder')">Find EVP Recorder</button>
+        <button onclick="findEvidence('UV Light')">Find UV Light</button>
+        <button onclick="findEvidence('Spirit Board')">Find Spirit Board</button>
+    </div>
+
+    <script>
+        let evidenceCount = 0;
+
+        function startGame() {
+            document.getElementById('game').style.display = 'block';
+        }
+
+        function findEvidence(type) {
+            evidenceCount++;
+            document.getElementById('evidence').textContent = evidenceCount;
+
+            if (evidenceCount === 5) {
+                endGame();
+            }
+
+            alert(`You found ${type}! Keep searching for more evidence.`);
+        }
+
+        function endGame() {
+            alert("Congratulations! You've found all the evidence. You are a skilled ghost hunter.");
+            location.reload(); // You can modify this to restart the game.
+        }
+    </script>
 </body>
 </html>
