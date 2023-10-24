@@ -34,6 +34,22 @@
                 myIn01 + ' squared = ' + myAnswer
         }"><br>
 
+                var btn = document.createElement("button"); 
+                btn.innerHTML = "click to change background image"; 
+                var img_holder = document.createElement("div"); 
+                document.body.appendChild(btn); 
+                document.body.appendChild(img_holder); 
+                function changeBackground(){ 
+                  var img = new Image(); 
+                  img.src = "img_file.png"; 
+                  img.addEventListener("load",function(){ 
+                    img_holder.innerHTML = ""; 
+                    img_holder.appendChild(img); 
+                  },false); 
+} 
+btn.addEventListener("click",changeBackground,false); 
+
+        
         <div id="myDiv01">...</div>
 
          <script>
