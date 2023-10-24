@@ -1,0 +1,51 @@
+    <head>
+        <link rel="stylesheet" href="GlobalCSS.css">
+        <style>
+
+        </style>
+    </head>
+    <body>
+
+        <h6>Version 0.0.1.</h6>
+        <h3 align="center">T1a12-Objects-By-Matthew</h3>
+
+        <a href="https://www.w3schools.com/js/js_objects.asp"> A Good Reference to Javascript Objects</a><br>
+
+        Objects are stored and named variables.<br>
+
+        <h4> Example of Objects Code</h4>
+        <pre>
+            let myPerson = {
+                "firstname": "Lincoln",
+                "lastname": jumpScareSound",
+                "age": 50,
+                "eyecolor": "Green"
+            }
+
+        </pre>
+
+        <h4> Example of Working Object Code</h4>
+
+        Nothing: <input type="text" id="myText01" value="Useless at the moment"><br>
+
+        <input type="button" value="Example of object set and show" onclick="{
+            let myPerson = {
+                'firstname' : 'Lincoln',
+                'lastname' : 'jumpScareSound',
+                'age' : '600000000000000',
+                'eyecolor' : 'Blue',
+            }
+            document.getElementById('myDiv01').innerHTML = '<br>myPerson Object has properties: <br>';
+            document.getElementById('myDiv01').innerHTML += 'First Name: ' + myPerson.firstname + '<br>';
+            document.getElementById('myDiv01').innerHTML += 'Last Name: ' + myPerson.lastname + '<br>';
+            document.getElementById('myDiv01').innerHTML += 'Age: ' + myPerson.age + '<br>';
+            document.getElementById('myDiv01').innerHTML += 'Eye Color: ' + myPerson.eyecolor + '<br>';
+        }">
+
+        <div id="myDiv01">...</div>
+
+         <script>
+
+         </script>   
+    </body>
+</html>
