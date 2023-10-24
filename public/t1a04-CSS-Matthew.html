@@ -63,6 +63,21 @@ body {
             <button type="button">Align text</button>
         }">
         <br><br>
+
+            <!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <button id="alignButton">Align Text</button>
+    <div id="alignedContent">This is the text to align.</div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
+
+    
         
         
               <p>CSS is Cool!</p>
@@ -72,27 +87,8 @@ body {
 
         <img src="Lincoln photo.jpg" width="700" style="border-radius:300px">
 
-          <!DOCTYPE html>
-<html>
-<head>
-<style>
-img {
-  opacity: 1.0;
-}
 
-img:hover {
-  opacity: 1.0;
-}
-</style>
-</head>
-<body>
 
-<h1>Image Transparency</h1>
-<p>The opacity property is often used together with the :hover selector to change the opacity on mouse-over:</p>
-<img src="img_forest.jpg" alt="Forest" width="170" height="100">
-
-</body>
-</html>
 
         <!DOCTYPE html>
 <html>
@@ -104,26 +100,6 @@ body {
 </style>
 </head>
 <body>
-
-document.addEventListener("DOMContentLoaded", function () {
-    const alignButton = document.getElementById("alignButton");
-    const alignedContent = document.getElementById("alignedContent");
-
-    let alignment = "left"; // Initial alignment
-
-    alignButton.addEventListener("click", function () {
-        if (alignment === "left") {
-            alignedContent.style.textAlign = "center";
-            alignment = "center";
-        } else if (alignment === "center") {
-            alignedContent.style.textAlign = "right";
-            alignment = "right";
-        } else if (alignment === "right") {
-            alignedContent.style.textAlign = "left";
-            alignment = "left";
-        }
-    });
-});
 
 
 
