@@ -57,11 +57,18 @@ body {
 
         I do CSS inline inside the tag. It overpowers all other methods<br><br>
         
-        <i> This is Italic</i><br>
-        <i id="myB1" style="color:#0000ff; background-color:#f000f0;"> This is Italic with CSS background color and main color</i>
+     <button id="click">Change background</button> 
+<script type="text/javascript"> 
+	var button = document.getElementById("click"); 
+	var body = document.getElementsByTagName("body");	 
+ 
+	button.addEventListener("click", function () { 
+		body[0].style.backgroundImage = "url('http://www.w3schools.com/css/trolltunga.jpg')" 
+	}); 
+</script> 
 
 
-        <textarea style=" background-image: url('myImgNew.jpg') ; position:relative; left:0; top:0; width:200; height:50;">
+<textarea style=" background-image: url('myImgNew.jpg') ; position:relative; left:0; top:0; width:200; height:50;">
             Advanced see if you move this textarea
         </textarea><br>
 
