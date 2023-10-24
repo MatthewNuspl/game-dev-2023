@@ -72,7 +72,6 @@ body {
 
         <img src="Lincoln photo.jpg" width="700" style="border-radius:300px">
 
-            
           <!DOCTYPE html>
 <html>
 <head>
@@ -106,13 +105,37 @@ body {
 </head>
 <body>
 
+document.addEventListener("DOMContentLoaded", function () {
+    const alignButton = document.getElementById("alignButton");
+    const alignedContent = document.getElementById("alignedContent");
 
+    let alignment = "left"; // Initial alignment
+
+    alignButton.addEventListener("click", function () {
+        if (alignment === "left") {
+            alignedContent.style.textAlign = "center";
+            alignment = "center";
+        } else if (alignment === "center") {
+            alignedContent.style.textAlign = "right";
+            alignment = "right";
+        } else if (alignment === "right") {
+            alignedContent.style.textAlign = "left";
+            alignment = "left";
+        }
+    });
+});
+
+
+
+    
 </body>
 </html>
 
 
 
-         <script>
+
+
+    <script>
             
          </script>   
     </body>
