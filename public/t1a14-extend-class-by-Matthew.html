@@ -1,1 +1,64 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="GlobalCSS.css">
+        <style>
 
+        </style>
+    </head>
+    <body>
+
+        <h6>Version 0.0.1.</h6>
+        <h3 align="center">t1a14-extend-class-by-Matthew.html</h3>
+
+        Extending a pre-existing Class<br>
+
+        <h4> Example Class of Extended Code</h4>
+        <pre>
+
+            class myCat extends myAnimal{
+                myShow(){
+                    document.getElementById('myDiv01').innerHTML = this.myName
+                }
+            }
+
+        </pre>
+
+        <h4> Example of Working Classes Code</h4>
+
+        <input type="button" value="Eample Class Set and Show Class Animal" onclick="{
+            myDog = new myAnimal('snickers' , 8)
+            myDog.myShow()
+        }">
+
+        <h4> Example of Extending Class Code</h4>
+        Nothing: <input type="text" id="myText01" value="Useless at the moment"><br>
+
+        <input type="button" value="Example of Extended Class Animal" onclick="{
+            class myCat extends myAnimal{
+                myShow(){
+                    document.getElementById('myDiv01').innerHTML = this.myName + ' is a great cat<br>'
+                }
+            }
+
+            myPet = new myCat('Floofy' , 19)
+            myPet.myShow()
+
+        }">
+
+        <div id="myDiv01">...</div>
+
+         <script>
+
+            class myAnimal{
+                constructor(passName, passAge){
+                    this.myName = passName;
+                    this.myAge = passAge;
+                }
+                myShow(){
+                    document.getElementById('myDiv01').innerHTML = 'Hello ' + this.myName + '<br>'
+                }
+            }
+
+         </script>   
+    </body>
+</html>
