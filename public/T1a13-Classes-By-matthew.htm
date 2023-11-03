@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="GlobalCSS.css">
+        <style>
+
+        </style>
+    </head>
+    <body>
+
+        <h6>Version 0.0.1.</h6>
+        <h3 align="center">T1a13-Classes-By-matthew.html</h3>
+
+        <h4> Example of a Working Class</h4>
+
+        <input type=button value="Example Class Set and Show Class Animal" onClick="{
+            class myAnimal {
+              constructor(passName, passAge) {
+                this.myName = passName;
+                this.myAge = passAge;
+              }
+              myShow() {
+                document.getElementById('myDiv01').innerHTML = 'Hello ' + this.myName + '. You are ' + this.myAge + ' years old<br>';
+              }
+            }
+          
+            const myDog = new myAnimal('Snuggums', 100000001);
+            myDog.myShow();
+          }">
+
+          <div id="myDiv01">...</div>
+
+         <script>
+
+         </script>   
+    </body>
+</html>
