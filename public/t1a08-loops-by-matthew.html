@@ -20,6 +20,23 @@ div:hover {
      <h6>Version 0.0.1.</h6>
         <h3 align="center">T1a08-Loops-By-Matthew</h3>
 
+<p>The getResponseHeader() function is used to return specific header information from a resource, like length, server-type, content-type, last-modified, etc:</p>
+
+<p>Last modified: <span id="demo"></span></p>
+
+<script>
+const xhttp=new XMLHttpRequest();
+xhttp.onload = function() {
+  document.getElementById("demo").innerHTML =
+  this.getResponseHeader("Last-Modified");
+}
+xhttp.open("GET", "ajax_info.txt");
+xhttp.send();
+</script>
+
+</body>
+</html>
+
 <html>
 <head>
 <script>
