@@ -1,155 +1,106 @@
 <html>
-  <head>
-      <link rel="stylesheet" href="css.css">
-  <style>
-    
-  </style>
-  </head>
-  <body onload="lines()">
-  <h2 align=center >T1A08 loops by Caleb</h2>
+    <head>
+        <link rel="stylesheet" href="GlobalCSS.css">
+        <style>
+
+        </style>
+    </head>
+    <body>
+
+        <h6>Version 0.0.1.</h6>
+        <h3 align="center">T1a08-Loops-By-Matthew</h3>
+
+        <a href="https://www.w3schools.com/js/js_loop_for.asp">A good reference to Javascript Loops</a><br>
+
+        <h4> Example of Working Code</h4>
+
+        Max loops: <input id="myNum01" type="number" value="4"><br>
+        Weird Number: <input id="myWeird" type="number" value="2"><br>
+
+        <input type="button" value="Basic For Loops With Decisions" onclick="{
+            document.getElementById('myDiv01').innerHTML = ''
+            let myTemp = ''
+
+            let myMax = parseInt(document.getElementById('myNum01').value)
+
+            for(let myLoop = 0; myLoop < myMax; myLoop++ ){
+                if (myLoop * 2 > myMax){
+                    myTemp += ' cool '
+                }
+
+                myTemp += 'Loop number: ' + myLoop + '<br>'
+
+            }
+
+            document.getElementById('myDiv01').innerHTML = myTemp
+
+        }">
+
+        <input type="button" value="Basic for Loop Only" onclick="{
+            let myTemp = ''
+            let myMax = parseInt(document.getElementById('myNum01').value)
+            for (let myLoop = 0; myLoop < myMax; myLoop++){
+                myTemp += 'Loop Number: ' + myLoop + '<br>'
+            }
+            documnet.getElementById('myDiv01').innerHTML = myTemp
+        }">
+
+        <input type="button" value="Even Number Identifier" onclick="{
+            document.getElementById('myDiv01').innerHTML = ''
+            let myTemp = ''
+            let myMax = parseInt(document.getElementById('myNum01').value)
+
+            for (let myLoop = 0; myLoop < myMax; myLoop++){
+                
+                if (myLoop % 2 == 0){
+                    myTemp += 'Even Number, '
+                }
+                myTemp += 'Loop Number: ' + myLoop + '<br>'
+            }
+            document.getElementById('myDiv01').innerHTML = myTemp
+        }">
+
+        <input type="button" value="Odd Number Identifier" onclick="{
+            document.getElementById('myDiv01').innerHTML = ''
+            let myTemp = ''
+            let myMax = parseInt(document.getElementById('myNum01').value)
+
+            for (let myLoop = 0; myLoop < myMax; myLoop++){
+        
+                if (myLoop % 2 == 1){
+                    myTemp += '<font style=\'color:red;\'> Odd </font>'
+                }
+                myTemp += 'Loop Number: ' + myLoop + '<br>'
+            }
+            document.getElementById('myDiv01').innerHTML = myTemp
+        }">
+
+        <input type="button" value="Weird If" onclick="{
+            let myTemp = ''
+            let myMax = parseInt(document.getElementById('myNum01').value)
+            let myIn = parseInt(document.getElementById('myWeird').value)
+            console.log(myIn)
+            for (let myLoop = 0; myLoop < myMax; myLoop++){
+                if (myIn == myLoop){
+                    myTemp += ' Weird'
+                }
+                myTemp += 'Loop Number: ' + myLoop + '<br>'
+            }
+            document.getElementById('myDiv01').innerHTML = myTemp
+        }">
+
+        <div id="myDiv01"><font color=red>...</font></div>
+<!DOCTYPE html>
+<html>
+<body style="background-color:orange;">
 
 
-
-<h2>Write an equation with the number areas below and graph it</h2>
-
-equation in the form: y = a(bx - h)^p + k<br>
-a = <input type="number" id="a" value="1" onchange="equation()"> <br>
-b = <input type="number" id="b" value="1" onchange="equation()"> <br>
-h = <input type="number" id="h" value="0" onchange="equation()" > <br>
-k = <input type="number" id="k" value="0" onchange="equation()"> <br>
-p = <input type="number" id="p" value="1" onchange="equation()"> <br><Br>
-your equation: <br><br>
-<div id="equation">..</div>
-<br>
-<input type="button" id="start" onclick="start()" value="graph"><input type="button" id="tableb" onclick="table()" value="table"> <br>
-  <canvas id="canvas" width="500" height="500" style="border:1px solid #000000; background-color: rgb(230, 230, 230)""></canvas>
+</body>
+</html>
 
 
+         <script>
 
-  <script>
-   let myCanvas=document.getElementById('canvas');
-   let myContext=myCanvas.getContext('2d');
-   let myContext2=myCanvas.getContext('2d');
-
-      let y1
-      let x1
-      let x2
-      let y2
-
-      let p
-      let a
-      let b
-      let h
-      let k
-
-
-      function lines() {
-        myContext.beginPath();
-        myContext.lineWidth = 1;   
-        myContext.moveTo(0,0);
-        myContext.lineTo(0,500);
-        myContext.stroke();
-
-        myContext.beginPath();
-        myContext.lineWidth = 1;   
-        myContext.moveTo(0,0);
-        myContext.lineTo(0,-500);
-        myContext.stroke();
-
-        myContext.beginPath();
-        myContext.lineWidth = 1;   
-        myContext.moveTo(0,0);
-        myContext.lineTo(500,0);
-        myContext.stroke();
-
-        myContext.beginPath();
-        myContext.lineWidth = 1;   
-        myContext.moveTo(0,0);
-        myContext.lineTo(-500,0);
-        myContext.stroke();
-      }
-
-      function equation() {
-        a = parseInt(document.getElementById('a').value)
-        b = document.getElementById('b').value
-        h = parseInt(document.getElementById('h').value)
-        k = parseInt(document.getElementById('k').value)
-        p = document.getElementById('p').value
-        document.getElementById('equation').innerHTML = 'y= ' + a + '( ' + b + 'x' + ' - ' + h + ' ) ' + ' ^ ' + p + ' + ' + k
-      }
-
-      const range = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100]
-      console.log(range.length)
-      console.log(range[0], range[99])
-      myContext.translate(canvas.width/2,canvas.height/2);
-
-      function start() {
-
-        document.getElementById('table').style.display = "none"
-        document.getElementById('canvas').style.display = "block"
-
-        myContext.clearRect(-500, -500, 1000, 1000)
-        a = -1 * parseInt(document.getElementById('a').value)
-        b = document.getElementById('b').value
-        h = parseInt(document.getElementById('h').value)
-        k = -1 * parseInt(document.getElementById('k').value)
-        p = document.getElementById('p').value
-            for (x = -500; x < 500; x++) {
-            x1 = (((parseInt(b) * parseInt(x)) - parseInt(h)))
-            y1 =  parseInt(a) * (((parseInt(b) * parseInt(x1) - parseInt(h))) ** parseInt(p)) + parseInt(k)
-            console.log(range[x1])
-            console.log('x1: ', x1)
-            console.log('y1: ', y1)
-            console.log('x2: ', x2)
-            console.log('y2: ', y2)
-
-                lines();
-
-            myContext2.beginPath();
-            myContext2.lineWidth = 1;
-            myContext2.strokeStyle = 'black';
-            myContext2.moveTo(x1, y1)
-            myContext2.lineTo(x2, y2);
-            myContext2.stroke();
-            x2 = x1
-            y2 = y1
-         }
-      }
-
-      function table() {
-        document.getElementById('canvas').style.display = "none"
-        document.getElementById('table').style.display = "block"
-        a = document.getElementById('a').value
-        b = document.getElementById('b').value
-        h = document.getElementById('h').value
-        k = document.getElementById('k').value
-        p = document.getElementById('p').value
-        let x3 = document.getElementById('valx').value
-        document.getElementById('xvals').innerHTML = "x = " + x3
-        let y3 = parseInt(a) * ((parseInt(b) * parseInt(x3) + parseInt(h)) ** parseInt(p)) + parseInt(k)
-        document.getElementById('yvals').innerHTML = "y = " + y3
-      }
-
-
-  </script>
-  
-  <table id="table">
-      <tr>
-        <td>Input values of X to get Y</td>
-        <td><input type="number" id="valx" onchange="table()" value="1"> </td>
-        <td> <input type="button" onclick="table()" value="Get Results"> </td>
-      </tr>
-      <tr>
-        <td>
-          <div id="xvals">...</div>
-        </td>
-        <td>
-          <div id="yvals">...</div>
-        </td>
-      </tr>
-
-
-  </table>
-  
-  </body>
-  </html>
+         </script>   
+    </body>
+</html>
