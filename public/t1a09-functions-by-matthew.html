@@ -77,42 +77,30 @@ body {
   		<script>
 	<h1> click each Button to scroll through different backgrounds!</h1>
    
-	<button id="click">Change background</button> 
-<script type="text/javascript"> 
-	var button = document.getElementById("click"); 
-	var body = document.getElementsByTagName("body");	 
- 
-		button.addEventListener("click", function () { 
-			 body[0].style.backgroundImage = "url('https://images5.alphacoders.com/430/430890.jpg')" 
-	}); 
+<h1>Click each button to change the background!</h1>
 
-	
-	<h2>Button 2!</h2>
-	
-	<button id="click">Change background #2</button> 
-<script type="text/javascript"> 
-	var button = document.getElementById("click"); 
-	var body = document.getElementsByTagName("body");	 
- 
-		button.addEventListener("click", function () { 
-			 body[2].style.backgroundImage ="url('https://images2.alphacoders.com/922/922574.jpg')" 
-	}); 
+    <button id="click1">Change background</button>
+    <button id="click2">Change background #2</button>
+    <button id="click3">Change background #3</button>
 
-	
-	
-	<h3> Button 3!</h3>
+    <script type="text/javascript">
+        var buttons = {
+            click1: document.getElementById("click1"),
+            click2: document.getElementById("click2"),
+            click3: document.getElementById("click3")
+        };
 
-	<button id="click">Change background #3</button> 
-<script type="text/javascript"> 
-	var button = document.getElementById("click"); 
-	var body = document.getElementsByTagName("body");	 
- 
-		button.addEventListener("click", function () { 
-			 body[3].style.backgroundImage ="url('https://images4.alphacoders.com/795/795504.jpg')" 
-	}); 
-	    </script> 
+        buttons.click1.addEventListener("click", function () {
+            document.body.style.backgroundImage = "url('https://images5.alphacoders.com/430/430890.jpg')";
+        });
 
+        buttons.click2.addEventListener("click", function () {
+            document.body.style.backgroundImage = "url('https://images2.alphacoders.com/922/922574.jpg')";
+        });
 
-              
-         </body>
+        buttons.click3.addEventListener("click", function () {
+            document.body.style.backgroundImage = "url('https://images4.alphacoders.com/795/795504.jpg')";
+        });
+    </script>
+</body>
 </html>
