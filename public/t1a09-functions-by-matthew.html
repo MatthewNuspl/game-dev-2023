@@ -77,35 +77,20 @@ body {
                 </html>
   
 	<h1> click each Button to scroll through different backgrounds!</h1>
-   
-	<button id="click">Change background</button> 
-<script type="text/javascript"> 
-	var button = document.getElementById("click"); 
-	var body = document.getElementsByTagName("body");	 
- 
-		button.addEventListener("click", function () { 
-			body[0].style.backgroundImage = "url('https://images5.alphacoders.com/430/430890.jpg')" 
-	}); 
-			<button id="click">Change background</button> 
-	<script type="text/javascript"> 
-	var button = document.getElementById("click"); 
-	var body = document.getElementsByTagName("body");	 
- 
-	
-		button.addEventListener("click", function () { 
-				body[1].style.backgroundImage = "url('https://images2.alphacoders.com/922/922574.jpg')" 
-	}); 
-			<button id="click">Change background</button> 
-<script type="text/javascript"> 
-	var button = document.getElementById("click"); 
-	var body = document.getElementsByTagName("body");	 
- button.addEventListener("click", function () { 
-				body[2].style.backgroundImage = "url('https://images4.alphacoders.com/795/thumbbig-795504.webp')" 
-	}); 
+     <script type="text/javascript">
+        var button = document.getElementById("click");
+        var body = document.getElementsByTagName("body");
 
+        button.addEventListener("click", function () {
+            body[0].style.backgroundImage = "url('https://images5.alphacoders.com/430/430890.jpg')";
+        });
 
-</script> 
-
+        // You can add more background changes like this
+        // body[1].style.backgroundImage = "url('https://images2.alphacoders.com/922/922574.jpg')";
+        // body[2].style.backgroundImage = "url('https://images4.alphacoders.com/795/thumbbig-795504.webp')";
+    </script>
+</body>
+</html>
 
 
 
