@@ -3,8 +3,9 @@
           <link rel="stylesheet" href="GlobalCSS.css">
         <style>
 
-             </style>
-        <body>
+        </style>
+    </head>
+    <body>
         <h6>Version 0.0.1.</h6>
         <h3 align="center">t1a09-Functions-by-Matthew</h3>
 
@@ -26,7 +27,7 @@
         <input type="text" id="myText01" value="3"><br>
                                     
         <input type="button" value="Function example" onclick="{
-            document.getElementById('myDiv01').innerHTML = myExampleFunction()
+            document.getElementById('myDiv01').innerHTML = myExampleFunction();
         }">
                                         
         <div id="myDiv01">...</div>
@@ -34,12 +35,13 @@
         <script>
 
             function myExampleFunction(){
-                let myIn01= parseInt(document.getElementById('myText01').value)  
-                let mySum= myIn01 + myIn01
-                let myReply= myIn01 + ' + ' + myIn01 + ' = ' + mySum
-                    return myReply 
+                let myIn01= parseInt(document.getElementById('myText01').value);  
+                let mySum= myIn01 + myIn01;
+                let myReply= myIn01 + ' + ' + myIn01 + ' = ' + mySum;
+                    return myReply;
+            }
 
         </script>
-            </body>
+    </body>
 </html>
 
