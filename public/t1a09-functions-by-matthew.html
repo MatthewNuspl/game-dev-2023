@@ -62,21 +62,33 @@ body {
 </head>
 <body>
   
-<html>
-<head>
-<style>
-body {
-  color:Green;
-}
-
-</style>
-</head>
-<body>
-
-</body>
-</html>
+                 <html>
+             <head>
+        <style>
+        body {
+          color:Green;
+        }
+        
+        </style>
+            </head>
+        <body>
+        
+        </body>
+                </html>
+  
+     <button id="click">Change background</button> 
+<script type="text/javascript"> 
+	var button = document.getElementById("click"); 
+	var body = document.getElementsByTagName("body");	 
  
+	button.addEventListener("click", function () { 
+		body[0].style.backgroundImage = "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_37R1rbO_tVEK2jlnQ0GPyQXXGSqnZZXypA1JmiREVQ&s')" 
+	}); 
+</script> 
 
+
+
+    
               
          </body>
 </html>
