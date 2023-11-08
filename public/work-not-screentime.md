@@ -7,6 +7,6 @@ HI
     3. work on a final project
     4. work on work from other classes 
     5. improve on animations projects 
-    6. Get assignments early and work on them 
-    7. help people with assignments
+    6. Get assignments early and work on them- Nov 1 
+    7. help people with assignments-Nov 1
     8.
