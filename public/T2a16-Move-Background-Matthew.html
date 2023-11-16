@@ -23,7 +23,7 @@
 
 }">
    
-<input type=button value="Auto Background Left Faster" onclick="{
+<input type="Button" value="Auto Background Left Faster" onclick="{
   clearInterval(myClock01)
   mySpeed01 -=30
    if (mySpeed01< 10){mySpeed01= 10} 
@@ -32,7 +32,7 @@
    }, mySpeed01)
 
      
-<input type=button value="Auto Background Left slower" onclick="{
+<input type="button" value="Auto Background Left slower" onclick="{
   clearInterval(myClock02)
   mySpeed01 -= 30
    if (mySpeed01< 10){mySpeed01= 10} 
@@ -42,11 +42,11 @@
     
 }">
 
-<input type=button id="myButton02" value="Image Right" onclick="{
+<input type="button" id="myButton02" value="Image Right" onclick="{
   document.getElementById('myImage01').style.left = parseInt(document.getElementById('myImage01').style.left) + 10 + 'px'
 }"><br><br>
 
-<input type=button value="Auto Move Left" onclick=""{clearInterval(myClock02)
+<input type="button" value="Auto Move Left" onclick=""{clearInterval(myClock02)
    myClock02 = setInterval(function(){
       document.getElementById('myButton02').click()
    }, 30)
