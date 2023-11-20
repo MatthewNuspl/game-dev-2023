@@ -35,7 +35,7 @@
         <input type="button" value="MoveSlower!" onclick="{
             clearInterval(myClock01)
             mySpeed01 += 30
-            if (mySpeed01 > 1000) { mySpeed01 = 1000 }
+            if (mySpeed01 > 2000) { mySpeed01 = 2000 }
             myClock01 = setInterval(function () {
                 document.getElementById('myButton01').click()
             }, mySpeed01)
