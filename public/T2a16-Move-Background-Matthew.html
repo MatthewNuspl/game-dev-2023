@@ -11,19 +11,19 @@
         </style>
     </head>
 
-        <body id="myBody" style="background-repeat: repeat; background-size: 88%" background="Night city.jfif">
+        <body id="myBody" style="background-repeat: repeat; background-size: 88%" background="Night city.jfif"
 
         <h6>Version 0.0.1.</h6>
         <h3 align="center" >t2a16-Move-Background-Matthew.html</h3>
 
-        <input id="myButton01" type="button" value="Run!" onclick="{
+        <input id="myButton01" type="button" value="MoveFast!" onclick="{
             myTemp = '100px 0px'
             myGlobalX -= 5
             myTemp = myGlobalX + 'px 0px'
             document.getElementById('myBody').style.backgroundPosition = myTemp
         }">
 
-        <input type="button" value="Run Faster!" onclick="{
+        <input type="button" value="MoveFaster!" onclick="{
             clearInterval(myClock01)
             mySpeed01 -= 30
             if (mySpeed01 < 10) { mySpeed01 = 10 }
@@ -32,7 +32,7 @@
             }, mySpeed01)
         }">
 
-        <input type="button" value="Run Slower!" onclick="{
+        <input type="button" value="MoveSlower!" onclick="{
             clearInterval(myClock01)
             mySpeed01 += 30
             if (mySpeed01 > 1000) { mySpeed01 = 1000 }
@@ -40,12 +40,21 @@
                 document.getElementById('myButton01').click()
             }, mySpeed01)
         }">
+            <input type="button" id="myButton02" value="Image Right" onclick="{
 
+             document.getElementById('myImage01').style.left = parseInt(document.getElementById('myImage01').style.left) + 10 + 'px'
+              }"><br><br>
+            <input type="button" value="Auto Move Left" onclick=""{clearInterval(myClock02)
+           myClock02 = setInterval(function(){
+             document.getElementById('myButton02').click()
+           }, 30)
+            }">
+   
         <script>
         
         </script>
 
-        <img id="myImage01" style="position:relative; width:300px; height:600px; top:0px; left:0px;" src="BlueJay.jfif">
+        <img id="myImage01" style="position:relative; width:300px; height:400px; top:0px; left:0px;" src="BlueJay.jfif">
 
         <script>
             let myGlobalX = 0;
