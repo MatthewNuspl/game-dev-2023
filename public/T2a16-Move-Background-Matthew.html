@@ -60,6 +60,39 @@
             let myGlobalX = 0;
             let myClock01;
             let mySpeed01 = 400;
-        </script>
-    </body>
+       </script>
+    
+        
+        plugin.run = (contents, options) ->
+	"""
+#{contents}
+# Creates a button in the upper right corner - move it wherever you like
+sloMoButton = new Layer
+	x: 657, y: 47
+	width: 93, height: 93
+	borderRadius: 93 / 2
+	backgroundColor: ""
+# State to change the background color when slow motion is active
+sloMoButton.states.add
+	slowMo: backgroundColor: "rgba(255,128,0,0.5)"
+# Setup variables
+originalDelta = 1 / 60
+slowDelta = 1 / 300
+currentDelta = originalDelta
+# Funtion to change the delta value
+changeDelta = (delta) ->
+	Framer.Loop.delta = delta
+sloMoButton.onTap ->
+	
+	if currentDelta is originalDelta
+		changeDelta(slowDelta)
+		currentDelta = slowDelta
+		sloMoButton.states.switchInstant("slowMo")
+	
+	else if currentDelta is slowDelta
+		changeDelta(originalDelta)
+		currentDelta = originalDelta
+		sloMoButton.states.switchInstant("default")
+	
+        </body>
 </html>
