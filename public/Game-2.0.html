@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ghost Evidence Hunt</title>
+    <title>Ghost Hunting Game</title>
     <style>
         body {
             font-family: Lincoln, sans-serif;
@@ -11,9 +11,9 @@
         }
 
         #ghost {
-            width: 150px;
-            height: 150px;
-            background: url('Ghost-picture.jfif') no-repeat;
+            width: 100px;
+            height: 100px;
+            background: url('ghost.png') no-repeat;
             background-size: contain;
             position: relative;
             cursor: pointer;
@@ -25,53 +25,33 @@
             font-weight: bold;
             margin-top: 20px;
         }
-
-        .evidence {
-            width: 50px;
-            height: 50px;
-            background-color: yellow;
-            position: absolute;
-            display: none;
-        }
     </style>
 </head>
 <body>
 
-    <h1>Ghost Evidence Hunt</h1>
-    <p>Click on the ghost to find evidence!</p>
-    <div id="ghost" onclick="findEvidence()"></div>
+    <h1>Ghost Hunting Game</h1>
+    <p>Click on the ghost to hunt it!</p>
+    <div id="ghost" onclick="huntGhost()"></div>
     <div id="message"></div>
-    <div id="evidenceContainer"></div>
 
     <script>
-        let evidenceCount = 0;
+        let ghostHealth = 100;
         let score = 0;
 
-        function findEvidence() {
-            if (evidenceCount < 5) {
-                const evidence = document.createElement('div');
-                evidence.className = 'evidence';
-                evidence.style.left = Math.random() * (window.innerWidth - 50) + 'px';
-                evidence.style.top = Math.random() * (window.innerHeight - 50) + 'px';
+        function huntGhost() {
+            const damage = Math.floor(Math.random() * 20) + 1;
+            ghostHealth -= damage;
 
-                document.getElementById('evidenceContainer').appendChild(evidence);
-
-                evidence.onclick = function() {
-                    collectEvidence(evidence);
-                };
-
-                evidenceCount++;
-            }
-
-            if (evidenceCount === 5) {
-                document.getElementById('message').textContent = `You found all the evidence! Final score: ${score}`;
+            if (ghostHealth > 0) {
+                document.getElementById('message').textContent = `You dealt ${damage} damage. Ghost health: ${ghostHealth}`;
+            } else {
+                endGame();
             }
         }
 
-        function collectEvidence(evidence) {
-            evidence.style.display = 'none';
-            score += 10;
-            document.getElementById('message').textContent = `Evidence found! Score: ${score}`;
+        function endGame() {
+            document.getElementById('message').textContent = `Congratulations! You caught the ghost! Final score: ${score}`;
+            document.getElementById('ghost').style.display = 'none';
         }
     </script>
 
