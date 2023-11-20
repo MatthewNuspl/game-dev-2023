@@ -36,14 +36,14 @@
 
     <script>
         let ghostHealth = 100;
-        let score = 0;
+        let score = 100;
 
         function huntGhost() {
             const damage = Math.floor(Math.random() * 20) + 1;
             ghostHealth -= damage;
 
             if (ghostHealth > 0) {
-                document.getElementById('message').textContent = `You dealt ${damage} damage. Ghost health: ${ghostHealth}`;
+                document.getElementById('message').textContent = `You Shall Not Defeat Me!!!. Ghost health: ${ghostHealth}`;
             } else {
                 endGame();
             }
