@@ -1,41 +1,59 @@
-<body> 
-<div id="container" style="height: 836px; width: 400px;">
-        <iframe id="frame" src="https://s3-eu-west-1.amazonaws.com/apps.playcanvas.com/6PfmZK6E/index.html" webkitallowfullscreen="true" mozallowfullscreen="true" allow="autoplay" allowfullscreen="true" allowvr="" scrolling="no" frameborder="0" style="height: 836px; width: 400px;">
-        </iframe>
-    </div>
-
-         <div id="footer">
-        <a class="title" href="https://playcanvas.com/" target="_blank">
-            <div class="img"></div>
-        </a>
-        <div class="views"><img class="icon" src="https://playcanvas.com/static-assets/images/eye.png"></div>
-        <div id="fullscreen" class="available"></div>
-
-<script type="text/javascript">
-        var iframe = document.getElementById('frame');
-
-        // aggregate fullscreen to one method
-        iframe.requestFullScreen = iframe.requestFullScreen || iframe.mozRequestFullScreen || iframe.webkitRequestFullScreen;
-        var button = document.getElementById('fullscreen');
-
-        // detect fullscreen is supported
-        if (iframe.requestFullScreen) {
-            button.classList.add('available');
-            button.addEventListener('click', function() {
-                iframe.requestFullScreen();
-
-                if (kik.enabled) {
-                    kik.browser.statusBar(false);
-                }
-            }, false);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghost Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
         }
 
-        // focus the iframe window so that keyboard works.
-        // (Chrome Fix: do this after the iframe has loaded
-        // otherwise gamepads don't work)
-        iframe.addEventListener('load', function () {
-            iframe.contentWindow.focus();
-        });
+        #ghost {
+            width: 100px;
+            height: 100px;
+            background: url('ghost.png') no-repeat;
+            background-size: contain;
+            position: relative;
+            cursor: pointer;
+        }
 
+        #message {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Ghost Game</h1>
+    <p>Click the ghost to catch it!</p>
+    <div id="ghost" onclick="catchGhost()"></div>
+    <div id="message"></div>
+
+    <script>
+        let caught = false;
+        let score = 0;
+
+        function catchGhost() {
+            if (!caught) {
+                document.getElementById('ghost').style.display = 'none';
+                score++;
+                document.getElementById('message').textContent = `You caught the ghost! Score: ${score}`;
+                spawnGhost();
+            }
+        }
+
+        function spawnGhost() {
+            setTimeout(() => {
+                document.getElementById('ghost').style.display = 'block';
+                caught = false;
+                document.getElementById('message').textContent = '';
+            }, 1000);
+        }
     </script>
-   
+
+</body>
+</html>
