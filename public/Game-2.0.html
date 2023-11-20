@@ -49,9 +49,9 @@
             }
         }
 
-        function endGame() {
-            document.getElementById('message').textContent = `Congratulations! You caught the ghost! Final score: ${score}`;
-            document.getElementById('ghost').style.display = 'none';
+
+        document.getElementById('message').textContent = `Congratulations! You caught the ghost! Final score: ${score}`;
+        document.getElementById('ghost').style.display = 'none';
         }
    
     document.addEventListener('keydown', function (event) {
@@ -71,6 +71,55 @@
                 }
             });
     </script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creepy Hallway Ghost Background</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #111;
+        }
+
+        .hallway {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100vh;
+            background: url('creepy_hallway.jpg') no-repeat center center fixed;
+            background-size: cover;
+            filter: grayscale(90%) brightness(60%) contrast(120%);
+        }
+
+        .ghost {
+            position: absolute;
+            top: 40%;
+            left: 60%;
+            width: 100px;
+            height: 100px;
+            background: url('ghost.png') no-repeat;
+            background-size: contain;
+            animation: ghostFloat 3s infinite alternate;
+        }
+
+        @keyframes ghostFloat {
+            0% { transform: translate(-50%, -50%) translateY(0); }
+            100% { transform: translate(-50%, -50%) translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hallway">
+        <!-- Add more elements, decorations, or interactive objects here -->
+        <div class="ghost"></div>
+    </div>
 
 </body>
 </html>
+
