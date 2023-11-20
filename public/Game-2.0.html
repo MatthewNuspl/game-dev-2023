@@ -53,6 +53,23 @@
             document.getElementById('message').textContent = `Congratulations! You caught the ghost! Final score: ${score}`;
             document.getElementById('ghost').style.display = 'none';
         }
+   
+    document.addEventListener('keydown', function (event) {
+                switch (event.key.toLowerCase()) {
+                    case 'w':
+                        document.getElementById('myImage01').style.top = parseInt(document.getElementById('myImage01').style.top) - 10 + 'px';
+                        break;
+                    case 'a':
+                        document.getElementById('myImage01').style.left = parseInt(document.getElementById('myImage01').style.left) - 10 + 'px';
+                        break;
+                    case 's':
+                        document.getElementById('myImage01').style.top = parseInt(document.getElementById('myImage01').style.top) + 10 + 'px';
+                        break;
+                    case 'd':
+                        document.getElementById('myImage01').style.left = parseInt(document.getElementById('myImage01').style.left) + 10 + 'px';
+                        break;
+                }
+            });
     </script>
 
 </body>
