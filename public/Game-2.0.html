@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ghost Game</title>
+    <title>Ghost Evidence Hunt</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,12 +11,13 @@
         }
 
         #ghost {
-            width: 100px;
-            height: 100px;
+            width: 150px;
+            height: 150px;
             background: url('Ghost-picture.jfif') no-repeat;
             background-size: contain;
             position: relative;
             cursor: pointer;
+            margin: 50px;
         }
 
         #message {
@@ -24,34 +25,53 @@
             font-weight: bold;
             margin-top: 20px;
         }
+
+        .evidence {
+            width: 50px;
+            height: 50px;
+            background-color: yellow;
+            position: absolute;
+            display: none;
+        }
     </style>
 </head>
 <body>
 
-    <h1>Ghost Game</h1>
-    <p>Click the ghost to catch it!</p>
-    <div id="ghost" onclick="catchGhost()"></div>
+    <h1>Ghost Evidence Hunt</h1>
+    <p>Click on the ghost to find evidence!</p>
+    <div id="ghost" onclick="findEvidence()"></div>
     <div id="message"></div>
+    <div id="evidenceContainer"></div>
 
     <script>
-        let caught = false;
+        let evidenceCount = 0;
         let score = 0;
 
-        function catchGhost() {
-            if (!caught) {
-                document.getElementById('ghost').style.display = 'none';
-                score++;
-                document.getElementById('message').textContent = `You caught the ghost! Score: ${score}`;
-                spawnGhost();
+        function findEvidence() {
+            if (evidenceCount < 5) {
+                const evidence = document.createElement('div');
+                evidence.className = 'evidence';
+                evidence.style.left = Math.random() * (window.innerWidth - 50) + 'px';
+                evidence.style.top = Math.random() * (window.innerHeight - 50) + 'px';
+
+                document.getElementById('evidenceContainer').appendChild(evidence);
+
+                evidence.onclick = function() {
+                    collectEvidence(evidence);
+                };
+
+                evidenceCount++;
+            }
+
+            if (evidenceCount === 5) {
+                document.getElementById('message').textContent = `You found all the evidence! Final score: ${score}`;
             }
         }
 
-        function spawnGhost() {
-            setTimeout(() => {
-                document.getElementById('ghost').style.display = 'block';
-                caught = false;
-                document.getElementById('message').textContent = '';
-            }, 1000);
+        function collectEvidence(evidence) {
+            evidence.style.display = 'none';
+            score += 10;
+            document.getElementById('message').textContent = `Evidence found! Score: ${score}`;
         }
     </script>
 
