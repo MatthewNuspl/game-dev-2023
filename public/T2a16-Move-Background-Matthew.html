@@ -38,15 +38,12 @@
             <input type="button" id="myButton02" value="Image Right" onclick="{
              document.getElementById('myImage01').style.left = parseInt(document.getElementById('myImage01').style.left) + 10 + 'px'
               }"><br><br>
-          
-           <input type="button" value="AutoMoveImageLeft!" onclick="{
-            clearInterval(myClock01)
-            mySpeed01 -= 30
-            if (mySpeed01< 10) { mySpeed01 = 10 }
-            myClock01 = setInterval(function () {
-               document.getElementById('myButton01').click()
-            }, mySpeed01)
-   
+         
+    <input type="button" value="AutoMoveImageLeft" onclick=""{clearInterval(myClock02)
+   myClock02 = setInterval(function(){
+     document.getElementById('myButton02').click()
+   }, 30)
+    }">
         <script>
         
         </script>
