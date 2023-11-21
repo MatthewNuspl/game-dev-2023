@@ -1,10 +1,11 @@
 // Array of possible ghost names
-var ghostNames = ["Casper", "Phantom", "Specter", "Spooky", "Boo"];
+<h1>var ghostNames = ["Casper", "Phantom", "Specter", "Spooky", "Boo"]; </h1>
 
 // Array of different ghost activities/clues
-var ghostActivities = [
-  "Cold temperature",
-  "Flickering lights",
+<var
+  ghostActivities = [
+  <li>"Cold temperature",
+ "Flickering lights",
   "Unexplained noises",
   "Objects moving on their own",
   "Eerie whispers"
@@ -50,11 +51,9 @@ var foundGhosts = [];
 var foundActivities = [];
 
 // Game loop
-var action;
+var action = prompt("Enter 'search' to look for ghosts or 'quit' to end the game:").toLowerCase();
 
 while (action !== "quit") {
-  action = prompt("Enter 'search' to look for ghosts or 'quit' to end the game:").toLowerCase();
-
   if (action === "search") {
     var detectedGhostName = prompt("Enter a name to detect if it's a ghost:").toLowerCase();
     if (isGhostName(detectedGhostName)) {
@@ -66,11 +65,9 @@ while (action !== "quit") {
     } else {
       alert("No ghost or activity detected. Keep searching!");
     }
-  } else if (action !== "quit") {
+  } else {
     alert("Invalid action. Please try again.");
   }
-}
-
   <!DOCTYPE html>
   <html lang="en">
   <head>
@@ -118,4 +115,5 @@ if (foundGhosts.includes(targetGhostName) && foundActivities.includes(targetGhos
 } else {
   alert("Better luck next time, " + playerName + ". You didn't find the target ghost or its activity.");
 }
-alert("Thanks for playing the Ghost Detecti
+alert("Thanks for playing the Ghost Detection Game!");
+
