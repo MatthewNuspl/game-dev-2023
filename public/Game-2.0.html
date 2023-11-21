@@ -1,1 +1,121 @@
+// Array of possible ghost names
+var ghostNames = ["Casper", "Phantom", "Specter", "Spooky", "Boo"];
 
+// Array of different ghost activities/clues
+var ghostActivities = [
+  "Cold temperature",
+  "Flickering lights",
+  "Unexplained noises",
+  "Objects moving on their own",
+  "Eerie whispers"
+];
+
+// Function to generate a random ghost name from the array
+function getRandomGhostName() {
+  var randomIndex = Math.floor(Math.random() * ghostNames.length);
+  return ghostNames[randomIndex];
+}
+
+// Function to generate a random ghost activity from the array
+function getRandomGhostActivity() {
+  var randomIndex = Math.floor(Math.random() * ghostActivities.length);
+  return ghostActivities[randomIndex];
+}
+
+// Function to check if a word is a ghost name
+function isGhostName(word) {
+  return ghostNames.includes(word);
+}
+
+// Function to check if a word is a ghost activity
+function isGhostActivity(word) {
+  return ghostActivities.includes(word);
+}
+
+// Game start
+alert("Welcome to the Ghost Detection Game!");
+
+// Prompt the player for their name
+var playerName = prompt("What's your name?");
+
+alert("Hello, " + playerName + "! Your mission is to find and detect ghosts.");
+
+// Generate a random ghost name and activity
+var targetGhostName = getRandomGhostName();
+var targetGhostActivity = getRandomGhostActivity();
+
+alert("We have reports of a ghost named " + targetGhostName + " causing " + targetGhostActivity + ".");
+
+var foundGhosts = [];
+var foundActivities = [];
+
+// Game loop
+var action;
+
+while (action !== "quit") {
+  action = prompt("Enter 'search' to look for ghosts or 'quit' to end the game:").toLowerCase();
+
+  if (action === "search") {
+    var detectedGhostName = prompt("Enter a name to detect if it's a ghost:").toLowerCase();
+    if (isGhostName(detectedGhostName)) {
+      foundGhosts.push(detectedGhostName);
+      alert("You found a ghost! Its name is " + detectedGhostName + ".");
+    } else if (isGhostActivity(detectedGhostName)) {
+      foundActivities.push(detectedGhostName);
+      alert("You found evidence of ghost activity: " + detectedGhostName + ".");
+    } else {
+      alert("No ghost or activity detected. Keep searching!");
+    }
+  } else if (action !== "quit") {
+    alert("Invalid action. Please try again.");
+  }
+}
+
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ghost Jump Scare Game</title>
+      <style>
+          body {
+              text-align: center;
+              font-family: Arial, sans-serif;
+          }
+          button {
+              font-size: 24px;
+              padding: 10px 20px;
+              cursor: pointer;
+          }
+      </style>
+  </head>
+  <body>
+      <h1>Ghost Jump Scare Game</h1>
+      <p>Click the button to reveal the ghost...</p>
+      <button id="ghostButton">Click me if you dare!</button>
+      <img src="ghost.jpg" alt="Ghost" id="ghostImage" style="display: none;">
+      
+      <script>
+          const ghostButton = document.getElementById("ghostButton");
+          const ghostImage = document.getElementById("ghostImage");
+  
+          ghostButton.addEventListener("click", () => {
+              // Display the ghost image
+              ghostImage.style.display = "block";
+              
+              // Play a loud, scary sound (replace with an actual sound file)
+              const jumpScareSound = new Audio("scary_sound.mp3"); // Replace with your sound file
+              jumpScareSound.play();
+ 
+ action = prompt("Enter 'search' to look for ghosts or 'quit' to end the game:").toLowerCase();
+}
+
+// Game end
+alert("Game over! You found " + foundGhosts.length + " ghost(s) and detected " + foundActivities.length + " ghost activity/clue(s).");
+
+if (foundGhosts.includes(targetGhostName) && foundActivities.includes(targetGhostActivity)) {
+  alert("Congratulations, " + playerName + "! You successfully identified the ghost and its activity. Mission accomplished!");
+} else {
+  alert("Better luck next time, " + playerName + ". You didn't find the target ghost or its activity.");
+}
+alert("Thanks for playing the Ghost Detecti
