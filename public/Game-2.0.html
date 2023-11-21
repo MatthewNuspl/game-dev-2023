@@ -12,24 +12,24 @@
 
          <script> 
 
-    function updateCharacterPosition() {
+     updateCharacterPosition() {
     character.style.left = posX + '%';
     character.style.top = posY + '%';
 }      
 
-function updateEvidenceCount() {
+     updateEvidenceCount() {
     evidenceDisplay.textContent = 'Ghost Evidence: ' + evidenceCount;
 }
 
-function generateRandomPosition() {
+      generateRandomPosition() {
     posX = Math.random() * 80 + 10; // Random position between 10% and 90%
     posY = Math.random() * 80 + 10;
 }
 
-function checkEvidence() {
-    // Check if the character is close to the evidence (within 5% of the evidence position)
+      checkEvidence() {
+   <h2>Check if the character is close to the evidence (within 5% of the evidence position) </h2>
     if (Math.abs(posX - evidencePosX) < 5 && Math.abs(posY - evidencePosY) < 5) {
-        evidenceCount++;
+        evidenceCount++;y
         updateEvidenceCount();
         generateRandomPosition();
     }
