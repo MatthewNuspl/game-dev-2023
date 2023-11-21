@@ -1,143 +1,78 @@
 <html>
     <head>
-        <Style>
-
-        </Style>
-    
+        <style>
+            /* Your CSS styles go here */
+        </style>
     </head>
     <body> 
- 
- document.getElementById('character');
-<h1> evidenceDisplay = document.getElementById('evidence'); </h1>
+        <h1 id="character">Ghost Game</h1>
+        <h2 id="evidence">Evidence Display</h2>
 
-         <script> 
+        <script>
+            var character = document.getElementById('character');
+            var evidenceDisplay = document.getElementById('evidence');
 
-     updateCharacterPosition() {
-    character.style.left = posX + '%';
-    character.style.top = posY + '%';
-}      
+            var posX = 50;
+            var posY = 50;
+            var evidenceCount = 0;
 
-     updateEvidenceCount() {
-    evidenceDisplay.textContent = 'Ghost Evidence: ' + evidenceCount;
-}
+            function updateCharacterPosition() {
+                character.style.left = posX + '%';
+                character.style.top = posY + '%';
+            }
 
-      generateRandomPosition() {
-    posX = Math.random() * 80 + 10; // Random position between 10% and 90%
-    posY = Math.random() * 80 + 10;
-}
+            function updateEvidenceCount() {
+                evidenceDisplay.textContent = 'Ghost Evidence: ' + evidenceCount;
+            }
 
-      checkEvidence() {
-   <h2>Check if the character is close to the evidence (within 5% of the evidence position) </h2>
-    if (Math.abs(posX - evidencePosX) < 5 && Math.abs(posY - evidencePosY) < 5) {
-        evidenceCount++;y
-        updateEvidenceCount();
-        generateRandomPosition();
-    }
-}
+            function generateRandomPosition() {
+                posX = Math.random() * 80 + 10; // Random position between 10% and 90%
+                posY = Math.random() * 80 + 10;
+            }
 
-document.addEventListener('keydown', function (event) {
-    switch (event.key) {
-        case 'w':
-            posY -= 5;
-            break;
-        case 'a':
-            posX -= 5;
-            break;
-        case 's':
-            posY += 5;
-            break;
-        case 'd':
-            posX += 5;
-            break;
-    }
+            function checkEvidence() {
+                // Check if the character is close to the evidence (within 5% of the evidence position)
+                if (Math.abs(posX - evidencePosX) < 5 && Math.abs(posY - evidencePosY) < 5) {
+                    evidenceCount++;
+                    updateEvidenceCount();
+                    generateRandomPosition();
+                }
+            }
 
-    posX = Math.max(0, Math.min(100, posX));
-    posY = Math.max(0, Math.min(100, posY));
+            document.addEventListener('keydown', function (event) {
+                switch (event.key) {
+                    case 'w':
+                        posY -= 5;
+                        break;
+                    case 'a':
+                        posX -= 5;
+                        break;
+                    case 's':
+                        posY += 5;
+                        break;
+                    case 'd':
+                        posX += 5;
+                        break;
+                }
 
-    updateCharacterPosition();
-    checkEvidence();
-});
+                posX = Math.max(0, Math.min(100, posX));
+                posY = Math.max(0, Math.min(100, posY));
 
-// Initial setup
-var evidencePosX, evidencePosY;
+                updateCharacterPosition();
+                checkEvidence();
+            });
 
-function setupGame() {
-    generateRandomPosition();
-    evidencePosX = posX;
-    evidencePosY = posY;
-    updateEvidenceCount();
-}
+            // Initial setup
+            var evidencePosX, evidencePosY;
 
-setupGame();
+            function setupGame() {
+                generateRandomPosition();
+                evidencePosX = posX;
+                evidencePosY = posY;
+                updateEvidenceCount();
+            }
 
-var character = document.getElementById('character');
-var evidenceDisplay = document.getElementById('evidence');
-
-var posX = 50;
-var posY = 50;
-var evidenceCount = 0;
-
-function updateCharacterPosition() {
-    character.style.left = posX + '%';
-    character.style.top = posY + '%';
-}
-
-function updateEvidenceCount() {
-    evidenceDisplay.textContent = 'Ghost Evidence: ' + evidenceCount;
-}
-
-function generateRandomPosition() {
-    posX = Math.random() * 80 + 10; // Random position between 10% and 90%
-    posY = Math.random() * 80 + 10;
-}
-
-function checkEvidence() {
-    // Check if the character is close to the evidence (within 5% of the evidence position)
-    if (Math.abs(posX - evidencePosX) < 5 && Math.abs(posY - evidencePosY) < 5) {
-        evidenceCount++;
-        updateEvidenceCount();
-        generateRandomPosition();
-    }
-}
-
-document.addEventListener('keydown', function (event) {
-    switch (event.key) {
-        case 'w':
-            posY -= 5;
-            break;
-        case 'a':
-            posX -= 5;
-            break;
-        case 's':
-            posY += 5;
-            break;
-        case 'd':
-            posX += 5;
-            break;
-    }
-
-    posX = Math.max(0, Math.min(100, posX));
-    posY = Math.max(0, Math.min(100, posY));
-
-    updateCharacterPosition();
-    checkEvidence();
-});
-
-// Initial setup
-var evidencePosX, evidencePosY;
-
-function setupGame() {
-    generateRandomPosition();
-    evidencePosX = posX;
-    evidencePosY = posY;
-    updateEvidenceCount();
-}
-
-setupGame();
-
-       </script>
-
-</body>
-    </head>    
-    </style>
+            setupGame();
+        </script>
+    </body>
 </html>
