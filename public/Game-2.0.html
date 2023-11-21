@@ -1,119 +1,129 @@
-// Array of possible ghost names
-<h1>var ghostNames = ["Casper", "Phantom", "Specter", "Spooky", "Boo"]; </h1>
+var character = document.getElementById('character');
+var evidenceDisplay = document.getElementById('evidence');
 
-// Array of different ghost activities/clues
-<var
-  ghostActivities = [
-  <li>"Cold temperature",
- "Flickering lights",
-  "Unexplained noises",
-  "Objects moving on their own",
-  "Eerie whispers"
-];
+var posX = 50;
+var posY = 50;
+var evidenceCount = 0;
 
-// Function to generate a random ghost name from the array
-function getRandomGhostName() {
-  var randomIndex = Math.floor(Math.random() * ghostNames.length);
-  return ghostNames[randomIndex];
+function updateCharacterPosition() {
+    character.style.left = posX + '%';
+    character.style.top = posY + '%';
 }
 
-// Function to generate a random ghost activity from the array
-function getRandomGhostActivity() {
-  var randomIndex = Math.floor(Math.random() * ghostActivities.length);
-  return ghostActivities[randomIndex];
+function updateEvidenceCount() {
+    evidenceDisplay.textContent = 'Ghost Evidence: ' + evidenceCount;
 }
 
-// Function to check if a word is a ghost name
-function isGhostName(word) {
-  return ghostNames.includes(word);
+function generateRandomPosition() {
+    posX = Math.random() * 80 + 10; // Random position between 10% and 90%
+    posY = Math.random() * 80 + 10;
 }
 
-// Function to check if a word is a ghost activity
-function isGhostActivity(word) {
-  return ghostActivities.includes(word);
-}
-
-// Game start
-alert("Welcome to the Ghost Detection Game!");
-
-// Prompt the player for their name
-var playerName = prompt("What's your name?");
-
-alert("Hello, " + playerName + "! Your mission is to find and detect ghosts.");
-
-// Generate a random ghost name and activity
-var targetGhostName = getRandomGhostName();
-var targetGhostActivity = getRandomGhostActivity();
-
-alert("We have reports of a ghost named " + targetGhostName + " causing " + targetGhostActivity + ".");
-
-var foundGhosts = [];
-var foundActivities = [];
-
-// Game loop
-var action = prompt("Enter 'search' to look for ghosts or 'quit' to end the game:").toLowerCase();
-
-while (action !== "quit") {
-  if (action === "search") {
-    var detectedGhostName = prompt("Enter a name to detect if it's a ghost:").toLowerCase();
-    if (isGhostName(detectedGhostName)) {
-      foundGhosts.push(detectedGhostName);
-      alert("You found a ghost! Its name is " + detectedGhostName + ".");
-    } else if (isGhostActivity(detectedGhostName)) {
-      foundActivities.push(detectedGhostName);
-      alert("You found evidence of ghost activity: " + detectedGhostName + ".");
-    } else {
-      alert("No ghost or activity detected. Keep searching!");
+function checkEvidence() {
+    // Check if the character is close to the evidence (within 5% of the evidence position)
+    if (Math.abs(posX - evidencePosX) < 5 && Math.abs(posY - evidencePosY) < 5) {
+        evidenceCount++;
+        updateEvidenceCount();
+        generateRandomPosition();
     }
-  } else {
-    alert("Invalid action. Please try again.");
-  }
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Ghost Jump Scare Game</title>
-      <style>
-          body {
-              text-align: center;
-              font-family: Arial, sans-serif;
-          }
-          button {
-              font-size: 24px;
-              padding: 10px 20px;
-              cursor: pointer;
-          }
-      </style>
-  </head>
-  <body>
-      <h1>Ghost Jump Scare Game</h1>
-      <p>Click the button to reveal the ghost...</p>
-      <button id="ghostButton">Click me if you dare!</button>
-      <img src="ghost.jpg" alt="Ghost" id="ghostImage" style="display: none;">
-      
-      <script>
-          const ghostButton = document.getElementById("ghostButton");
-          const ghostImage = document.getElementById("ghostImage");
-  
-          ghostButton.addEventListener("click", () => {
-              // Display the ghost image
-              ghostImage.style.display = "block";
-              
-              // Play a loud, scary sound (replace with an actual sound file)
-              const jumpScareSound = new Audio("scary_sound.mp3"); // Replace with your sound file
-              jumpScareSound.play();
- 
- action = prompt("Enter 'search' to look for ghosts or 'quit' to end the game:").toLowerCase();
 }
 
-// Game end
-alert("Game over! You found " + foundGhosts.length + " ghost(s) and detected " + foundActivities.length + " ghost activity/clue(s).");
+document.addEventListener('keydown', function (event) {
+    switch (event.key) {
+        case 'w':
+            posY -= 5;
+            break;
+        case 'a':
+            posX -= 5;
+            break;
+        case 's':
+            posY += 5;
+            break;
+        case 'd':
+            posX += 5;
+            break;
+    }
 
-if (foundGhosts.includes(targetGhostName) && foundActivities.includes(targetGhostActivity)) {
-  alert("Congratulations, " + playerName + "! You successfully identified the ghost and its activity. Mission accomplished!");
-} else {
-  alert("Better luck next time, " + playerName + ". You didn't find the target ghost or its activity.");
+    posX = Math.max(0, Math.min(100, posX));
+    posY = Math.max(0, Math.min(100, posY));
+
+    updateCharacterPosition();
+    checkEvidence();
+});
+
+// Initial setup
+var evidencePosX, evidencePosY;
+
+function setupGame() {
+    generateRandomPosition();
+    evidencePosX = posX;
+    evidencePosY = posY;
+    updateEvidenceCount();
 }
-alert("Thanks for playing the Ghost Detection Game!");
 
+setupGame();
+
+var character = document.getElementById('character');
+var evidenceDisplay = document.getElementById('evidence');
+
+var posX = 50;
+var posY = 50;
+var evidenceCount = 0;
+
+function updateCharacterPosition() {
+    character.style.left = posX + '%';
+    character.style.top = posY + '%';
+}
+
+function updateEvidenceCount() {
+    evidenceDisplay.textContent = 'Ghost Evidence: ' + evidenceCount;
+}
+
+function generateRandomPosition() {
+    posX = Math.random() * 80 + 10; // Random position between 10% and 90%
+    posY = Math.random() * 80 + 10;
+}
+
+function checkEvidence() {
+    // Check if the character is close to the evidence (within 5% of the evidence position)
+    if (Math.abs(posX - evidencePosX) < 5 && Math.abs(posY - evidencePosY) < 5) {
+        evidenceCount++;
+        updateEvidenceCount();
+        generateRandomPosition();
+    }
+}
+
+document.addEventListener('keydown', function (event) {
+    switch (event.key) {
+        case 'w':
+            posY -= 5;
+            break;
+        case 'a':
+            posX -= 5;
+            break;
+        case 's':
+            posY += 5;
+            break;
+        case 'd':
+            posX += 5;
+            break;
+    }
+
+    posX = Math.max(0, Math.min(100, posX));
+    posY = Math.max(0, Math.min(100, posY));
+
+    updateCharacterPosition();
+    checkEvidence();
+});
+
+// Initial setup
+var evidencePosX, evidencePosY;
+
+function setupGame() {
+    generateRandomPosition();
+    evidencePosX = posX;
+    evidencePosY = posY;
+    updateEvidenceCount();
+}
+
+setupGame();
