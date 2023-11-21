@@ -1,5 +1,9 @@
 <html>
     <head>
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghost Evidence Game</title>
+
         <style>
             /* Your CSS styles go here */
         </style>
@@ -15,6 +19,15 @@
             var posX = 50;
             var posY = 50;
             var evidenceCount = 0;
+
+            #character {
+            font-size: 24px;
+            color: #ff6600;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
 
             function updateCharacterPosition() {
                 character.style.left = posX + '%';
