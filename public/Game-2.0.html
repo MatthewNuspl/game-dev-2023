@@ -1,75 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ghost Hunting Game</title>
-    <style>
-        body {
-            font-family: Lincoln, sans-serif;
-            text-align: center;
-        }
-
-        #ghost {
-            width: 400px;
-            height: 400px;
-            background: url('Ghost-picture.jfif') no-repeat;
-            background-size: contain;
-            position: relative;
-            cursor: pointer;
-            margin: 80px;
-        }
-
-        #message {
-            font-size: 20px;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-    </style>
-</head>
-<body>
-
-    <h1>Ghost Hunting Game</h1>
-    <p>Click on the ghost to hunt it!</p>
-    <div id="ghost" onclick="huntGhost()"></div>
-    <div id="message"></div>
-
-    <script>
-        let ghostHealth = 100;
-        let score = 100;
-
-        function huntGhost() {
-            const damage = Math.floor(Math.random() * 20) + 1;
-            ghostHealth -= damage;
-
-            if (ghostHealth > 0) {
-                document.getElementById('message').textContent = `You Shall Not Defeat Me!!!. Ghost health: ${ghostHealth}`;
-            } else {
-                endGame();
-            }
-        }
-
-
-       <function EndGame();
-        document.getElementById('message').textContent = `Congratulations! You caught the ghost! Final score: ${score}`;
-        document.getElementById('ghost').style.display = 'none';
-        }
-   
-    </script>
+<html>
     
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creepy Hallway Ghost Background</title>
-    <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-            background-color: #111;
-        }
-
-        .hallway {
+<style>
+    <head>           
+    
+               <body> 
+            .hallway {
             position: absolute;
             top: 50%;
             left: 50%;
