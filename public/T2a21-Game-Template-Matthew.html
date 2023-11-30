@@ -29,7 +29,7 @@
     <script>
         // global variables here
         let myGlobalY = 0;
-        let myClock;
+        let myClock; //define myClock globally
 
         // global functions here
         function myHitOther(my1, my2) {
@@ -38,7 +38,7 @@
 
         function myCheckHit() {
             if (myHitOther('myImg01', 'myImg02')) {
-                alert('you lose');
+                alert('You Lose!');
                 document.getElementById('myImg01').style.left = '20px';
                 location = 't2a13-keydown.html';  // go to your next level
             }
