@@ -62,9 +62,13 @@
                 }
             }  // end of myCheckHit()
 
-         </script>
+     
 
-                        <script>
+       
+                     function myMoveRight() {
+            document.getElementById('myImg01').style.left = parseInt(document.getElementById('myImg01').style.left) + 10 + 'px';
+        }
+
                          document.addEventListener('keydown', function (event) {
                 switch (event.key.toLowerCase()) {
                     case 'w':
