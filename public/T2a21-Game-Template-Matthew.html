@@ -12,7 +12,7 @@
     <h3 align="center">T2a21-Game-Template-Matthew.html</h3>
 
     <img id="myImg01" style="position:absolute; width:100px; height:80px; top:0px; left:50px;"  src="Ghost image.jfif">
-    <img id="myImg02" style="position:absolute; width:100px; height:80px; top:0px; left:250px;" src="Ghost-picture.jfif">
+    <img id="myImg02" style="position:absolute; width:100px; height:80px; top:0px; left:250px;" src="YourSecondImage.jpg">
 
     <input type="button" value="Auto Background Up" onclick="{
         clearInterval(myClock)
@@ -29,7 +29,7 @@
     <script>
         // global variables here
         let myGlobalY = 0;
-        let myClock; 
+        let myClock;
 
         // global functions here
         function myHitOther(my1, my2) {
@@ -38,7 +38,7 @@
 
         function myCheckHit() {
             if (myHitOther('myImg01', 'myImg02')) {
-                alert('You Lose!');
+                alert('you lose');
                 document.getElementById('myImg01').style.left = '20px';
                 location = 't2a13-keydown.html';  // go to your next level
             }
