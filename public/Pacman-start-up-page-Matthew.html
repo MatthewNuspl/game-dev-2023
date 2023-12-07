@@ -60,6 +60,61 @@
     </script>
 </body>
 </html>
+                <!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            transition: background-color 0.3s; /* Smooth transition for color changes */
+        }
+
+        h1 {
+            font-size: 200px;
+            text-align: center;
+            margin-top: 40vh; /* Adjust vertical centering based on content */
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>PACMAN GAME!</h1>
+
+    <script>
+        // Function to change the background color dynamically
+        function changeBackgroundColor(color) {
+            document.body.style.backgroundColor = color;
+        }
+
+        // Event listener for key presses
+        document.addEventListener('keydown', function (event) {
+            switch (event.key.toLowerCase()) {
+                case 'w':
+                    changeBackgroundColor('red');
+                    break;
+                case 'a':
+                    changeBackgroundColor('blue');
+                    break;
+                case 's':
+                    changeBackgroundColor('green');
+                    break;
+                case 'd':
+                    changeBackgroundColor('yellow');
+                    break;
+            }
+        });
+
+        // Event listener for key releases (optional)
+        document.addEventListener('keyup', function () {
+            // You can add logic here if you want to handle key releases
+        });
+    </script>
+</body>
+</html>
 
         </style>
     </head>
