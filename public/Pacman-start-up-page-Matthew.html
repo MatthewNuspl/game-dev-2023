@@ -58,6 +58,70 @@
         function applyStyles() {
             document.body.style.filter = `brightness(${currentBrightness}%) contrast(${currentContrast})`;
         }
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            background-color: black;
+            background-repeat: repeat;
+            background-size: 100%;
+            margin: 0; /* Remove default margin */
+            overflow: hidden; /* Hide scroll bars */
+        }
+
+        h1 {
+            font-size: 200px;
+            text-align: center;
+            margin-top: 40vh; /* Adjust vertical centering based on content */
+            transition: color 0.3s; /* Smooth transition for color changes */
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="gameTitle">PACMAN GAME!</h1>
+
+    <script>
+        function getBrightness(imageUrl, callback) {
+            var img = new Image();
+            img.src = imageUrl;
+
+            img.onload = function () {
+                var canvas = document.createElement('canvas');
+                canvas.width = img.width;
+                canvas.height = img.height;
+
+                var ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0, img.width, img.height);
+
+                var imageData = ctx.getImageData(0, 0, img.width, img.height);
+                var data = imageData.data;
+
+                var brightness = 0;
+                for (var i = 0; i < data.length; i += 4) {
+                    brightness += data[i] + data[i + 1] + data[i + 2];
+                }
+                brightness = brightness / (data.length / 3);
+
+                callback(brightness);
+            };
+        }
+
+        function adjustHeadingColor(brightness) {
+            var heading = document.getElementById('gameTitle');
+            var textColor = brightness < 128 ? 'white' : 'black';
+
+            heading.style.color = textColor;
+        }
+
+        // Example usage:
+        getBrightness('Background.gif', adjustHeadingColor);
+
+        
     </script>
 </body>
 </html>
@@ -68,5 +132,5 @@
 
       
 
-         <script>
+       
        
