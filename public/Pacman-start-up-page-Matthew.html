@@ -52,6 +52,30 @@
         function applyStyles() {
             document.body.style.filter = `brightness(${currentBrightness}%) contrast(${currentContrast})`;
         }
+ // Function to change the background color dynamically
+        function changeBackgroundColor(color) {
+            document.body.style.backgroundColor = color;
+        }
+
+        // Event listener for key presses
+        document.addEventListener('keydown', function (event) {
+            switch (event.key.toLowerCase()) {
+                case 'w':
+                    changeBackgroundColor('red');
+                    break;
+                case 'a':
+                    changeBackgroundColor('blue');
+                    break;
+                case 's':
+                    changeBackgroundColor('green');
+                    break;
+                case 'd':
+                    changeBackgroundColor('yellow');
+                    break;
+            }
+        });
+
+        
     </script>
 </body>
 </html>
