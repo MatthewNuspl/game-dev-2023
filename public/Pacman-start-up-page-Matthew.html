@@ -1,8 +1,4 @@
-<html>
-    <head>
-           <h1 align="center" style="font-size:150px; color:white;" >PACMAN GAME!</h1>
-        <style>
-                    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <style>
@@ -10,16 +6,16 @@
             background-color: black;
             background-repeat: repeat;
             background-size: 100%;
-            margin: 0; /* Remove default margin */
-            overflow: hidden; /* Hide scroll bars */
-            transition: filter 0.3s; /* Smooth transition for changes */
+            margin: 0;
+            overflow: hidden;
+            transition: filter 0.3s;
         }
 
         h1 {
-            font-size: 200px;
+            font-size: 150px;
             color: white;
             text-align: center;
-            margin-top: 40vh; /* Adjust vertical centering based on content */
+            margin-top: 40vh;
         }
 
         button {
@@ -27,43 +23,7 @@
             padding: 10px;
             font-size: 16px;
         }
-   
-        </style>
-   
-</head>
-
-<body>
- 
-    <button onclick="adjustBrightness(20)">Increase Brightness</button>
-    <button onclick="adjustBrightness(-20)">Decrease Brightness</button>
-
-    <button onclick="adjustContrast(1.8)">Increase Contrast</button>
-    <button onclick="adjustContrast(1.8)">Decrease Contrast</button>
-
-    <script>
-        let currentBrightness = 100;
-        let currentContrast = 1;
-
-        function adjustBrightness(value) {
-            currentBrightness += value;
-            applyStyles();
-        }
-
-        function adjustContrast(value) {
-            currentContrast *= value;
-            applyStyles();
-        }
-
-        function applyStyles() {
-            document.body.style.filter = `brightness(${currentBrightness}%) contrast(${currentContrast})`;
-        }
-    </script>
-</body>
-</html>
-                <!DOCTYPE html>
-<html lang="en">
-<head>
-    <style>
+         <style>
         body {
             margin: 0;
             overflow: hidden;
@@ -80,11 +40,20 @@
         }
     </style>
 </head>
-<body>
+    <script>
+<body style="background-repeat: repeat; background-size: 100%" background="Background.gif">
 
     <h1>PACMAN GAME!</h1>
 
-    <script>
+    <button onclick="adjustBrightness(20)">Increase Brightness</button>
+    <button onclick="adjustBrightness(-20)">Decrease Brightness</button>
+
+    <button onclick="adjustContrast(1.8)">Increase Contrast</button>
+    <button onclick="adjustContrast(0.8)">Decrease Contrast</button>
+
+       
+    <h1>PACMAN GAME!</h1>
+
         // Function to change the background color dynamically
         function changeBackgroundColor(color) {
             document.body.style.backgroundColor = color;
@@ -112,16 +81,23 @@
         document.addEventListener('keyup', function () {
             // You can add logic here if you want to handle key releases
         });
+
+        let currentBrightness = 100;
+        let currentContrast = 1;
+
+        function adjustBrightness(value) {
+            currentBrightness += value;
+            applyStyles();
+        }
+
+        function adjustContrast(value) {
+            currentContrast *= value;
+            applyStyles();
+        }
+
+        function applyStyles() {
+            document.body.style.filter = `brightness(${currentBrightness}%) contrast(${currentContrast})`;
+        }
     </script>
 </body>
 </html>
-
-        </style>
-    </head>
-    <body style="background-color:black; background-repeat: repeat; background-size: 100%" background="Background.gif">
-
-      
-
-         <script>
-       
-
