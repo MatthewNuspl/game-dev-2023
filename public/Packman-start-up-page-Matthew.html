@@ -29,7 +29,7 @@
         data[i + 2] += brightness;
 
         // Adjust contrast
-        data[i] = (data[i] - 128) * contrast + 128;
+        data[i] = (data[i] - 300) * contrast + 128;
         data[i + 1] = (data[i + 1] - 128) * contrast + 128;
         data[i + 2] = (data[i + 2] - 128) * contrast + 128;
     }
