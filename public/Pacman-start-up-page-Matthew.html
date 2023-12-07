@@ -10,46 +10,48 @@
         <h1 align="center" style="font-size:200px; color:white;" >PACMAN GAME!</h1>
 
          <script>
-                    function adjustBrightnessContrast(image, brightness, contrast) {
-    var canvas = document.createElement('canvas');
-    var ctx = canvas.getContext('2d');
+            function adjustBrightnessContrast(image, brightness, contrast) {
+                var canvas = document.createElement('canvas');
+                var ctx = canvas.getContext('2d');
 
-    canvas.width = image.width;
-    canvas.height = image.height;
+                canvas.width = image.width;
+                canvas.height = image.height;
 
-    ctx.drawImage(image, 0, 0);
+                ctx.drawImage(image, 0, 0);
 
-    var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    var data = imageData.data;
+                var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                var data = imageData.data;
 
-    for (var i = 0; i < data.length; i += 4) {
-        // Adjust brightness
-        data[i] += brightness;
-        data[i + 1] += brightness;
-        data[i + 2] += brightness;
+                for (var i = 0; i < data.length; i += 4) {
+                    // Adjust brightness
+                    data[i] += brightness;
+                    data[i + 1] += brightness;
+                    data[i + 2] += brightness;
 
-        // Adjust contrast
-        data[i] = (data[i] - 300) * contrast + 128;
-        data[i + 1] = (data[i + 1] - 300) * contrast + 128;
-        data[i + 2] = (data[i + 2] - 300) * contrast + 128;
-    }
+                    // Adjust contrast
+                    data[i] = (data[i] - 300) * contrast + 128;
+                    data[i + 1] = (data[i + 1] - 300) * contrast + 128;
+                    data[i + 2] = (data[i + 2] - 300) * contrast + 128;
+                }
 
-    ctx.putImageData(imageData, 0, 0);
+                ctx.putImageData(imageData, 0, 0);
 
-    return canvas.toDataURL('image/jpeg');
-}
+                return canvas.toDataURL('image/jpeg');
+            }
 
-// Example usage:
-var image = new Image();
-image.src = 'Background.gif';
-image.onload = function() {
-    var adjustedImage = adjustBrightnessContrast(image, 30, 1.2);
+            // Example usage:
+            var image = new Image();
+            image.src = 'Background.gif';
+            image.onload = function() {
+                var adjustedImage = adjustBrightnessContrast(image, 30, 1.2);
 
-    // Do something with the adjusted image, e.g., set it as the source of an <img> element.
-    var outputImageElement = document.getElementById('outputImage');
-    outputImageElement.src = adjustedImage;
-};
+                // Create an img element dynamically
+                var outputImageElement = document.createElement('img');
+                outputImageElement.src = adjustedImage;
 
+                // Append the img element to the body or any other container
+                document.body.appendChild(outputImageElement);
+            };
          </script>   
     </body>
 </html>
