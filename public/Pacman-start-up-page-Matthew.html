@@ -1,48 +1,71 @@
+<html>
+    <head>
+           <h1 align="center" style="font-size:150px; color:white;" >PACMAN GAME!</h1>
+        <style>
+                    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            background-color: black;
+            background-repeat: repeat;
+            background-size: 100%;
+            margin: 0; /* Remove default margin */
+            overflow: hidden; /* Hide scroll bars */
+            transition: filter 0.3s; /* Smooth transition for changes */
+        }
+
+        h1 {
+            font-size: 200px;
+            color: white;
+            text-align: center;
+            margin-top: 40vh; /* Adjust vertical centering based on content */
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+   
+        </style>
+   
+</head>
+
 <body>
-<script>
-const pacman = document.getElementById('pacman');
-const ghosts = document.querySelectorAll('.ghost');
+ 
+    <button onclick="adjustBrightness(20)">Increase Brightness</button>
+    <button onclick="adjustBrightness(-20)">Decrease Brightness</button>
 
-let pacmanRotation = 0;
+    <button onclick="adjustContrast(1.8)">Increase Contrast</button>
+    <button onclick="adjustContrast(1.8)">Decrease Contrast</button>
 
-document.addEventListener('keydown', handleKeyPress);
+    <script>
+        let currentBrightness = 100;
+        let currentContrast = 1;
 
-function handleKeyPress(event) {
-    switch (event.key.toLowerCase()) {
-        case 'w':
-            movePacman(0, -40);
-            pacmanRotation = 0;
-            break;
-        case 'a':
-            movePacman(-40, 0);
-            pacmanRotation = 270;
-            break;
-        case 's':
-            movePacman(0, 40);
-            pacmanRotation = 180;
-            break;
-        case 'd':
-            movePacman(40, 0);
-            pacmanRotation = 90;
-            break;
-    }
+        function adjustBrightness(value) {
+            currentBrightness += value;
+            applyStyles();
+        }
 
-    pacman.style.transform = `rotate(${pacmanRotation}deg)`;
-}
+        function adjustContrast(value) {
+            currentContrast *= value;
+            applyStyles();
+        }
 
-function movePacman(dx, dy) {
-    const pacmanRect = pacman.getBoundingClientRect();
-    const gameRect = document.getElementById('game-container').getBoundingClientRect();
-
-    if (
-        pacmanRect.left + dx >= gameRect.left &&
-        pacmanRect.right + dx <= gameRect.right &&
-        pacmanRect.top + dy >= gameRect.top &&
-        pacmanRect.bottom + dy <= gameRect.bottom
-    ) {
-        pacman.style.left = `${pacmanRect.left + dx}px`;
-        pacman.style.top = `${pacmanRect.top + dy}px`;
-    }
-}
+        function applyStyles() {
+            document.body.style.filter = `brightness(${currentBrightness}%) contrast(${currentContrast})`;
+        }
+    </script>
 </body>
-</script>
+</html>
+
+        </style>
+    </head>
+    <body style="background-color:black; background-repeat: repeat; background-size: 100%" background="Background.gif">
+
+      
+
+         <script>
+       
