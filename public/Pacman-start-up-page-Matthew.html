@@ -1,5 +1,8 @@
-
-<!DOCTYPE html>
+<html>
+    <head>
+           <h1 align="center" style="font-size:150px; color:white;" >PACMAN GAME!</h1>
+        <style>
+                    <!DOCTYPE html>
 <html lang="en">
 <head>
     <style>
@@ -7,16 +10,16 @@
             background-color: black;
             background-repeat: repeat;
             background-size: 100%;
-            margin: 0;
-            overflow: hidden;
-            transition: filter 0.3s;
+            margin: 0; /* Remove default margin */
+            overflow: hidden; /* Hide scroll bars */
+            transition: filter 0.3s; /* Smooth transition for changes */
         }
 
         h1 {
             font-size: 200px;
             color: white;
             text-align: center;
-            margin-top: 40vh;
+            margin-top: 40vh; /* Adjust vertical centering based on content */
         }
 
         button {
@@ -24,16 +27,18 @@
             padding: 10px;
             font-size: 16px;
         }
-    </style>
+   
+        </style>
+   
 </head>
-<body>
-    <h1 align="center" style="font-size:150px; color:white;">PACMAN GAME!</h1>
 
+<body>
+ 
     <button onclick="adjustBrightness(20)">Increase Brightness</button>
     <button onclick="adjustBrightness(-20)">Decrease Brightness</button>
 
-    <button onclick="adjustContrast(2.2)">Increase Contrast</button>
-    <button onclick="adjustContrast(2.8)">Decrease Contrast</button>
+    <button onclick="adjustContrast(1.8)">Increase Contrast</button>
+    <button onclick="adjustContrast(1.8)">Decrease Contrast</button>
 
     <script>
         let currentBrightness = 100;
@@ -53,7 +58,14 @@
             document.body.style.filter = `brightness(${currentBrightness}%) contrast(${currentContrast})`;
         }
     </script>
-
-    <!-- Add the missing closing script tag -->
 </body>
 </html>
+
+        </style>
+    </head>
+    <body style="background-color:black; background-repeat: repeat; background-size: 100%" background="Background.gif">
+
+      
+
+         <script>
+       
