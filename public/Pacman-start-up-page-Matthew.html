@@ -37,8 +37,8 @@
     <button onclick="adjustBrightness(20)">Increase Brightness</button>
     <button onclick="adjustBrightness(-20)">Decrease Brightness</button>
 
-    <button onclick="adjustContrast(2.8)">Increase Contrast</button>
-    <button onclick="adjustContrast(2.8)">Decrease Contrast</button>
+    <button onclick="adjustContrast(1.8)">Increase Contrast</button>
+    <button onclick="adjustContrast(1.8)">Decrease Contrast</button>
 
     <script>
         let currentBrightness = 100;
@@ -57,53 +57,37 @@
         function applyStyles() {
             document.body.style.filter = `brightness(${currentBrightness}%) contrast(${currentContrast})`;
         }
-
-    
-    
-    let currentBrightness = 100;
-let currentContrast = 1;
-let score = 0;
-
-function adjustBrightness(value) {
-    currentBrightness += value;
-    applyStyles();
-    updateScore();
-}
-
-function adjustContrast(value) {
-    currentContrast *= value;
-    applyStyles();
-    updateScore();
-}
-
-function resetStyles() {
-    currentBrightness = 100;
-    currentContrast = 1;
-    applyStyles();
-    updateScore();
-}
-
-function applyStyles() {
-    document.body.style.filter = `brightness(${currentBrightness}%) contrast(${currentContrast})`;
-}
-
-function updateScore() {
-    document.getElementById('score').textContent = `Score: ${score++}`;
-}
-
-// Background switching every 5 seconds
-const backgrounds = ['Background1.gif', 'Moving-background2-2.0.gif'];
-let currentBackgroundIndex = 0;
-
-function switchBackground() {
-    document.body.style.backgroundImage = `url(${backgrounds[currentBackgroundIndex]})`;
-    currentBackgroundIndex = (currentBackgroundIndex + 1) % backgrounds.length;
-}
-
-setInterval(switchBackground, 5000); // Switch every 5 seconds
-
-    
     </script>
+    <script><
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>PACMAN GAME</title>
+</head>
+<body>
+    <h1 id="pacman">PACMAN GAME!</h1>
+
+    <button onclick="adjustBrightness(20)">Increase Brightness</button>
+    <button onclick="adjustBrightness(-20)">Decrease Brightness</button>
+
+    <button onclick="adjustContrast(1.8)">Increase Contrast</button>
+    <button onclick="adjustContrast(0.8)">Decrease Contrast</button>
+
+    <button onclick="resetStyles()">Reset</button>
+
+    <div id="score">Score: 0</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+/script>
+
 </body>
 </html>
 
@@ -115,4 +99,3 @@ setInterval(switchBackground, 5000); // Switch every 5 seconds
 
          <script>
        
-
