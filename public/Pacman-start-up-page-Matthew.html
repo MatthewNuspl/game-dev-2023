@@ -1,103 +1,70 @@
-<html>
-    <head>
-           <h1 align="center" style="font-size:150px; color:white;" >PACMAN GAME!</h1>
-        <style>
-                    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <style>
-        body {
-            background-color: black;
-            background-repeat: repeat;
-            background-size: 100%;
-            margin: 0; /* Remove default margin */
-            overflow: hidden; /* Hide scroll bars */
-            transition: filter 0.3s; /* Smooth transition for changes */
-        }
+document.addEventListener('keydown', handleKeyPress);
 
-        h1 {
-            font-size: 200px;
-            color: white;
-            text-align: center;
-            margin-top: 40vh; /* Adjust vertical centering based on content */
-        }
+const pacman = document.getElementById('pacman');
+const ghosts = document.querySelectorAll('.ghost');
+const pellet = document.getElementById('pellet');
 
-        button {
-            margin: 10px;
-            padding: 10px;
-            font-size: 16px;
-        }
-   
-        </style>
-   
-</head>
+let pacmanRotation = 0;
 
-<body>
- 
-    <button onclick="adjustBrightness(20)">Increase Brightness</button>
-    <button onclick="adjustBrightness(-20)">Decrease Brightness</button>
+function handleKeyPress(event) {
+    switch (event.key.toLowerCase()) {
+        case 'w':
+            movePacman(0, -40);
+            pacmanRotation = 0;
+            break;
+        case 'a':
+            movePacman(-40, 0);
+            pacmanRotation = 270;
+            break;
+        case 's':
+            movePacman(0, 40);
+            pacmanRotation = 180;
+            break;
+        case 'd':
+            movePacman(40, 0);
+            pacmanRotation = 90;
+            break;
+    }
 
-    <button onclick="adjustContrast(1.8)">Increase Contrast</button>
-    <button onclick="adjustContrast(1.8)">Decrease Contrast</button>
+    pacman.style.transform = `rotate(${pacmanRotation}deg)`;
+    checkCollision();
+}
 
-    <script>
-        let currentBrightness = 100;
-        let currentContrast = 1;
+function movePacman(dx, dy) {
+    const pacmanRect = pacman.getBoundingClientRect();
+    const gameRect = document.getElementById('game-container').getBoundingClientRect();
 
-        function adjustBrightness(value) {
-            currentBrightness += value;
-            applyStyles();
-        }
+    if (
+        pacmanRect.left + dx >= gameRect.left &&
+        pacmanRect.right + dx <= gameRect.right &&
+        pacmanRect.top + dy >= gameRect.top &&
+        pacmanRect.bottom + dy <= gameRect.bottom
+    ) {
+        pacman.style.left = `${pacmanRect.left + dx}px`;
+        pacman.style.top = `${pacmanRect.top + dy}px`;
+    }
+}
 
-        function adjustContrast(value) {
-            currentContrast *= value;
-            applyStyles();
-        }
+function checkCollision() {
+    const pacmanRect = pacman.getBoundingClientRect();
+    const pelletRect = pellet.getBoundingClientRect();
 
-        function applyStyles() {
-            document.body.style.filter = `brightness(${currentBrightness}%) contrast(${currentContrast})`;
-        }
-    </script>
-    <script><
+    if (
+        pacmanRect.left < pelletRect.right &&
+        pacmanRect.right > pelletRect.left &&
+        pacmanRect.top < pelletRect.bottom &&
+        pacmanRect.bottom > pelletRect.top
+    ) {
+        // Pellet eaten, you can add scoring logic here
+        repositionPellet();
+    }
+}
 
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>PACMAN GAME</title>
-</head>
-<body>
-    <h1 id="pacman">PACMAN GAME!</h1>
+function repositionPellet() {
+    const gameContainer = document.getElementById('game-container');
+    const randomX = Math.floor(Math.random() * (gameContainer.clientWidth - 10));
+    const randomY = Math.floor(Math.random() * (gameContainer.clientHeight - 10));
 
-    <button onclick="adjustBrightness(20)">Increase Brightness</button>
-    <button onclick="adjustBrightness(-20)">Decrease Brightness</button>
-
-    <button onclick="adjustContrast(1.8)">Increase Contrast</button>
-    <button onclick="adjustContrast(0.8)">Decrease Contrast</button>
-
-    <button onclick="resetStyles()">Reset</button>
-
-    <div id="score">Score: 0</div>
-
-     <script src="script.js"></script>
-   
-        </style>
-    </head>
-    <body style="background-color:black; background-repeat: repeat; background-size: 100%" background="Moving-background-2.0.gif">
-    <body style="background-color:black; background-repeat: repeat; background-size: 100%" background="Background.gif">
-      
-</body>
-</html>
-
-
-/script>
-
-</body>
-</html>
-
-    
-
-      
-       
+    pellet.style.left = `${randomX}px`;
+    pellet.style.top = `${randomY}px`;
+}
