@@ -1,67 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Pacman Game</title>
-</head>
-<body>
-    <div id="game-container">
-        <div id="pacman"></div>
-        <div class="ghost" id="ghost1"></div>
-        <div class="ghost" id="ghost2"></div>
-        <div id="pellet"></div>
-
-        <!-- Add other game elements here -->
-    </div>
-
-    <script src="script.js">
-
-body {
-    margin: 0;
-    overflow: hidden;
-}
-
-#game-container {
-    position: relative;
-    width: 400px;
-    height: 400px;
-    margin: 50px auto;
-    background-color: #000;
-}
-
-#pacman {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    background-color: yellow;
-    clip-path: polygon(100% 0%, 0% 0%, 0% 100%, 50% 50%, 0% 0%);
-    transition: transform 0.2s;
-}
-
-.ghost {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    background-color: red;
-    border-radius: 50%;
-    top: 200px; /* Adjust the starting position */
-    left: 200px; /* Adjust the starting position */
-}
-
-#pellet {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background-color: white;
-    border-radius: 50%;
-    top: 100px; /* Adjust the starting position */
-    left: 100px; /* Adjust the starting position */
-}
-document.addEventListener('keydown', handleKeyPress);
-
-const pacman = document.getElementById('pacman');
+  <body>
+        <script>
+<html>
+    const pacman = document.getElementById('pacman');
 const ghosts = document.querySelectorAll('.ghost');
 const pellet = document.getElementById('pellet');
 
@@ -129,5 +69,6 @@ function repositionPellet() {
     pellet.style.left = `${randomX}px`;
     pellet.style.top = `${randomY}px`;
 }
-</script>
+ </body> 
+     </script>
    </html>
