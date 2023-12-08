@@ -57,6 +57,52 @@
         function applyStyles() {
             document.body.style.filter = `brightness(${currentBrightness}%) contrast(${currentContrast})`;
         }
+
+    
+    
+    let currentBrightness = 100;
+let currentContrast = 1;
+let score = 0;
+
+function adjustBrightness(value) {
+    currentBrightness += value;
+    applyStyles();
+    updateScore();
+}
+
+function adjustContrast(value) {
+    currentContrast *= value;
+    applyStyles();
+    updateScore();
+}
+
+function resetStyles() {
+    currentBrightness = 100;
+    currentContrast = 1;
+    applyStyles();
+    updateScore();
+}
+
+function applyStyles() {
+    document.body.style.filter = `brightness(${currentBrightness}%) contrast(${currentContrast})`;
+}
+
+function updateScore() {
+    document.getElementById('score').textContent = `Score: ${score++}`;
+}
+
+// Background switching every 5 seconds
+const backgrounds = ['Background.gif', 'Background2.jpg', 'Background3.jpg'];
+let currentBackgroundIndex = 0;
+
+function switchBackground() {
+    document.body.style.backgroundImage = `url(${backgrounds[currentBackgroundIndex]})`;
+    currentBackgroundIndex = (currentBackgroundIndex + 1) % backgrounds.length;
+}
+
+setInterval(switchBackground, 5000); // Switch every 5 seconds
+
+    
     </script>
 </body>
 </html>
