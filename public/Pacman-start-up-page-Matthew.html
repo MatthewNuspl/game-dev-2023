@@ -1,74 +1,86 @@
-  <body>
-        <script>
-<html>
-    const pacman = document.getElementById('pacman');
-const ghosts = document.querySelectorAll('.ghost');
-const pellet = document.getElementById('pellet');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Include necessary styles or external scripts -->
+</head>
+<body>
+    <div id="game-container">
+        <div id="pacman"></div>
+        <div class="ghost"></div>
+        <div id="pellet"></div>
+    </div>
 
-let pacmanRotation = 0;
+    <script>
+        const pacman = document.getElementById('pacman');
+        const ghosts = document.querySelectorAll('.ghost');
+        const pellet = document.getElementById('pellet');
 
-function handleKeyPress(event) {
-    switch (event.key.toLowerCase()) {
-        case 'w':
-            movePacman(0, -40);
-            pacmanRotation = 0;
-            break;
-        case 'a':
-            movePacman(-40, 0);
-            pacmanRotation = 270;
-            break;
-        case 's':
-            movePacman(0, 40);
-            pacmanRotation = 180;
-            break;
-        case 'd':
-            movePacman(40, 0);
-            pacmanRotation = 90;
-            break;
-    }
+        let pacmanRotation = 0;
 
-    pacman.style.transform = `rotate(${pacmanRotation}deg)`;
-    checkCollision();
-}
+        document.addEventListener('keydown', handleKeyPress);
 
-function movePacman(dx, dy) {
-    const pacmanRect = pacman.getBoundingClientRect();
-    const gameRect = document.getElementById('game-container').getBoundingClientRect();
+        function handleKeyPress(event) {
+            switch (event.key.toLowerCase()) {
+                case 'w':
+                    movePacman(0, -40);
+                    pacmanRotation = 0;
+                    break;
+                case 'a':
+                    movePacman(-40, 0);
+                    pacmanRotation = 270;
+                    break;
+                case 's':
+                    movePacman(0, 40);
+                    pacmanRotation = 180;
+                    break;
+                case 'd':
+                    movePacman(40, 0);
+                    pacmanRotation = 90;
+                    break;
+            }
 
-    if (
-        pacmanRect.left + dx >= gameRect.left &&
-        pacmanRect.right + dx <= gameRect.right &&
-        pacmanRect.top + dy >= gameRect.top &&
-        pacmanRect.bottom + dy <= gameRect.bottom
-    ) {
-        pacman.style.left = `${pacmanRect.left + dx}px`;
-        pacman.style.top = `${pacmanRect.top + dy}px`;
-    }
-}
+            pacman.style.transform = `rotate(${pacmanRotation}deg)`;
+            checkCollision();
+        }
 
-function checkCollision() {
-    const pacmanRect = pacman.getBoundingClientRect();
-    const pelletRect = pellet.getBoundingClientRect();
+        function movePacman(dx, dy) {
+            const pacmanRect = pacman.getBoundingClientRect();
+            const gameRect = document.getElementById('game-container').getBoundingClientRect();
 
-    if (
-        pacmanRect.left < pelletRect.right &&
-        pacmanRect.right > pelletRect.left &&
-        pacmanRect.top < pelletRect.bottom &&
-        pacmanRect.bottom > pelletRect.top
-    ) {
-        // Pellet eaten, you can add scoring logic here
-        repositionPellet();
-    }
-}
+            if (
+                pacmanRect.left + dx >= gameRect.left &&
+                pacmanRect.right + dx <= gameRect.right &&
+                pacmanRect.top + dy >= gameRect.top &&
+                pacmanRect.bottom + dy <= gameRect.bottom
+            ) {
+                pacman.style.left = `${pacmanRect.left + dx}px`;
+                pacman.style.top = `${pacmanRect.top + dy}px`;
+            }
+        }
 
-function repositionPellet() {
-    const gameContainer = document.getElementById('game-container');
-    const randomX = Math.floor(Math.random() * (gameContainer.clientWidth - 10));
-    const randomY = Math.floor(Math.random() * (gameContainer.clientHeight - 10));
+        function checkCollision() {
+            const pacmanRect = pacman.getBoundingClientRect();
+            const pelletRect = pellet.getBoundingClientRect();
 
-    pellet.style.left = `${randomX}px`;
-    pellet.style.top = `${randomY}px`;
-}
- </body> 
-     </script>
-   </html>
+            if (
+                pacmanRect.left < pelletRect.right &&
+                pacmanRect.right > pelletRect.left &&
+                pacmanRect.top < pelletRect.bottom &&
+                pacmanRect.bottom > pelletRect.top
+            ) {
+                // Pellet eaten, you can add scoring logic here
+                repositionPellet();
+            }
+        }
+
+        function repositionPellet() {
+            const gameContainer = document.getElementById('game-container');
+            const randomX = Math.floor(Math.random() * (gameContainer.clientWidth - 10));
+            const randomY = Math.floor(Math.random() * (gameContainer.clientHeight - 10));
+
+            pellet.style.left = `${randomX}px`;
+            pellet.style.top = `${randomY}px`;
+        }
+    </script>
+</body>
+</html>
