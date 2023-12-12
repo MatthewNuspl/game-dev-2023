@@ -1,63 +1,61 @@
-<html>
-    <head>
-        <style>
-                .grid {
-  
-        </style>
-    </head>
-    <body>
-        <script>
-              display: flex;
-    flex-wrap: wrap;
-    width: 560px;
-    height: 560px;
-    border: solid black;
-}
-  
-.grid div {
-    width: 20px;
-    height: 20px;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=5.0">
+    <style>
+        canvas {
+            border: 50px solid #000;
+        }
+    </style>
+    <title>Pac-Man Walls</title>
+</head>
+<body>
+    <canvas id="pacmanCanvas" width="900" height="900"></canvas>
+    <script>
+        const canvas = document.getElementById('pacmanCanvas');
+        const context = canvas.getContext('2d');
 
-.pac-dot {
-    background-color: green;   
-    border: 5px solid white;
-    box-sizing: border-box;
-}
+        const wallColor = '#342DCA';
+        const wallSize = 40; // Adjust the size of each wall block
+        const wallGap = 10;  // Adjust the gap between wall blocks
 
-.wall {
-    background-color: blue;
-}
+        const drawWalls = () => {
+            // Draw horizontal walls
+            for (let i = 0; i < canvas.width; i += wallSize + wallGap) {
+                drawWall(i, 0);
+                drawWall(i, canvas.height - wallSize);
+            }
 
-.power-pellet {
-    background-color: green;
-    border-radius: 10px;
-}
+            // Draw vertical walls
+            for (let j = wallSize + wallGap; j < canvas.height - wallSize - wallGap; j += wallSize + wallGap) {
+                drawWall(0, j);
+                drawWall(canvas.width - wallSize, j);
+            }
+        };
 
-.blinky {
-    background-color: red;
-}
+        const drawWall = (x, y) => {
+            context.fillStyle = wallColor;
+            context.fillRect(x, y, wallSize, wallSize);
+        };
 
-.pinky {
-    background-color: pink;
-}
+        // Clear the canvas
+        const clearCanvas = () => {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+        };
 
-.inky {
-    background-color: cyan;
-}
+        const drawGame = () => {
+            clearCanvas();
+            drawWalls();
+            // Add additional drawing logic for Pac-Man and other elements
+            // ...
 
-.clyde {
-    background-color: orange;     
-}
+            // Call requestAnimationFrame to create a game loop
+            requestAnimationFrame(drawGame);
+        };
 
-.pac-man {
-    background-color: yellow;
-    border-radius: 10px;
-}
-
-.scared-ghost {
-    background-color: aquamarine;
-}
-        </script>
-    </body>
+        // Start the game loop
+        drawGame();
+    </script>
+</body>
 </html>
