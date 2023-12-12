@@ -1,46 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="GlobalCSS.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        /* Your styles go here */
+        canvas {
+            border: 1px solid #000;
+        }
     </style>
+    <title>Pac-Man Walls</title>
 </head>
 <body>
+    <canvas id="pacmanCanvas" width="400" height="400"></canvas>
+    <script>
+        const canvas = document.getElementById('pacmanCanvas');
+        const context = canvas.getContext('2d');
 
-<canvas id="canvas" width="400" height="400"></canvas>
-<img id="animation" src="Screen Shot 2021-12-15 at 16.18.24.png
-" style="display: none;">
-<img id="ghosts" src="ghost-frames.png" style="display: none;">
+        const wallColor = '#342DCA';
+        const wallSize = 40; // Adjust the size of each wall block
+        const wallGap = 10;  // Adjust the gap between wall blocks
 
-<script>
-    const canvas = document.getElementById("canvas");
-    const canvasContext = canvas.getContext("2d");
-    const pacmanFrames = document.getElementById("animation");
-    const ghostFrames = document.getElementById("ghosts");
+        const drawWalls = () => {
+            // Draw horizontal walls
+            for (let i = 0; i < canvas.width; i += wallSize + wallGap) {
+                drawWall(i, 0);
+                drawWall(i, canvas.height - wallSize);
+            }
 
-    let createRect = (x, y, width, height, color) => {
-        canvasContext.fillStyle = color;
-        canvasContext.fillRect(x, y, width, height);
-    };
+            // Draw vertical walls
+            for (let j = wallSize + wallGap; j < canvas.height - wallSize - wallGap; j += wallSize + wallGap) {
+                drawWall(0, j);
+                drawWall(canvas.width - wallSize, j);
+            }
+        };
 
-    // Rest of your variables and functions...
+        const drawWall = (x, y) => {
+            context.fillStyle = wallColor;
+            context.fillRect(x, y, wallSize, wallSize);
+        };
 
-    let draw = () => {
-        canvasContext.clearRect(0, 0, canvas.width, canvas.height);
-        createRect(0, 0, canvas.width, canvas.height, "black");
-        drawWalls();
-        drawFoods();
-        drawGhosts();
-        pacman.draw();
-        drawScore();
-        drawRemainingLives();
-    };
+        // Clear the canvas
+        const clearCanvas = () => {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+        };
 
-    // Rest of your functions...
+        const drawGame = () => {
+            clearCanvas();
+            drawWalls();
+            // Add additional drawing logic for Pac-Man and other elements
+            // ...
 
-    // Move the script inside the body tag
+            // Call requestAnimationFrame to create a game loop
+            requestAnimationFrame(drawGame);
+        };
+
+        // Start the game loop
+        drawGame();
     </script>
 </body>
 </html>
-
