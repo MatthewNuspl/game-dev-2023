@@ -2,41 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=5.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         canvas {
-            border: 50px solid #000;
+            border: 1px solid #000;
         }
     </style>
     <title>Pac-Man Walls</title>
 </head>
 <body>
-    <canvas id="pacmanCanvas" width="900" height="900"></canvas>
+    <canvas id="pacmanCanvas" width="400" height="400"></canvas>
     <script>
         const canvas = document.getElementById('pacmanCanvas');
         const context = canvas.getContext('2d');
 
         const wallColor = '#342DCA';
-        const wallSize = 40; // Adjust the size of each wall block
-        const wallGap = 10;  // Adjust the gap between wall blocks
+        const wallSize = 20; // Adjust the size of each wall block
+
+        // Define the layout of the walls
+        const walls = [
+            { x: 0, y: 0, width: canvas.width, height: wallSize },
+            { x: 0, y: canvas.height - wallSize, width: canvas.width, height: wallSize },
+            { x: 0, y: 0, width: wallSize, height: canvas.height },
+            { x: canvas.width - wallSize, y: 0, width: wallSize, height: canvas.height },
+            { x: 80, y: 40, width: wallSize, height: 120 },
+            // Add more wall configurations as needed
+        ];
 
         const drawWalls = () => {
-            // Draw horizontal walls
-            for (let i = 0; i < canvas.width; i += wallSize + wallGap) {
-                drawWall(i, 0);
-                drawWall(i, canvas.height - wallSize);
-            }
-
-            // Draw vertical walls
-            for (let j = wallSize + wallGap; j < canvas.height - wallSize - wallGap; j += wallSize + wallGap) {
-                drawWall(0, j);
-                drawWall(canvas.width - wallSize, j);
-            }
-        };
-
-        const drawWall = (x, y) => {
             context.fillStyle = wallColor;
-            context.fillRect(x, y, wallSize, wallSize);
+            walls.forEach(wall => {
+                context.fillRect(wall.x, wall.y, wall.width, wall.height);
+            });
         };
 
         // Clear the canvas
