@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=5.0">
     <style>
         canvas {
-            border: 1px solid #000;
+            border: 50px solid #000;
         }
     </style>
     <title>Pac-Man Walls</title>
 </head>
 <body>
-    <canvas id="pacmanCanvas" width="400" height="400"></canvas>
+    <canvas id="pacmanCanvas" width="900" height="900"></canvas>
     <script>
         const canvas = document.getElementById('pacmanCanvas');
         const context = canvas.getContext('2d');
@@ -26,6 +26,8 @@
             { x: 0, y: 0, width: wallSize, height: canvas.height },
             { x: canvas.width - wallSize, y: 0, width: wallSize, height: canvas.height },
             { x: 80, y: 40, width: wallSize, height: 120 },
+              { x: canvas.width - wallSize, y: 0, width: wallSize, height: canvas.height },
+            { x: 40, y: 80, width: wallSize, height: 120 }
             // Add more wall configurations as needed
         ];
 
