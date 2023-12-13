@@ -1,131 +1,37 @@
+<html>
+    <head>
+        <style>
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pac-Man Game</title>
-    <style>
-        canvas {
-            border: 1px solid #000;
-        }
-    </style>
-</head>
-  <canvas id="pacmanCanvas" width="400" height="400"></canvas>
-    <script>
-    
+        </style>
+    </head>
     <body>
-        document.addEventListener("DOMContentLoaded", function () {
-            const canvas = document.getElementById("pacmanCanvas");
-            const ctx = canvas.getContext("2d");
+        <script>
 
-            // Define the size of the grid and the size of each cell
-            const gridSize = 20;
-            const cellSize = canvas.width / gridSize;
+      
+        const maze = [
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 0, 0, 0, 1, 0, 0, 0, 0, 1],
+  [1, 0, 1, 0, 1, 0, 1, 1, 0, 1],
+  [1, 0, 1, 0, 0, 0, 1, 0, 0, 1],
+  [1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
+  [1, 0, 1, 0, 0, 0, 0, 0, 0, 1],
+  [1, 0, 1, 1, 1, 1, 1, 1, 0, 1],
+  [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+];
 
-            // Define the layout of the walls (1 represents a wall, 0 represents an empty space)
-            const walls = [
-                [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-                [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-                [1, 0, 1, 1, 1, 1, 1, 1, 0, 1],
-                [1, 0, 1, 0, 0, 0, 0, 1, 0, 1],
-                [1, 0, 1, 1, 1, 1, 1, 1, 0, 1],
-                [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-                [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            ];
+// Function to print the maze
+function printMaze(maze) {
+  for (let i = 0; i < maze.length; i++) {
+    console.log(maze[i].join(' '));
+  }
+}
 
-            // Pac-Man properties
-            const pacMan = {
-                x: 1,
-                y: 1,
-                direction: "right", // Initial direction
-            };
+// Print the initial maze
+console.log('Initial Maze:');
+printMaze(maze);
 
-            // Ghost properties
-            const ghost = {
-                x: 8,
-                y: 4,
-            };
-
-            // Dots (1 represents a dot)
-            const dots = [
-                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            ];
-
-            // Draw the walls on the canvas
-            function drawWalls() {
-                for (let i = 0; i < gridSize; i++) {
-                    for (let j = 0; j < gridSize; j++) {
-                        if (walls[i][j] === 1) {
-                            ctx.fillStyle = "#000"; // Color of the walls
-                            ctx.fillRect(j * cellSize, i * cellSize, cellSize, cellSize);
-                        }
-                    }
-                }
-            }
-
-        <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=5.0">
-    <style>
-        canvas {
-            border: 50px solid #000;
-        }
-    </style>
-    <title>Pac-Man Walls</title>
-</head>
-<body>
-    <canvas id="pacmanCanvas" width="900" height="900"></canvas>
-    <script>
-        const canvas = document.getElementById('pacmanCanvas');
-        const context = canvas.getContext('2d');
-
-        const wallColor = '#342DCA';
-        const wallSize = 20; // Adjust the size of each wall block
-
-        // Define the layout of the walls
-        const walls = [
-            { x: 0, y: 0, width: canvas.width, height: wallSize },
-            { x: 0, y: canvas.height - wallSize, width: canvas.width, height: wallSize },
-            { x: 0, y: 0, width: wallSize, height: canvas.height },
-            { x: canvas.width - wallSize, y: 0, width: wallSize, height: canvas.height },
-            { x: 80, y: 40, width: wallSize, height: 120 },
-            { x: 80, y: 40, width: wallSize, height: 120 }
-             { x: canvas.width - wallSize, y: 0, width: wallSize, height: canvas.height },
-           // Add more wall configurations as needed
-        ];
-
-        const drawWalls = () => {
-            context.fillStyle = wallColor;
-            walls.forEach(wall => {
-                context.fillRect(wall.x, wall.y, wall.width, wall.height);
-            });
-        };
-
-        // Clear the canvas
-        const clearCanvas = () => {
-            context.clearRect(0, 0, canvas.width, canvas.height);
-        };
-
-        const drawGame = () => {
-            clearCanvas();
-            drawWalls();
-            // Add additional drawing logic for Pac-Man and other elements
-            // ...
-
-            // Call requestAnimationFrame to create a game loop
-            requestAnimationFrame(drawGame);
-        };
-
-        // Start the game loop
-        drawGame();
-    </script>
-</body>
+        
+        </script>
+    </body>
 </html>
