@@ -11,27 +11,6 @@
     </style>
 </head>
 <body>
-    <canvas id="pacmanCanvas" width="900" height="900"></canvas>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const canvas = document.getElementById("pacmanCanvas");
-            const ctx = canvas.getContext("2d");
-
-            // Define the size of the grid and the size of each cell
-            const gridSize = 10;
-            const cellSize = canvas.width / gridSize;
-
-            // Define the layout of the walls (1 represents a wall, 0 represents an empty space)
-            const walls = [
-                [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-                [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-                [1, 0, 1, 1, 1, 1, 1, 1, 0, 1],
-                [1, 0, 1, 0, 0, 0, 0, 1, 0, 1],
-                [1, 0, 1, 1, 1, 1, 1, 1, 0, 1],
-                [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-                [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            ];
-
             // Draw the walls on the canvas
             function drawWalls() {
                 for (let i = 0; i < gridSize; i++) {
