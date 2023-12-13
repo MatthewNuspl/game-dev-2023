@@ -18,7 +18,7 @@
             const ctx = canvas.getContext("2d");
 
             // Define the size of the grid and the size of each cell
-            const gridSize = 20;
+            const gridSize = 52;
             const cellSize = canvas.width / gridSize;
 
             // Define the layout of the walls (1 represents a wall, 0 represents an empty space)
@@ -43,6 +43,98 @@
                     }
                 }
             }
+  // Draw Pac-Man
+            function drawPacMan() {
+                ctx.beginPath();
+                const pacManRadius = cellSize / 2;
+                const pacManMouth = 0.2; // Adjust the mouth opening
+                const pacManAngle = (pacManMouth * Math.PI) / 2;
+
+                // Draw the mouth of Pac-Man based on direction
+                if (pacMan.direction === "right") {
+                    ctx.arc(
+                        pacMan.x * cellSize + pacManRadius,
+                        pacMan.y * cellSize + pacManRadius,
+                        pacManRadius,
+                        pacManAngle,
+                        -pacManAngle,
+                        false
+                    );
+                } else if (pacMan.direction === "left") {
+                    ctx.arc(
+                        pacMan.x * cellSize + pacManRadius,
+                        pacMan.y * cellSize + pacManRadius,
+                        pacManRadius,
+                        Math.PI + pacManAngle,
+                        Math.PI - pacManAngle,
+                        false
+                    );
+                } else if (pacMan.direction === "up") {
+                    ctx.arc(
+                        pacMan.x * cellSize + pacManRadius,
+                        pacMan.y * cellSize + pacManRadius,
+                        pacManRadius,
+                        1.5 * Math.PI + pacManAngle,
+                        1.5 * Math.PI - pacManAngle,
+                        false
+                    );
+                } else if (pacMan.direction === "down") {
+                    ctx.arc(
+                        pacMan.x * cellSize + pacManRadius,
+                        pacMan.y * cellSize + pacManRadius,
+                        pacManRadius,
+                        0.5 * Math.PI + pacManAngle,
+                        0.5 * Math.PI - pacManAngle,
+                        false
+                    );
+                }
+
+                ctx.lineTo(pacMan.x * cellSize + pacManRadius, pacMan.y * cellSize + pacManRadius);
+                ctx.fillStyle = "#ffcc00"; // Color of Pac-Man
+                ctx.fill();
+                ctx.closePath();
+            }
+
+            // Draw Ghost
+            function drawGhost() {
+                ctx.fillStyle = "#ff0000"; // Color of the ghost
+                ctx.fillRect(ghost.x * cellSize, ghost.y * cellSize, cellSize, cellSize);
+            }
+
+            // Draw Dots
+            function drawDots() {
+                for (let i = 0; i < gridSize; i++) {
+                    for (let j = 0; j < gridSize; j++) {
+                        if (dots[i][j] === 1) {
+                            ctx.beginPath();
+                            ctx.arc(
+                                j * cellSize + cellSize / 2,
+                                i * cellSize + cellSize / 2,
+                                cellSize / 5,
+                                0,
+                                2 * Math.PI
+                            );
+                            ctx.fillStyle = "#ffffff"; // Color of the dots
+                            ctx.fill();
+                            ctx.closePath();
+                        }
+                    }
+                }
+            }
+
+            // Main draw function
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                drawWalls();
+                drawDots();
+                drawPacMan();
+                drawGhost();
+                // Add other drawings or game
+
+
+
+
+
 
             // Main draw function
             function draw() {
