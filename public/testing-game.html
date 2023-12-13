@@ -1,221 +1,162 @@
-<!doctype html>
-<html lang="en">
+export class MazeCellBoundary {
+    _graph;
+    _firstId;
+    _secondId;
 
-<head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="data:,">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style type="text/css">
-        html {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-            font-size: 16px;
-            line-height: 1.6;
+    constructor(graph, firstId, secondId) {
+        this._graph = graph;
+        // make sure that cellA is always the cell with the lower ID (makes it
+        // easier to check if two boundary instances are actually the same)
+        if (firstId < secondId) {
+            this._firstId = firstId;
+            this._secondId = secondId;
+        } else {
+            this._firstId = secondId;
+            this._secondId = firstId;
         }
+    }
 
-        body {
-            margin: 0;
+    get firstId() {
+        return this._firstId;
+    }
+
+    get secondId() {
+        return this._secondId;
+    }
+
+    get borderingCells() {
+        return [
+            new MazeCell(this._graph, this.firstId),
+            new MazeCell(this._graph, this.secondId),
+        ];
+    }
+
+    get isWall() {
+        return this._graph.isWall(this);
+    }
+
+    set isWall(newValue) {
+        this._graph.setWall(this, newValue);
+    }
+
+    traverseFrom(cell) {
+        if (cell.id === this.firstId) {
+            return new MazeCell(this._graph, this.secondId);
+        } else {
+            return new MazeCell(this._graph, this.firstId);
         }
+    }
+}
 
-        label {
-            display: block;
+export class MazeCell {
+    _graph;
+    _id;
+
+    constructor(graph, id) {
+        this._graph = graph;
+        this._id = id;
+    }
+
+    get graph() {
+        return this._graph;
+    }
+
+    get id() {
+        return this._id;
+    }
+
+    get boundaries() {
+        return this._graph.getNeighborIds(this._id)
+            .map(neighborId => new MazeCellBoundary(
+                this._graph,
+                this._id,
+                neighborId
+            ))
+    }
+
+    get neighbors() {
+        return this._graph.getNeighborIds(this._id)
+            .map(neighborId => new MazeCell(this._graph, neighborId))
+    }
+
+    boundaryBetween(cell) {
+        if (!this._graph.getNeighborIds(this._id).includes(cell.id)) {
+            throw new Error('Cannot get boundary; cells are not neighbors.')
         }
+        return new MazeCellBoundary(this._graph, this._id, cell.id);
+    }
+}
 
-        .interface {
-            display: flex;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            padding: 0.5em;
-        }
+export class SquareMazeGraph {
+    _width;
+    _height;
+    _edges;
 
-        .controls {
-            width: 220px;
-            padding: 0.5em;
-        }
+    constructor(width, height) {
+        this._width = width;
+        this._height = height;
+        // We'll allocate space for 2 edges (N & W) per cell. The northernmost
+        // and westernmost cells may not need two edges, but that's okay; we'll
+        // allocate the space anyway, because it simplifies calculations and the
+        // memory waste is trivial.
+        this._edges = new Uint8Array(width * height * 2);
+    }
 
-        .mazepane {
-            padding: 0.5em;
-        }
+    get width() {
+        return this._width;
+    }
 
-        .maze {
-            max-width: 100%;
-        }
+    get height() {
+        return this._height;
+    }
 
-        .attribution {
-            font-size: 0.8em;
-        }
+    get cells() {
+        // generate a range from [0..n]
+        return [...Array(this._width * this._height).keys()]
+            .map(id => new MazeCell(this, id));
+    }
 
-        input[type=number] {
-            width: 4em;
-        }
-
-        @media print {
-
-            .controls,
-            .attribution {
-                display: none;
-            }
-
-            .interface {
-                padding: 0;
-            }
-
-            .mazepane {
-                padding: 0;
-            }
-
-            .maze {
-                max-height: 100%;
-            }
-        }
-    </style>
-</head>
-
-<body>
-    <div class="interface">
-        <div class="controls">
-            <fieldset>
-                <legend>Maze</legend>
-                <label>
-                    Algorithm:
-                    <select id="algo">
-                        <option value="random">Totally random</option>
-                        <option selected value="depthFirstSearch">Depth-first</option>
-                        <option value="kruskalsAlgorithm">Kruskal's Algorithm</option>
-                        <option value="wilsonsAlgorithm">Wilson's Algorithm</option>
-                    </select>
-                </label>
-                <label>
-                    Maze dimensions:<br />
-                    <input id="mazex" type="number" value="15" />
-                    by
-                    <input id="mazey" type="number" value="20" />
-                    cells
-                </label>
-            </fieldset>
-            <fieldset>
-                <legend>Appearance</legend>
-                <label>
-                    Cell size (px):
-                    <input id="cellsize" type="number" value="24" />
-                </label>
-                <label>
-                    Borders (px):
-                    <input id="borderwidth" type="number" value="4" />
-                </label>
-            </fieldset>
-            <fieldset>
-                <legend>Animation</legend>
-                <label>
-                    Tick speed (ms):
-                    <input id="tickspeed" type="number" value="20" />
-                </label>
-                <label>
-                    Steps per tick:
-                    <input id="ticksteps" type="number" value="1" />
-                </label>
-            </fieldset>
-            <fieldset>
-                <legend>Controls</legend>
-                <button id="run">Run</button>
-                <button id="reset">Reset</button>
-                <button id="entire">Generate entirely</button>
-                <br /><br />
-                <button class="step" data-steps="1">Step</button>
-                <button class="step" data-steps="5">Step 5</button>
-                <button class="step" data-steps="20">Step 20</button>
-                <button class="step" data-steps="100">Step 100</button>
-            </fieldset>
-        </div>
-        <div class="mazepane">
-            <canvas class="maze"></canvas>
-            <p class="attribution">
-                For more background on these algorithms, read <a
-                    href="https://johnellmore.com/posts/20210622-maze-generation/">this blog post on maze generation
-                    algorithms</a>.
-            </p>
-            <p class="attribution">
-                This tool is released under the terms of the <a
-                    href="https://github.com/johnellmore/maze-generator/blob/master/LICENSE.md">MIT License</a>. <a
-                    href="https://github.com/johnellmore/maze-generator">See this project on Github</a>.
-            </p>
-        </div>
-    </div>
-    <script type="module">
-        import { MazeRenderer } from './renderer.js';
-        import { MazeGenerationExecutor } from './executor.js';
-        import { SquareMazeGraph, MazeCellBoundary } from './graph.js';
-        import {
-            random,
-            depthFirstSearch,
-            kruskalsAlgorithm,
-            wilsonsAlgorithm
-        } from './algorithms.js';
-
-        let maze, renderer, executor;
-
-        const clamp = (min, max) => (val) => Math.min(Math.max(val, min), max);
-        function init() {
-            if (executor) {
-                executor.stop();
-            }
-
-            const x = clamp(1, 200)
-                (parseInt(document.querySelector('#mazex').value));
-            const y = clamp(1, 200)
-                (parseInt(document.querySelector('#mazey').value));
-            maze = new SquareMazeGraph(x, y);
-
-            const cellSize = clamp(4, 300)
-                (parseInt(document.querySelector('#cellsize').value));
-            const strokeWidth = clamp(1, 200)
-                (parseInt(document.querySelector('#borderwidth').value));
-            renderer = new MazeRenderer({
-                canvas: document.querySelector('canvas'),
-                maze: maze,
-                cellSize,
-                strokeWidth,
-            });
-            renderer.init();
-
-            const algorithm = {
-                random,
-                depthFirstSearch,
-                kruskalsAlgorithm,
-                wilsonsAlgorithm
-            }[document.querySelector('#algo').value];
-            const stepsPerTick = clamp(1, 100)
-                (parseInt(document.querySelector('#ticksteps').value));
-            const tickSpeed = clamp(0, 5000)
-                (parseInt(document.querySelector('#tickspeed').value));
-            executor = new MazeGenerationExecutor({
-                maze,
-                renderer,
-                algorithm,
-                stepsPerTick,
-                tickSpeed,
-            });
-            renderer.render();
-        }
-
-        init();
-        document.body.addEventListener('change', (event) => {
-            if (event.target.matches('input, select')) {
-                init();
-            }
-        });
-
-        document.querySelector('#run')
-            .addEventListener('click', () => executor.run());
-        document.querySelector('#reset')
-            .addEventListener('click', () => executor.reset());
-        document.querySelector('#entire')
-            .addEventListener('click', () => executor.fullRun());
-
-        document.querySelectorAll('.step').forEach(el =>
-            el.addEventListener('click', () =>
-                executor.step(parseInt(el.dataset.steps)))
+    get boundaries() {
+        return this.cells.flatMap(cell =>
+            cell.boundaries.filter(b => b.firstId === cell.id)
         );
-    </script>
-</body>
+    }
 
-</html>
+    setAllBoundaries(shouldBeWalls) {
+        const fill = shouldBeWalls ? 1 : 0;
+        this._edges.fill(fill);
+    }
+
+    isWall(boundary) {
+        const addr = this._getWallAddress(
+            boundary.firstId,
+            boundary.secondId,
+        );
+        return !!this._edges[addr];
+    }
+
+    setWall(boundary, shouldBeWall) {
+        const addr = this._getWallAddress(
+            boundary.firstId,
+            boundary.secondId,
+        );
+        this._edges[addr] = shouldBeWall ? 1 : 0;
+    }
+
+    getNeighborIds(id) {
+        const x = id % this._width;
+        const y = Math.floor(id / this._width);
+        const toAddr = (x, y) => x + y * this._width;
+        return [
+            x > 0 ? toAddr(x - 1, y) : null,
+            y > 0 ? toAddr(x, y - 1) : null,
+            x < (this._width - 1) ? toAddr(x + 1, y) : null,
+            y < (this._height - 1) ? toAddr(x, y + 1) : null,
+        ].filter(x => x !== null);
+    }
+
+    _getWallAddress(smallerCellId, largerCellId) {
+        const areCellHorizontallyAdjacent = largerCellId - smallerCellId === 1;
+        return smallerCellId * 2 + (areCellHorizontallyAdjacent ? 1 : 0);
+    }
+}
