@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pac-Man Walls</title>
+    <title>Pac-Man Game</title>
     <style>
         canvas {
             border: 1px solid #000;
@@ -11,6 +11,51 @@
     </style>
 </head>
 <body>
+    <canvas id="pacmanCanvas" width="400" height="400"></canvas>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const canvas = document.getElementById("pacmanCanvas");
+            const ctx = canvas.getContext("2d");
+
+            // Define the size of the grid and the size of each cell
+            const gridSize = 20;
+            const cellSize = canvas.width / gridSize;
+
+            // Define the layout of the walls (1 represents a wall, 0 represents an empty space)
+            const walls = [
+                [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+                [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+                [1, 0, 1, 1, 1, 1, 1, 1, 0, 1],
+                [1, 0, 1, 0, 0, 0, 0, 1, 0, 1],
+                [1, 0, 1, 1, 1, 1, 1, 1, 0, 1],
+                [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+                [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            ];
+
+            // Pac-Man properties
+            const pacMan = {
+                x: 1,
+                y: 1,
+                direction: "right", // Initial direction
+            };
+
+            // Ghost properties
+            const ghost = {
+                x: 8,
+                y: 4,
+            };
+
+            // Dots (1 represents a dot)
+            const dots = [
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            ];
+
             // Draw the walls on the canvas
             function drawWalls() {
                 for (let i = 0; i < gridSize; i++) {
@@ -22,7 +67,8 @@
                     }
                 }
             }
-  // Draw Pac-Man
+
+            // Draw Pac-Man
             function drawPacMan() {
                 ctx.beginPath();
                 const pacManRadius = cellSize / 2;
@@ -109,22 +155,3 @@
                 drawPacMan();
                 drawGhost();
                 // Add other drawings or game
-
-
-
-
-
-
-            // Main draw function
-            function draw() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                drawWalls();
-                // Add other drawings (Pac-Man, dots, ghosts, etc.) here
-            }
-
-            // Initial draw
-            draw();
-        });
-    </script>
-</body>
-</html>
