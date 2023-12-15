@@ -1,112 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Higher or Lower Card Game</title>
-  <style>
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #f0f0f0;
-    }
+<html>
+<script>
+<body> import random
 
-    #game-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+class TreasureHuntGame:
+    def __init__(self):
+        self.locations = ["Forest", "Cave", "Mountain", "Beach"]
+        self.objects = {
+            "Forest": ["Key", "Map", "Compass"],
+            "Cave": ["Torch", "Gem", "Helmet"],
+            "Mountain": ["Rope", "Pickaxe", "Binoculars"],
+            "Beach": ["Shovel", "Seashell", "Treasure Chest"]
+        }
+        self.current_location = random.choice(self.locations)
 
-    #current-card {
-      font-size: 24px;
-      margin-bottom: 20px;
-    }
+    def display_location(self):
+        print(f"You are in the {self.current_location}.")
 
-    #result {
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
+    def display_objects(self):
+        print(f"You see the following objects: {', '.join(self.objects[self.current_location])}")
 
-    button {
-      padding: 10px 20px;
-      font-size: 18px;
-      cursor: pointer;
-    }
-  </style>
-</head>
-<body>
-  <div id="game-container">
-    <div id="current-card"></div>
-    <div id="result"></div>
-    <button onclick="guess('higher')">Higher</button>
-    <button onclick="guess('lower')">Lower</button>
-  </div>
+    def find_object(self, object_to_find):
+        if object_to_find in self.objects[self.current_location]:
+            print(f"Congratulations! You found the {object_to_find}.")
+            self.objects[self.current_location].remove(object_to_find)
+        else:
+            print(f"Sorry, the {object_to_find} is not here.")
 
-  <script>
-    const suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades'];
-    const ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
-    const deck = [];
-    let currentCardIndex = 0;
-    let currentCard;
-    let resultText = document.getElementById('result');
-    let currentCardElement = document.getElementById('current-card');
+    def play(self):
+        print("Welcome to the Treasure Hunt Game!")
+        print("Try to find all the hidden objects in different locations.")
 
-    // Create a deck of cards
-    for (const suit of suits) {
-      for (const rank of ranks) {
-        deck.push({ suit, rank });
-      }
-    }
+        while any(self.objects[location] for location in self.locations):
+            self.display_location()
+            self.display_objects()
 
-    // Shuffle the deck using Fisher-Yates algorithm
-    function shuffle(array) {
-      for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-      }
-    }
+            object_to_find = input("Enter the name of the object you want to find: ")
 
-    shuffle(deck);
+            self.find_object(object_to_find)
 
-    // Start the game
-    function startGame() {
-      currentCard = deck[currentCardIndex];
-      updateDisplay();
-    }
+        print("Congratulations! You found all the hidden objects. You completed the treasure hunt!")
 
-    // Update the display with the current card
-    function updateDisplay() {
-      currentCardElement.textContent = `${currentCard.rank} of ${currentCard.suit}`;
-    }
-
-    // Handle user guesses
-    function guess(userChoice) {
-      const nextCard = deck[currentCardIndex + 1];
-
-      if (!nextCard) {
-        resultText.textContent = 'Game over! You reached the end of the deck.';
-        return;
-      }
-
-      const higher = nextCard.rank > currentCard.rank;
-      const lower = nextCard.rank < currentCard.rank;
-
-      if ((userChoice === 'higher' && higher) || (userChoice === 'lower' && lower)) {
-        resultText.textContent = 'Correct! Well done!';
-      } else {
-        resultText.textContent = 'Wrong guess! Game over.';
-        return;
-      }
-
-      currentCardIndex++;
-      currentCard = nextCard;
-      updateDisplay();
-    }
-
-    startGame();
-  </script>
+if __name__ == "__main__":
+    treasure_hunt_game = TreasureHuntGame()
+    treasure_hunt_game.play()
+</script>
 </body>
 </html>
