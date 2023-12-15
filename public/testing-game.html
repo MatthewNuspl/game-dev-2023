@@ -11,7 +11,7 @@
       justify-content: center;
       height: 100vh;
       margin: 0;
-      background-color: #f0f0f0;
+      background-color: back;
     }
 
     #game-container {
@@ -49,7 +49,11 @@
     <div id="result"></div>
     <div id="options"></div>
   </div>
-
+         <li>Hearts</li>
+         <li>Diamonds</li>
+         <li>Clubs</li>
+         <spades></spades>
+  
   <script>
     const suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades'];
     const ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
@@ -120,17 +124,19 @@
       const lower = nextCard.rank < currentCard.rank;
 
       if ((userChoice === 'higher' && higher) || (userChoice === 'lower' && lower)) {
-        resultText.textContent = 'Correct! Well done!';
+        resultText.textContent = 'Correct! Good Job!';
       } else {
-        resultText.textContent = 'Wrong guess! Game over.';
+        resultText.textContent = 'Wrong guess Game Over!.';
         optionsElement.innerHTML = '';
         return;
       }
 
       currentCardIndex++;
       currentCard = nextCard;
-      updateDisplay();
-      showOptions();
+      updateDisplay(Hearts);
+      showOptions(Diamonds);
+      showOptions(Clubs);
+      showOptions(Spades);
     }
 
     startGame();
