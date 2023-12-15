@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Higher or Lower Card Game</title>
+  <title> Higher or Lower Card Game </title>
   <style>
     body {
       display: flex;
@@ -49,10 +49,7 @@
     <div id="result"></div>
     <div id="options"></div>
   </div>
-         <li>Hearts</li>
-         <li>Diamonds</li>
-         <li>Clubs</li>
-         <spades></spades>
+     
   
   <script>
     const suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades'];
@@ -86,7 +83,13 @@
       currentCard = deck[currentCardIndex];
       updateDisplay();
       showOptions();
+      updateDisplay(Hearts);
+      showOptions(Diamonds);
+      showOptions(Clubs);
+      showOptions(Spades);
     }
+    }
+    
 
     // Update the display with the current card
     function updateDisplay() {
