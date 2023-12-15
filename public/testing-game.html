@@ -1,57 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Black Jack</title>
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            text-align: center;
-        }
-
-        #dealer-cards img {
-            height: 175px;
-            width: 125px;
-            margin: 1px;
-        }
-
-        #your-cards img {
-            height: 175px;
-            width: 125px;
-            margin: 1px;
-        }
-
-        #hit {
-            width: 100px;
-            height: 50px;
-            font-size: 20px;
-        }
-
-        #stay {
-            width: 100px;
-            height: 50px;
-            font-size: 20px;
-        }
-    </style>
-    <script src="Cards.jfif"></script>
+    <title>Blackjack Game</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <h2>Dealer: <span id="dealer-sum"></span></h2>
-    <div id="dealer-cards">
-        <img id="hidden" src="./cards/BACK.png" alt="Card Back">
+    <div id="game-container">
+        <h2>Dealer: <span id="dealer-sum"></span></h2>
+        <div id="dealer-cards" class="card-container"></div>
+
+        <h2>You: <span id="your-sum"></span></h2>
+        <div id="your-cards" class="card-container"></div>
+
+        <br>
+        <button id="hit">Hit</button>
+        <button id="stay">Stay</button>
+        <p id="results"></p>
     </div>
 
-    <h2>You: <span id="your-sum"></span></h2>
-    <div id="your-cards"></div>
-
-    <br>
-    <button id="hit">Hit</button>
-    <button id="stay">Stay</button>
-    <p id="results"></p>
-
+    <script src="deck.js"></script>
     <script src="blackjack.js"></script>
 </body>
 </html>
-
