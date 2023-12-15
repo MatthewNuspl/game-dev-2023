@@ -94,4 +94,37 @@ function getCardValue(card) {
     const value = ranks.indexOf(card.rank);
     return value === -1 ? 0 : value + 2;
 }
+// Add a new array to store player's cards
+let playerCards = [];
+let playerCardsElement = document.getElementById('player-cards');
+
+// Update drawCard function to add player's card to the array and update the display
+function drawCard() {
+    const playerCard = deck.pop();
+    const computerCard = deck.pop();
+
+    playerCards.push(playerCard); // Store the player's card
+
+    playerCardElement.textContent = `Player: ${playerCard.rank} of ${playerCard.suit}`;
+    computerCardElement.textContent = `Computer: ${computerCard.rank} of ${computerCard.suit}`;
+
+    displayPlayerCards(); // Update the display of player's cards
+
+    // ... (rest of the function remains the same)
+}
+
+// New function to display player's cards
+function displayPlayerCards() {
+    // Clear previous cards
+    playerCardsElement.innerHTML = '';
+
+    // Display each card in the array
+    playerCards.forEach(card => {
+        const cardElement = document.createElement('div');
+        cardElement.classList.add('card');
+        cardElement.textContent = `${card.rank} of ${card.suit}`;
+        playerCardsElement.appendChild(cardElement);
+    });
+}
+
 </script>
