@@ -3,107 +3,103 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memory Game</title>
   <style>
     body {
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       height: 100vh;
       margin: 0;
-      background-color: #111;
+      background-color: #f0f0f0;
+    }
+
+    #game-board {
+      display: grid;
+      grid-template-columns: repeat(4, 100px);
+      gap: 10px;
+    }
+
+    .card {
+      width: 100px;
+      height: 100px;
+      background-color: #3498db;
       color: #fff;
-    }
-
-    .game-board {
-      font-family: monospace;
       font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      user-select: none;
     }
 
-    .wall {
-      display: inline-block;
-      width: 32px;
-      height: 32px;
-      background-color: #777;
-    }
-
-    .start {
-      display: inline-block;
-      width: 32px;
-      height: 32px;
-      background-color: #0f0;
-    }
-
-    .exit {
-      display: inline-block;
-      width: 32px;
-      height: 32px;
-      background-color: #f00;
+    .hidden {
+      background-color: #2c3e50;
+      transform: rotateY(180deg);
     }
   </style>
 </head>
 <body>
-  <div class="game-board" id="gameBoard"></div>
+  <div id="game-board"></div>
 
   <script>
-    const gameBoard = document.getElementById('gameBoard');
+    const symbols = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+    const cards = [...symbols, ...symbols];
+    let flippedCards = [];
+    let matchedPairs = 0;
 
-    const rows = 10;
-    const cols = 15;
+    // Shuffle the cards using Fisher-Yates algorithm
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
 
-    // Define the maze layout
-    const maze = [
-      "WWWWWWWWWWWWWWW",
-      "WPP..........EW",
-      "W..W.WWWWW.W..W",
-      "W.WW....WW.WW.W",
-      "W.W.WWWWW.W.W.W",
-      "W....WW.WW....W",
-      "WWWW.WW.WW.WWWW",
-      "W....WW.WW....W",
-      "W.W.WWWWW.W.W.W",
-      "W..W....WW.W..W",
-      "WWWWWWWWWWWWWWW",
-    ];
+    // Create and shuffle the initial game board
+    shuffle(cards);
 
-    // Render the initial maze
-    function render() {
-      gameBoard.innerHTML = '';
+    const gameBoard = document.getElementById('game-board');
 
-      for (let row = 0; row < rows; row++) {
-        for (let col = 0; col < cols; col++) {
-          const cell = document.createElement('div');
+    // Initialize the game board
+    cards.forEach((symbol, index) => {
+      const card = document.createElement('div');
+      card.classList.add('card');
+      card.dataset.index = index;
+      card.innerHTML = `<span>${symbol}</span>`;
+      card.addEventListener('click', flipCard);
+      gameBoard.appendChild(card);
+    });
 
-          switch (maze[row][col]) {
-            case 'W':
-              cell.className = 'wall';
-              break;
-            case 'a':
-              cell.className = 'start';
-              break;
-            case 's':
-              cell.className = 'exit';
-              break;
-          }
+    // Handle card flipping
+    function flipCard() {
+      if (flippedCards.length < 2 && !this.classList.contains('hidden')) {
+        this.classList.add('hidden');
+        flippedCards.push(this);
 
-          gameBoard.appendChild(cell);
+        if (flippedCards.length === 2) {
+          setTimeout(checkMatch, 1000);
         }
       }
     }
 
-    // Update the game board
-    function update() {
-      // Add game logic here
-    }
+    // Check if the flipped cards match
+    function checkMatch() {
+      const [card1, card2] = flippedCards;
 
-    // Game loop
-    function gameLoop() {
-      update();
-      render();
-      requestAnimationFrame(gameLoop);
-    }
+      if (card1.innerText === card2.innerText) {
+        matchedPairs++;
 
-    // Start the game loop
-    gameLoop();
+        if (matchedPairs === symbols.length) {
+          alert('Congratulations! You matched all pairs.');
+        }
+      } else {
+        card1.classList.remove('hidden');
+        card2.classList.remove('hidden');
+      }
+
+      flippedCards = [];
+    }
   </script>
 </body>
 </html>
