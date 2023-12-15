@@ -53,7 +53,43 @@ body {
     margin-top: 20px;
     cursor: pointer;
 }
+<script>
+class Deck {
+    constructor() {
+        this.cards = freshDeck();
+    }
 
+    render() {
+        const deckContainer = document.getElementById('deck-container');
+        deckContainer.innerHTML = '';
+
+        this.cards.forEach(card => {
+            const cardElement = document.createElement('div');
+            cardElement.className = 'card';
+            cardElement.textContent = card.suit + card.value;
+            deckContainer.appendChild(cardElement);
+        });
+    }
+}
+
+class Card {
+    constructor(suit, value) {
+        this.suit = suit;
+        this.value = value;
+    }
+}
+
+function freshDeck() {
+    const suits = ['♠', '♣', '♥', '♦'];
+    const values = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+
+    return suits.flatMap(suit => values.map(value => new Card(suit, value)));
+}
+
+const deck = new Deck();
+deck.render();
+
+</script>  
 </style>
 </body>
 </html>
