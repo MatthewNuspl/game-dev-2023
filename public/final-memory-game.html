@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Memory Game</title>
   <style>
     body {
@@ -99,48 +98,8 @@
         card2.classList.remove('hidden');
       }
 
-      flippedCards = [];
+      flippedCards = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
     }
-      window.onload = function () {
-    game2.initializeGame();
-};
-    # Check for card matching
-if len(selected_cards) == 2:
-    r1, c1 = selected_cards[0]
-    r2, c2 = selected_cards[1]
-    
-    if grid[r1][c1] != grid[r2][c2]:
-        # Cards do not match, delay and flip them back
-        pygame.time.delay(1000)  # Delay for 1 second to show the cards briefly
-        revealed[r1][c1] = False
-        revealed[r2][c2] = False
-    
-    selected_cards = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
-  const game1Theme = ['🍎', '🍊', '🍌', '🍉', '🍇', '🍓'];
-const game1 = new MemoryGame(game1Theme);
-
-window.onload = function () {
-    game1.initializeGame();
-};
-const game2Theme = ['🚗', '🚕', '🚙', '🚌', '🚎', '🏎️'];
-const game2 = new MemoryGame(game2Theme);
-
-window.onload = function () {
-    game2.initializeGame();
-};
-    # Check for card matching
-if len(selected_cards) == 2:
-    r1, c1 = selected_cards[0]
-    r2, c2 = selected_cards[1]
-    
-    if grid[r1][c1] != grid[r2][c2]:
-        # Cards do not match, delay and flip them back
-        pygame.time.delay(1000)  # Delay for 1 second to show the cards briefly
-        revealed[r1][c1] = False
-        revealed[r2][c2] = False
-    
-    selected_cards = []
-
   </script>
 </body>
 </html>
