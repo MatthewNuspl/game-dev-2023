@@ -45,7 +45,7 @@
   <script>
     const symbols = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
     const cards = [...symbols, ...symbols];
-    let flippedCards = [];
+    let flippedCards = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
     let matchedPairs = 0;
 
     // Shuffle the cards using Fisher-Yates algorithm
@@ -98,7 +98,7 @@
         card2.classList.remove('hidden');
       }
 
-      flippedCards = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+      flippedCards = []
     }
   </script>
 </body>
