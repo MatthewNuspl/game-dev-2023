@@ -1,1 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<input type=button value="memory game" style="font-size:40px" onclick="{
+            location = 'https://matthewnuspl.github.io/game-dev-2023/public/testing-game.html'
+        }"><br><br> 
+  
+  <title>Memory Game</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+
+    #game-board {
+      display: grid;
+      grid-template-columns: repeat(4, 100px);
+      gap: 10px;
+    }
+
+    .card {
+      width: 100px;
+      height: 100px;
+      background-color: #3498db;
+      color: #fff;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .hidden {
+      background-color: #2c3e50;
+      transform: rotateY(180deg);
+    }
+  </style>
+</head>
+<body>
+  <div id="game-board"></div>
+
+  <script>
+    const symbols = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+    const cards = [...symbols, ...symbols];
+    let flippedCards = [];
+    let matchedPairs = 0;
+
+    // Shuffle the cards using Fisher-Yates algorithm
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    // Create and shuffle the initial game board
+    shuffle(cards);
+
+    const gameBoard = document.getElementById('game-board');
+
+    // Initialize the game board
+    cards.forEach((symbol, index) => {
+      const card = document.createElement('div');
+      card.classList.add('card');
+      card.dataset.index = index;
+      card.innerHTML = `<span>${symbol}</span>`;
+      card.addEventListener('click', flipCard);
+      gameBoard.appendChild(card);
+    });
+
+    // Handle card flipping
+    function flipCard() {
+      if (flippedCards.length < 2 && !this.classList.contains('hidden')) {
+        this.classList.add('hidden');
+        flippedCards.push(this);
+
+        if (flippedCards.length === 2) {
+          setTimeout(checkMatch, 1000);
+        }
+      }
+    }
+
+    // Check if the flipped cards match
+    function checkMatch() {
+      const [card1, card2] = flippedCards;
+
+      if (card1.innerText === card2.innerText) {
+        matchedPairs++;
+
+        if (matchedPairs === symbols.length) {
+          alert('Congratulations! You matched all pairs.');
+        }
+      } else {
+        card1.classList.remove('hidden');
+        card2.classList.remove('hidden');
+      }
+
+      flippedCards = [];
+    }
+      window.onload = function () {
+    game2.initializeGame();
+};
+    # Check for card matching
+if len(selected_cards) == 2:
+    r1, c1 = selected_cards[0]
+    r2, c2 = selected_cards[1]
+    
+    if grid[r1][c1] != grid[r2][c2]:
+        # Cards do not match, delay and flip them back
+        pygame.time.delay(1000)  # Delay for 1 second to show the cards briefly
+        revealed[r1][c1] = False
+        revealed[r2][c2] = False
+    
+    selected_cards = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
+  const game1Theme = ['🍎', '🍊', '🍌', '🍉', '🍇', '🍓'];
+const game1 = new MemoryGame(game1Theme);
+
+window.onload = function () {
+    game1.initializeGame();
+};
+const game2Theme = ['🚗', '🚕', '🚙', '🚌', '🚎', '🏎️'];
+const game2 = new MemoryGame(game2Theme);
+
+window.onload = function () {
+    game2.initializeGame();
+};
+    # Check for card matching
+if len(selected_cards) == 2:
+    r1, c1 = selected_cards[0]
+    r2, c2 = selected_cards[1]
+    
+    if grid[r1][c1] != grid[r2][c2]:
+        # Cards do not match, delay and flip them back
+        pygame.time.delay(1000)  # Delay for 1 second to show the cards briefly
+        revealed[r1][c1] = False
+        revealed[r2][c2] = False
+    
+    selected_cards = []
+
+  </script>
+</body>
+</html>
