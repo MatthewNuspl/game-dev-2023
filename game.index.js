@@ -98,6 +98,7 @@ let score = 0
 let gameObj = {}
 
 const localStorageGameKey = "HTA"
+    </script>
 
 
 /* <div class="card">
