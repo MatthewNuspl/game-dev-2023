@@ -53,7 +53,7 @@
 
 <script src="script.js"></script>
 
-
+<script>
 const cardObjectDefinitions = [
     {id:1, imagePath:'king of hearts.png'},
     {id:2, imagePath:'Jack of clubs.png'},
@@ -113,8 +113,8 @@ const localStorageGameKey = "HTA"
     </div>
 </div>
 </div> */
-
-
+</script>
+<script>
 loadGame()
 
 
@@ -678,7 +678,7 @@ function saveGameObjectToLocalStorage(score,round)
     updateLocalStorageItem(localStorageGameKey, getSerializedObjectAsJSON(gameObj))
 }
 </script>
-<styles> @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+<style> @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 :root{
     --card-width-lg:157px;
     --card-height-lg:220px;
