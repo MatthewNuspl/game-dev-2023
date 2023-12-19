@@ -50,8 +50,8 @@
             </div>
         </div>
     </main>
-    <script src="game.html"></script>
-<style>
+    <script src="game.html">
+
 const cardObjectDefinitions = [
     {id:1, imagePath:'king of hearts.png'},
     {id:2, imagePath:'Jack of clubs.png'},
@@ -98,7 +98,7 @@ let score = 0
 let gameObj = {}
 
 const localStorageGameKey = "HTA"
-    </style>
+    </script>
 
 
 /* <div class="card">
