@@ -4,10 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Memory Game</title>
- 
   <style>
-
-  body {
+    body {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -45,28 +43,12 @@
   <div id="game-board"></div>
 
   <script>
-  function endRound() {
-    setTimeout(() => {
-        if (roundNum == maxRounds) {
-            gameOver();
-            return;
-        } else {
-            startRound();
-        }
-    }, 3000);
-
-    // Hide the cards again by adding the 'hidden' class
-    cards.forEach((card) => card.classList.add('hidden'));
-}
-
-
-    
     const symbols = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
     const cards = [...symbols, ...symbols];
     let flippedCards = [];
     let matchedPairs = 0;
-  
-  // Shuffle the cards using Fisher-Yates algorithm
+
+    // Shuffle the cards using Fisher-Yates algorithm
     function shuffle(array) {
       for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -118,43 +100,6 @@
 
       flippedCards = [];
     }
-
-
-    <style>
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #f0f0f0;
-    }
-
-    #game-board {
-      display:flat;
-      grid-template-columns: repeat(4, 100px);
-      gap: 10px;
-    }
-
-    .card {
-      width: 120px;
-      height: 120px;
-      background-color: #3498db;
-      color: #fff;
-      font-size: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      user-select: none;
-    }
-
-   
-  </style>
-</head>
-<body>
-  <div id="game-board"></div>
-  </style>
   </script>
 </body>
 </html>
