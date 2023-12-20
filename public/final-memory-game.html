@@ -6,9 +6,7 @@
   <title>Memory Game</title>
  
   <style>
-.card-hidden {
-    visibility: hidden;
-   
+
   body {
       display: flex;
       align-items: center;
@@ -47,33 +45,6 @@
   <div id="game-board"></div>
 
   <script>
-    // Update the createCard function
-function createCard(cardItem) {
-    // ... (existing code)
-
-    // Add the 'hidden' class to hide the cards initially
-    cardElem.classList.add('hidden');
-
-    // ... (existing code)
-}
-function chooseCard(card) {
-    if (canChooseCard()) {
-        evaluateCardChoice(card);
-        flipCard(card, false);
-
-        // Remove the 'hidden' class to show the selected cards
-        card.classList.remove('hidden');
-
-        setTimeout(() => {
-            flipCards(false);
-            updateStatusElement(currentGameStatusElem, 'block', primaryColor, 'Card positions revealed');
-            endRound();
-        }, 3000);
-
-        cardsRevealed = true;
-    }
-}
-
   function endRound() {
     setTimeout(() => {
         if (roundNum == maxRounds) {
