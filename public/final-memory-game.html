@@ -56,6 +56,40 @@ function createCard(cardItem) {
 
     // ... (existing code)
 }
+function chooseCard(card) {
+    if (canChooseCard()) {
+        evaluateCardChoice(card);
+        flipCard(card, false);
+
+        // Remove the 'hidden' class to show the selected cards
+        card.classList.remove('hidden');
+
+        setTimeout(() => {
+            flipCards(false);
+            updateStatusElement(currentGameStatusElem, 'block', primaryColor, 'Card positions revealed');
+            endRound();
+        }, 3000);
+
+        cardsRevealed = true;
+    }
+}
+
+  function endRound() {
+    setTimeout(() => {
+        if (roundNum == maxRounds) {
+            gameOver();
+            return;
+        } else {
+            startRound();
+        }
+    }, 3000);
+
+    // Hide the cards again by adding the 'hidden' class
+    cards.forEach((card) => card.classList.add('hidden'));
+}
+
+
+    
     const symbols = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
     const cards = [...symbols, ...symbols];
     let flippedCards = [];
