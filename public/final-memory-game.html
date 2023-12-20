@@ -47,6 +47,15 @@
   <div id="game-board"></div>
 
   <script>
+    // Update the createCard function
+function createCard(cardItem) {
+    // ... (existing code)
+
+    // Add the 'hidden' class to hide the cards initially
+    cardElem.classList.add('hidden');
+
+    // ... (existing code)
+}
     const symbols = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
     const cards = [...symbols, ...symbols];
     let flippedCards = [];
