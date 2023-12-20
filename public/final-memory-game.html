@@ -6,8 +6,10 @@
   <title>Memory Game</title>
  
   <style>
-
-    body {
+.card-hidden {
+    visibility: hidden;
+   
+  body {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -49,10 +51,6 @@
     const cards = [...symbols, ...symbols];
     let flippedCards = [];
     let matchedPairs = 0;
-
-    .card-hidden {
-    visibility: hidden;
-
   
   // Shuffle the cards using Fisher-Yates algorithm
     function shuffle(array) {
