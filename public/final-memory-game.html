@@ -6,26 +6,7 @@
   <title>Memory Game</title>
  
   <style>
-    // Initialize score
-let score = 0;
 
-// Function to update and display the score
-function updateScore(points) {
-    score += points;
-    console.log(`Score: ${score}`);
-}
-
-// Example: Increment score by 20 for a successful match
-updateScore(20);
-
-// Example: Increment score by 15 for another successful match
-updateScore(15);
-
-// Example: Decrement score by -10 for a wrong match
-updateScore(-10);
-
-  
-    
     body {
       display: flex;
       align-items: center;
@@ -69,7 +50,11 @@ updateScore(-10);
     let flippedCards = [];
     let matchedPairs = 0;
 
-    // Shuffle the cards using Fisher-Yates algorithm
+    .card-hidden {
+    visibility: hidden;
+
+  
+  // Shuffle the cards using Fisher-Yates algorithm
     function shuffle(array) {
       for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
