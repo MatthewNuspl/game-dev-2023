@@ -4,7 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Memory Game</title>
+ 
   <style>
+    // Initialize score
+let score = 0;
+
+// Function to update and display the score
+function updateScore(points) {
+    score += points;
+    console.log(`Score: ${score}`);
+}
+
+// Example: Increment score by 10 for a successful match
+updateScore(10);
+
+// Example: Increment score by 5 for another successful match
+updateScore(5);
+
+// Example: Decrement score by 3 for a wrong match
+updateScore(-3);
+
+  
+    
     body {
       display: flex;
       align-items: center;
@@ -101,25 +122,7 @@
       flippedCards = [];
     }
 
-    // Initialize score
-let score = 0;
 
-// Function to update and display the score
-function updateScore(points) {
-    score += points;
-    console.log(`Score: ${score}`);
-}
-
-// Example: Increment score by 10 for a successful match
-updateScore(10);
-
-// Example: Increment score by 5 for another successful match
-updateScore(5);
-
-// Example: Decrement score by 3 for a wrong match
-updateScore(-3);
-
-  
   
   </script>
 </body>
