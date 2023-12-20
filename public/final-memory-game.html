@@ -154,67 +154,6 @@
 </head>
 <body>
   <div id="game-board"></div>
-
-  <script>
-    const symbols = ['ace of spades.png', 'Cards.jfif', 'queen of diamonds.jfif', 'king of hearts.png', 'deck of cards.jfif];
-    const cards = [...symbols, ...symbols];
-    let flippedCards = [];
-    let matchedPairs =2;
-
-    // Shuffle the cards using Fisher-Yates algorithm
-    function shuffle(array) {
-      for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-      }
-    }
-
-    // Create and shuffle the initial game board
-    shuffle(cards);
-
-    const gameBoard = document.getElementById('game-board');
-
-    // Initialize the game board
-    cards.forEach((symbol, index) => {
-      const card = document.createElement('div');
-      card.classList.add('card');
-      card.dataset.index = index;
-      card.innerHTML = `<span>${symbol}</span>`;
-      card.addEventListener('click', flipCard);
-      gameBoard.appendChild(card);
-    });
-
-    // Handle card flipping
-    function flipCard() {
-      if (flippedCards.length < 2 && !this.classList.contains('hidden')) {
-        this.classList.add('hidden');
-        flippedCards.push(this);
-
-        if (flippedCards.length === 2) {
-          setTimeout(checkMatch, 1000);
-        }
-      }
-    }
-
-    // Check if the flipped cards match
-    function checkMatch() {
-      const [card1, card2] = flippedCards;
-
-      if (card1.innerText === card2.innerText) {
-        matchedPairs++;
-
-        if (matchedPairs === symbols.length) {
-          alert('Congratulations! You matched all pairs.');
-        }
-      } else {
-        card1.classList.remove('hidden');
-        card2.classList.remove('hidden');
-      }
-
-      flippedCards = [];
-    }
-
-
   </style>
   </script>
 </body>
