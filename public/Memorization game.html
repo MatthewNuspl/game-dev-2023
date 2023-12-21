@@ -1,127 +1,201 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Memory Game</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="FinalGame.html">
-        <!-- Add your card elements here -->
+<html>
+    <div class="container">
+  <h2 class="heading">Memory Game using JavaScript</h2>
+  <div class="cards">
+    <div class="card" animal="duck">
+      <img src="https://imgkub.com/images/2022/02/16/duck.png" alt="" />
     </div>
+    <div class="card" animal="lion">
+      <img src="https://imgkub.com/images/2022/02/16/lion.png" alt="" />
+    </div>
+    <div class="card" animal="dog">
+      <img src="https://imgkub.com/images/2022/02/16/dog.png" alt="" />
+    </div>
+    <div class="card" animal="tiger">
+      <img src="https://imgkub.com/images/2022/02/16/tiger.png" alt="" />
+    </div>
+    <div class="card" animal="jaguar">
+      <img src="https://imgkub.com/images/2022/02/16/jaguar.png
+" alt="" />
+    </div>
+    <div class="card" animal="cat">
+      <img src="https://imgkub.com/images/2022/02/16/cat.png" alt="" />
+    </div>
+    <div class="card" animal="duck">
+      <img src="https://imgkub.com/images/2022/02/16/duck.png" alt="" />
+    </div>
+    <div class="card" animal="dog">
+      <img src="https://imgkub.com/images/2022/02/16/dog.png" alt="" />
+    </div>
+    <div class="card" animal="jaguar">
+      <img src="https://imgkub.com/images/2022/02/16/jaguar.png
+" alt="" />
+    </div>
+    <div class="card" animal="lion">
+      <img src="https://imgkub.com/images/2022/02/16/lion.png" alt="" />
+    </div>
+    <div class="card" animal="cat">
+      <img src="https://imgkub.com/images/2022/02/16/cat.png" alt="" />
+    </div>
+    <div class="card" animal="snake">
+      <img src="https://imgkub.com/images/2022/02/16/snake.png" alt="" />
+    </div>
+    <div class="card" animal="tiger">
+      <img src="https://imgkub.com/images/2022/02/16/tiger.png" alt="" />
+    </div>
+    <div class="card" animal="panther">
+      <img src="https://imgkub.com/images/2022/02/16/panther.png" alt="" />
+    </div>
+    <div class="card" animal="panther">
+      <img src="https://imgkub.com/images/2022/02/16/panther.png" alt="" />
+    </div>
+    <div class="card" animal="snake">
+      <img src="https://imgkub.com/images/2022/02/16/snake.png" alt="" />
+    </div>
+  </div>
+</div>
+<style> 
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    <script src="script.js"></script>
-  <style>
+.container {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
 
-.memory-game {
-    display: grid;
-    grid-template-columns: repeat(4, 100px);
-    gap: 10px;
-    margin: 20px;
+.heading {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 2em;
 }
 
 .card {
-    width: 100px;
-    height: 150px;
-    perspective: 1000px;
+  height: 110px;
+  width: 90px;
+  background-color: #ffff00;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: 0.3s all ease;
 }
 
-.card-inner {
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transform-style: preserve-3d;
-    transition: transform 0.5s;
+.card:hover {
+  transform: scale(1.03);
 }
 
-.card:hover .card-inner,
-.card.flipped .card-inner {
-    transform: rotateY(180deg);
+.card img {
+  width: 80%;
+  max-height: 90px;
+  opacity: 0;
+  transition: 0.3s all ease;
 }
 
-.card-front,
-.card-back {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    backface-visibility: hidden;
+.card.clicked {
+  background-color: orange;
 }
 
-.card-front {
-    background-color: #ddd;
+.card.checked {
+  background-color: lightgreen;
 }
 
-.card-back {
-    background-color: #333;
-    color: white;
-    transform: rotateY(180deg);
-}  
-  </style>
+.card.clicked img,
+.card.checked img {
+  opacity: 1;
+}
+
+.card.shake {
+  background-color: #f15f5f;
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+</style>
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const cards = document.querySelectorAll('.card');
+    let counter = 0;
+let firstSelection = "";
+let secondSelection = "";
 
-    let hasFlippedCard = false;
-    let lockBoard = false;
-    let firstCard, secondCard;
+const cards = document.querySelectorAll(".cards .card");
+cards.forEach((card) => {
+  card.addEventListener("click", () => {
+    card.classList.add("clicked");
 
-    function flipCard() {
-        if (lockBoard) return;
-        if (this === firstCard) return;
+    if (counter === 0) {
+      firstSelection = card.getAttribute("animal");
+      counter++;
+    } else {
+      secondSelection = card.getAttribute("animal");
+      counter = 0;
 
-        this.classList.add('flipped');
+      if (firstSelection === secondSelection) {
+        const correctCards = document.querySelectorAll(
+          ".card[animal='" + firstSelection + "']"
+        );
 
-        if (!hasFlippedCard) {
-            hasFlippedCard = true;
-            firstCard = this;
-            return;
-        }
+        correctCards[0].classList.add("checked");
+        correctCards[0].classList.remove("clicked");
+        correctCards[1].classList.add("checked");
+        correctCards[1].classList.remove("clicked");
+      } else {
+        const incorrectCards = document.querySelectorAll(".card.clicked");
 
-        secondCard = this;
-        checkForMatch();
-    }
-
-    function checkForMatch() {
-        let isMatch = firstCard.dataset.framework === secondCard.dataset.framework;
-
-        isMatch ? disableCards() : unflipCards();
-    }
-
-    function disableCards() {
-        firstCard.removeEventListener('click', flipCard);
-        secondCard.removeEventListener('click', flipCard);
-
-        resetBoard();
-    }
-
-    function unflipCards() {
-        lockBoard = true;
+        incorrectCards[0].classList.add("shake");
+        incorrectCards[1].classList.add("shake");
 
         setTimeout(() => {
-            firstCard.classList.remove('flipped');
-            secondCard.classList.remove('flipped');
-
-            resetBoard();
-        }, 1000);
+          incorrectCards[0].classList.remove("shake");
+          incorrectCards[0].classList.remove("clicked");
+          incorrectCards[1].classList.remove("shake");
+          incorrectCards[1].classList.remove("clicked");
+        }, 800);
+      }
     }
-
-    function resetBoard() {
-        [hasFlippedCard, lockBoard] = [false, false];
-        [firstCard, secondCard] = [null, null];
-    }
-
-    (function shuffle() {
-        cards.forEach(card => {
-            let randomPos = Math.floor(Math.random() * 16);
-            card.style.order = randomPos;
-        });
-    })();
-
-    cards.forEach(card => card.addEventListener('click', flipCard));
-});
-
-</script>
-</body>
-</html>
+  });
+});</script>
+   </html>
