@@ -1,0 +1,216 @@
+<html> 
+<div id="game-area">
+  <div id="msg"></div>
+	<div id="ball"></div>
+	<div id="player" class="paddle"></div>
+	<div id="cpu" class="paddle"></div>
+	<div id="scoreboard">
+		Player: <span id="player"></span>
+		CPU: <span id="cpu"></span>
+	</div>
+</div>
+
+<div id="my-background"></div>
+<style>
+  body {
+  margin: 0;
+	padding: 0;
+}
+
+#my-background {
+	z-index: -1;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: #434343;
+	background-image: -webkit-linear-gradient(250deg, rgba(0,0,0,0), rgba(0,0,0,1));
+}
+
+#game-area {
+	position: absolute;
+	margin: -150px -300px;
+	top: 50%;
+	left: 50%;
+	width: 600px;
+	height: 300px;
+	outline: 1px solid #ff8800;
+}
+
+	.paddle {
+		position: absolute;
+		height: 80px;
+		width: 10px;
+		top: 0;
+		background-color: #ff8800;
+	}
+
+	#player {
+		left: 16px;
+	}
+
+	#cpu {
+		right: 16px;
+	}
+
+	#ball {
+		position: absolute;
+		height: 10px;
+		width: 10px;
+		background-color: #ff8800;
+	}
+
+	#scoreboard {
+		position: absolute;
+		top: -30px;
+		right: 0;
+		padding: 0 16px;
+		height: 30px;
+		line-height: 30px;
+		color: #fff;
+	}
+</style>
+  <script>
+    ;(function($){
+
+  var 
+		// elements
+		gameArea = $('#game-area'),
+		player = gameArea.children('#player'),
+		cpu = gameArea.children('#cpu'),
+		ball = gameArea.children('#ball'),
+		msg = gameArea.children('#msg'),
+		scoreboard = gameArea.children('#scoreboard'),
+
+		// game speeds (pixel steps)
+		ballSpeed = 5,
+		cpuSpeed = 4,
+
+		// element positions
+		ballX,
+		ballY,
+		playerY, 
+		cpuY,
+		dx,
+		dy,
+
+		playerScore = 0,
+		cpuScore = 0,
+
+		gameLoopTimer,
+		pongGame = {};
+
+
+	pongGame = {
+		init: function() {
+			// initial values
+			ballX = (gameArea[0].offsetWidth / 2) - (ball[0].offsetWidth / 2);
+			ballY = (gameArea[0].offsetHeight / 2) -(ball[0].offsetWidth / 2);
+			playerY = (gameArea[0].offsetHeight / 2) - (player[0].offsetHeight / 2);
+			cpuY = (gameArea[0].offsetHeight / 2) - (cpu[0].offsetHeight / 2);
+
+			dx = ballSpeed;
+			dy = ballSpeed;
+
+			// set position of elems
+			player.css({'top': playerY});
+			cpu.css({'top': cpuY});
+			ball.css({'left': ballX,'top': ballY});
+
+			if (playerScore === 10){
+				alert('You Win!');
+				return false;
+			} else if (cpuScore === 10) {
+				alert('You Loose!');
+				return false;
+			}
+
+			gameArea.on('mousemove', function(e) {
+				pongGame.movePlayer(e);
+			});
+			gameLoopTimer = setInterval(pongGame.gameLoop, 10);
+
+			scoreboard
+				.children('#player').html(playerScore)
+				.siblings('#cpu').html(cpuScore);
+		},
+
+		movePlayer: function(e) {
+			var y;
+
+			y = (e.clientY - (gameArea[0].offsetTop - document.documentElement.scrollTop)) - (player[0].offsetHeight / 2);
+			
+			// dont go passed the walls
+			if (y < 0) {
+				y = 0;
+			} else if (y > gameArea[0].offsetHeight - player[0].offsetHeight) {
+				y = gameArea[0].offsetHeight - player[0].offsetHeight;
+			}
+			// cash the position
+			playerY = y;
+
+			// update player position
+			player.css({'top': playerY});
+		},
+
+		gameLoop: function() {
+
+			// collition detection
+			if (ballY < 0 || ballY > gameArea[0].offsetHeight - ball[0].offsetHeight) {
+				dy = -dy;
+			}
+
+			// if ball hits player
+			if (ballX < player[0].offsetLeft + player[0].offsetWidth && ballX > player[0].offsetLeft) {
+				if (ballY + ball[0].offsetHeight > playerY && ballY < playerY + player[0].offsetHeight) {
+					dx = -dx;
+				}
+			} else if (ballX < 0) {
+				++cpuScore;
+				clearInterval(gameLoopTimer);
+				pongGame.init();
+			}
+
+			// if ball hits cpu
+			if (ballX + ball[0].offsetWidth > cpu[0].offsetLeft && ballX + ball[0].offsetWidth < cpu[0].offsetLeft + cpu[0].offsetWidth) {
+				if (ballY + ball[0].offsetHeight > cpuY && ballY < cpuY + cpu[0].offsetHeight) {
+					dx = -dx;
+				}
+			} else if (ballX + ball[0].offsetWidth > gameArea[0].offsetWidth) {
+				++playerScore;
+				clearInterval(gameLoopTimer);
+				pongGame.init();
+			}
+
+			// cache positions
+			ballX += dx;
+			ballY += dy;
+
+			// update cpu position
+			if (dx > 0) {
+				if (ballY + (ball[0].offsetHeight / 2) < cpuY + (cpu[0].offsetHeight / 2)) {
+					cpuY += -cpuSpeed;
+				} else {
+					cpuY += cpuSpeed;
+				}
+			}
+
+			cpu.css({
+				'top': cpuY
+			});
+
+			// update ball location
+			ball.css({
+				'left': ballX,
+				'top': ballY
+			});
+		}
+	}
+
+	// initalize the game
+	pongGame.init();
+
+}(jQuery));
+  </script>
+  
