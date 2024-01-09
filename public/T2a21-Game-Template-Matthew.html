@@ -8,11 +8,10 @@
     <body id="myBody" style="background-repeat: repeat; background-size: 100%" background="Halloween photo 2.0.jpeg">
 
         <h6>Version 0.0.1.</h6>
-        <h3 align="center" >t2a21-Game-Template-Matthew</h3>
+        <h3 align="center" >T2a21-Game-Template-Matthew.html</h3>
 
-        <img id="myImg01" style="position:absolute; width:100px; height:80px; top:0px; left:50px;"  src="Ghost image.jfif">
-        <img id="myImg02" style="position:absolute; width:100px; height:80px; top:0px; left:250px;" src="Ghost-picture.jfif">
-
+        <img id="myImg01" style="position:absolute; width:100px; height:80px; top:0px; left:50px;"  src="Ghost image.jfif ">
+        <img id="myImg02" style="position:absolute; width:200px; height:100px; top:0px; left:250px;" src="Ghost-picture.jfif ">
 
         <input type=button value="Auto Background Up" onclick="{
             clearInterval(myClock)
@@ -57,17 +56,35 @@
 
             function myCheckHit(){
                 if ( myHitOther('myImg01','myImg02') ){
-                    alert('you lose 02')  
-                    //document.getElementById('myImg01').style.left = '20px'
-                    location = 'https://www.google.com/search?q=next+level&sca_esv=587728493&rlz=1C1GCEA_enCA1074CA1074&tbm=isch&source=lnms&sa=X&ved=2ahUKEwjb_KWKpfaCAxUgMDQIHRe0ClYQ_AUoAXoECAIQAw&cshid=1701710426716572&biw=1920&bih=923&dpr=1&safe=active&ssui=on#imgrc=fBDHfP7cOHl8yM''  // go to your next level
-                }
-
-                if ( myHitOther('myImg01','myImg03')) {
-                    alert('you lose 03')
-                    //document.getElementById('myImg01').style.left = '20px'
+                    alert('you lose')  
+                    document.getElementById('myImg01').style.left = '20px'
+                    location = 't2a13-keydown.html'  // go to your next level
                 }
             }  // end of myCheckHit()
 
+     
+
+       
+                     function myMoveRight() {
+            document.getElementById('myImg01').style.left = parseInt(document.getElementById('myImg01').style.left) + 10 + 'px';
+        }
+
+                         document.addEventListener('keydown', function (event) {
+                switch (event.key.toLowerCase()) {
+                    case 'w':
+                        document.getElementById('myImage01').style.top = parseInt(document.getElementById('myImage01').style.top) - 10 + 'px';
+                        break;
+                    case 'a':
+                        document.getElementById('myImage01').style.left = parseInt(document.getElementById('myImage01').style.left) - 10 + 'px';
+                        break;
+                    case 's':
+                        document.getElementById('myImage01').style.top = parseInt(document.getElementById('myImage01').style.top) + 10 + 'px';
+                        break;
+                    case 'd':
+                        document.getElementById('myImage01').style.left = parseInt(document.getElementById('myImage01').style.left) + 10 + 'px';
+                        break;
+                }
+            });
          </script>   
     </body>
 </html>
