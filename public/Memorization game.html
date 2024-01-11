@@ -219,13 +219,23 @@ cards.forEach((card) => {
   });
 });
 
+     // Check if the flipped cards match
+    function checkMatch() {
+      const [card1, card2] = flippedCards;
+
       if (card1.innerText === card2.innerText) {
         matchedPairs++;
 
         if (matchedPairs === symbols.length) {
           alert('Congratulations! You matched all pairs!.');
         }
-        }
+      } else {
+        card1.classList.remove('hidden');
+        card2.classList.remove('hidden');
+      }
+
+      flippedCards = [];
+    }
        
 </script>
    </html>
