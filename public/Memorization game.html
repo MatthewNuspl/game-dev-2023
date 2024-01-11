@@ -219,19 +219,21 @@ cards.forEach((card) => {
   });
 });
 
-    
-            function myCheckHit(){
-                if ( myHitOther('myImg01','myImg02') ){
-                    alert('you lose 02')  
-                    //document.getElementById('myImg01').style.left = '20px'
-                    
-                }
+    def check_win(score):
+    if score >= 100:  # Change the condition based on your specific criteria for winning
+        return True
+    else:
+        return False
 
-                if ( myHitOther('myImg01','myImg03')) {
-                    alert('you lose 03')
-                    //document.getElementById('myImg01').style.left = '20px'
-                }
-            }  // end of myCheckHit()
+def main():
+    player_score = 120  # Assume the player's score, you can change this value accordingly
+
+    if check_win(player_score):
+        print("Congratulations! You beat the game!")
+
+if __name__ == "__main__":
+    main()
+
        
 </script>
    </html>
