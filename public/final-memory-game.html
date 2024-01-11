@@ -6,7 +6,6 @@
         </style>
     </head>
     <body id="myBody" style="background-repeat: repeat; background-size: 100%" background="Background.gif">
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -90,7 +89,25 @@
           setTimeout(checkMatch, 1000);
         }
       }
- 
+    }
+
+    // Check if the flipped cards match
+    function checkMatch() {
+      const [card1, card2] = flippedCards;
+
+      if (card1.innerText === card2.innerText) {
+        matchedPairs++;
+
+        if (matchedPairs === symbols.length) {
+          alert('Congratulations! You matched all pairs!.');
+        }
+      } else {
+        card1.classList.remove('hidden');
+        card2.classList.remove('hidden');
+      }
+
+      flippedCards = [];
+    }
   </script>
 </body>
 </html>
