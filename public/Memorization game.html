@@ -218,8 +218,14 @@ cards.forEach((card) => {
     }
   });
 });
-if (matchedPairs === symbols.length) {
+
+      if (card1.innerText === card2.innerText) {
+        matchedPairs++;
+
+        if (matchedPairs === symbols.length) {
           alert('Congratulations! You matched all pairs!.');
         }
+        }
+       
 </script>
    </html>
