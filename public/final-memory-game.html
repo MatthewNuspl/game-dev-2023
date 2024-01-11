@@ -90,19 +90,20 @@
           setTimeout(checkMatch, 1000);
         }
       }
-    }
-   function myCheckHit(){
-                if ( myHitOther('myImg01','myImg02') ){
-                    alert('you lose 02')  
-                    //document.getElementById('myImg01').style.left = '20px'
-       
-                }
+    }    // Check if the flipped cards match
+    function checkMatch() {
+      const [card1, card2] = flippedCards;
 
-                if ( myHitOther('myImg01','myImg03')) {
-                    alert('you lose 03')
-                    //document.getElementById('myImg01').style.left = '20px'
-                }
-            }  // end of myCheckHit()
+      if (card1.innerText === card2.innerText) {
+        matchedPairs++;
+
+        if (matchedPairs === symbols.length) {
+          alert('Congratulations! You matched all pairs!.');
+        }
+      } else {
+        card1.classList.remove('hidden');
+        card2.classList.remove('hidden');
+      }
   </script>
 </body>
 </html>
