@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+         .center {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+            <body>
+        body {
+            background-color: black;
+            background-repeat: repeat;
+            background-size: 100%;
+            margin: 0;
+            overflow: hidden;
+            transition: filter 0.3s;
+        }
+
+        h1 {
+            font-size: 150px;
+            color: white;
+            text-align: center;
+            margin-top: 40vh;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body style="background-repeat: repeat; background-size: 100%" background="Moving-background-2.0.gif">
+
+     <input type=button value="Memory game Instructions" style="font-size:50px" onclick="{
+            location = 'Memory-game-Instructions.html'
+        }"><br><br>
+
+<input type=button value="Memory" style="font-size:30px" onclick="{
+            location = 'final-memory-game.html'
+        }"><br><br>
+
+    <input type=button value="Higher or lower" style="font-size:30px" onclick="{
+            location = 'higher-or-lower-game.html'
+        }"><br><br>
+
+
+     <input type=button value="Memorization game" style="font-size:30px" onclick="{
+            location = 'Memorization game.html'
+        }"><br><br>
+</div>
+    
+    
+    <h1>MEMORY GAME!</h1>
+
+    <button onclick="adjustBrightness(20)">Increase Brightness</button>
+    <button onclick="adjustBrightness(-20)">Decrease Brightness</button>
+
+    <button onclick="adjustContrast(1.8)">Increase Contrast</button>
+    <button onclick="adjustContrast(1.8)">Decrease Contrast</button>
+
+    <script>
+        let currentBrightness = 100;
+        let currentContrast = 1;
+
+        function adjustBrightness(value) {
+            currentBrightness += value;
+            applyStyles();
+        }
+
+        function adjustContrast(value) {
+            currentContrast *= value;
+            applyStyles();
+        }
+
+        function applyStyles() {
+            document.body.style.filter = `brightness(${currentBrightness}%) contrast(${currentContrast})`;
+        }
+    </script>
+</body>
+</html>
