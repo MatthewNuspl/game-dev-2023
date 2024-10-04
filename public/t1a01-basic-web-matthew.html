@@ -14,7 +14,7 @@
 </head>
 <body>
 
-<h5>Version 0.0.6</h5>
+<h5>Version 0.0.7</h5>
 <h1 align="center">T1A01-Basic-Web-by-Matthew.html</h1>
 
 <a href="http://www.google.ca">Link to Google</a><br>
@@ -44,7 +44,7 @@ This is a Pug! <br>
 This is Lincoln! <br>
 <img src="Lincoln photo.jpg" id="img" alt="Lincoln"><br><br>
 
-<!-- Change the src to your audio file path -->
+<!-- Update this path if necessary -->
 <audio id="audio" src="file:///C:/Users/1213586/Downloads/that-one-josh-hutcherson-whistle-edit.mp3"></audio>
 
 Youtube Embedded video <br>
@@ -94,24 +94,19 @@ Youtube Embedded video <br>
                 break;
         }
     }
-  <audio id="audio" src="file:///C:/Users/1213586/Downloads/that-one-josh-hutcherson-whistle-edit.mp3"></audio>
-  <script>
-    var audio = document.getElementById("audio");
-    var img = document.getElementById("img");
-    
-    function play() {
-      audio.play();
-    }
-    
-    function stop() {
-      audio.pause();
-    }
-    
-    img.addEventListener('click', play);
-    img.addEventListener('mouseover', play);
-    img.addEventListener('mouseout', stop);
-  </script>
 
+    const audio = document.getElementById("audio");
+    const img = document.getElementById("img");
+
+    img.addEventListener('mouseenter', () => {
+        audio.play();
+    });
+
+    img.addEventListener('mouseleave', () => {
+        audio.pause();
+        audio.currentTime = 0; // Reset audio to the beginning
+    });
+</script>
 
 </body>
 </html>
