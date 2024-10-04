@@ -42,7 +42,7 @@ This is a Pug! <br>
 
 <hr>
 This is Lincoln! <br>
-<img src="Lincoln photo.jpg" id="hoverImage" alt="Lincoln"><br><br>
+<img src="Lincoln photo.jpg" id="img" alt="Lincoln"><br><br>
 
 <!-- Change the src to your audio file path -->
 <audio id="audio" src="file:///C:/Users/1213586/Downloads/that-one-josh-hutcherson-whistle-edit.mp3"></audio>
@@ -95,18 +95,25 @@ Youtube Embedded video <br>
         }
     }
 
-    const img = document.getElementById('hoverImage');
-    const audio = document.getElementById('audio');
+      <img id="img" src="moolikeacow.jpg" />
+  <audio id="audio" src="file:///C:/Users/1213586/Downloads/that-one-josh-hutcherson-whistle-edit.mp3"></audio>
+  <script>
+    var audio = document.getElementById("audio");
+    var img = document.getElementById("img");
+    
+    function play() {
+      audio.play();
+    }
+    
+    function stop() {
+      audio.pause();
+    }
+    
+    img.addEventListener('click', play);
+    img.addEventListener('mouseover', play);
+    img.addEventListener('mouseout', stop);
+  </script>
 
-    img.addEventListener('mouseenter', () => {
-        audio.play();
-    });
-
-    img.addEventListener('mouseleave', () => {
-        audio.pause();
-        audio.currentTime = 0; // Reset audio to the beginning
-    });
-</script>
 
 </body>
 </html>
